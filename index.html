@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Laurence Maestracci — Structurer le chaos</title>
+<title>Laurence Maestracci · Structurer le chaos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#1A1224;
-    --bg-alt:#251A33;
+    --bg:#131417;
+    --bg-alt:#1F2024;
     --ink:#F7F2E9;
     --ink-dim:#BDAFCB;
     --amber:#FF2E7E;
@@ -22,9 +22,9 @@
   html{scroll-behavior:smooth;}
   body{
     background:
-      radial-gradient(ellipse 900px 600px at 12% -10%, rgba(255,46,126,0.18), transparent 60%),
-      radial-gradient(ellipse 900px 700px at 100% 10%, rgba(67,232,216,0.16), transparent 60%),
-      radial-gradient(ellipse 700px 900px at 50% 100%, rgba(255,138,194,0.10), transparent 55%),
+      radial-gradient(ellipse 900px 600px at 12% -10%, rgba(255,46,126,0.12), transparent 60%),
+      radial-gradient(ellipse 900px 700px at 100% 10%, rgba(67,232,216,0.10), transparent 60%),
+      radial-gradient(ellipse 700px 900px at 50% 100%, rgba(255,138,194,0.06), transparent 55%),
       var(--bg);
     background-attachment:fixed;
     color:var(--ink);
@@ -32,7 +32,7 @@
     overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
   }
-  ::selection{background:var(--amber);color:#1A1224;}
+  ::selection{background:var(--amber);color:#131417;}
 
   .mono{font-family:'Space Mono',monospace;}
 
@@ -41,24 +41,25 @@
     position:fixed;
     left:0; top:0; bottom:0;
     width:64px;
-    border-right:1px solid var(--line);
+    border-right:2px solid var(--amber);
     z-index:50;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
     padding:24px 0;
-    background:linear-gradient(180deg, rgba(20,22,26,0.9), rgba(20,22,26,0.55));
-    backdrop-filter:blur(2px);
+    background:#0E0F12;
+    box-shadow:2px 0 24px rgba(0,0,0,0.35);
   }
   .ruler-tick{
     font-family:'Space Mono',monospace;
-    font-size:9px;
+    font-size:11px;
+    font-weight:700;
     letter-spacing:0.05em;
-    color:var(--ink-dim);
+    color:var(--ink);
     writing-mode:vertical-rl;
     text-orientation:mixed;
     transform:rotate(180deg) translateX(calc(var(--order) * -1px)) skewY(calc((1 - var(--order)) * 3deg));
-    opacity:calc(0.4 + var(--order) * 0.6);
+    opacity:calc(0.55 + var(--order) * 0.45);
     transition:opacity .3s ease;
   }
   .ruler-progress{
@@ -86,58 +87,6 @@
     justify-content:center;
     padding-top:80px;
     position:relative;
-  }
-  .hero-marquee{
-    position:absolute;
-    inset:0;
-    z-index:0;
-    overflow:hidden;
-    pointer-events:none;
-  }
-  .marquee-row{
-    position:absolute;
-    left:50%;
-    white-space:nowrap;
-    font-family:'Space Mono',monospace;
-    font-weight:700;
-    text-transform:uppercase;
-    opacity:0.5;
-    will-change:transform;
-  }
-  .marquee-row span{padding:0 0.6em;}
-  .marquee-row.r1{
-    top:8%;
-    font-size:clamp(2.2rem, 6vw, 4.5rem);
-    color:var(--amber);
-    transform:translateX(-50%) rotate(-4deg);
-    animation:scrollLeft 34s linear infinite;
-  }
-  .marquee-row.r2{
-    top:34%;
-    font-size:clamp(1.6rem, 4.4vw, 3.2rem);
-    color:var(--teal);
-    opacity:0.35;
-    transform:translateX(-50%) rotate(-4deg);
-    animation:scrollRight 26s linear infinite;
-  }
-  .marquee-row.r3{
-    bottom:6%;
-    font-size:clamp(1.8rem, 5vw, 3.6rem);
-    color:var(--coral);
-    opacity:0.4;
-    transform:translateX(-50%) rotate(-4deg);
-    animation:scrollLeft 42s linear infinite;
-  }
-  @keyframes scrollLeft{
-    from{margin-left:0;}
-    to{margin-left:-50%;}
-  }
-  @keyframes scrollRight{
-    from{margin-left:-50%;}
-    to{margin-left:0;}
-  }
-  @media (prefers-reduced-motion: reduce){
-    .marquee-row{animation:none !important;}
   }
   .hero-content{
     position:relative; z-index:1;
@@ -171,22 +120,6 @@
   .hero-portrait .bracket.tr{top:-10px; right:-10px; border-top-width:2px; border-right-width:2px; border-color:var(--amber);}
   .hero-portrait .bracket.bl{bottom:-10px; left:-10px; border-bottom-width:2px; border-left-width:2px; border-color:var(--amber);}
   .hero-portrait .bracket.br{bottom:-10px; right:-10px; border-bottom-width:2px; border-right-width:2px; border-color:var(--teal);}
-  .hero-portrait .rec{
-    position:absolute; top:-30px; left:-10px;
-    font-family:'Space Mono',monospace;
-    font-size:10px;
-    letter-spacing:0.1em;
-    color:var(--amber);
-    display:flex; align-items:center; gap:6px;
-  }
-  .hero-portrait .rec::before{
-    content:"";
-    width:6px; height:6px;
-    border-radius:50%;
-    background:var(--amber);
-    animation:pulse 1.6s ease-in-out infinite;
-  }
-  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
   @media (max-width:820px){
     .hero-content{flex-direction:column-reverse; align-items:flex-start; gap:40px;}
     .hero-portrait{width:180px; height:230px;}
@@ -202,16 +135,40 @@
   h1.thesis{
     font-family:'Space Mono',monospace;
     font-weight:700;
-    font-size:clamp(2rem, 5.5vw, 4.2rem);
-    line-height:1.1;
+    font-size:clamp(2.4rem, 7vw, 5.4rem);
+    line-height:1.05;
     letter-spacing:-0.01em;
     margin-bottom:28px;
+    text-transform:uppercase;
+  }
+  h1.thesis .chaos{
+    color:var(--ink-dim);
+    text-decoration:line-through;
+    text-decoration-color:var(--ink-dim);
+    text-decoration-thickness:2px;
+    display:inline-block;
+    transition:transform .2s ease;
+    cursor:default;
+  }
+  h1.thesis .chaos:hover{transform:rotate(-4deg) scale(1.05);}
+  h1.thesis .arrow{
+    color:var(--teal);
+    margin:0 0.15em;
+    display:inline-block;
   }
   h1.thesis .accent{
-    background:linear-gradient(100deg, var(--amber), var(--coral) 55%, var(--teal));
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
+    color:var(--amber);
+    display:inline-block;
+    transition:transform .2s cubic-bezier(.34,1.56,.64,1);
+    cursor:default;
+  }
+  h1.thesis .accent:hover{transform:scale(1.06) rotate(1deg);}
+  .hero-wink{
+    font-family:'Space Mono',monospace;
+    font-size:0.8rem;
+    color:var(--ink-dim);
+    margin-top:14px;
+    max-width:560px;
   }
   .hero-sub{
     font-size:clamp(1rem, 1.6vw, 1.25rem);
@@ -219,17 +176,6 @@
     max-width:560px;
     line-height:1.6;
   }
-  .scroll-cue{
-    position:absolute;
-    bottom:48px; left:8vw;
-    font-family:'Space Mono',monospace;
-    font-size:11px;
-    color:var(--ink-dim);
-    letter-spacing:0.15em;
-    animation:bob 2.4s ease-in-out infinite;
-  }
-  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
-
   /* ---------- Intro ---------- */
   .intro{
     border-top:1px solid var(--line);
@@ -256,7 +202,7 @@
   }
   .chapter{
     display:grid;
-    grid-template-columns:140px 1fr;
+    grid-template-columns:150px 1fr;
     gap:32px;
     padding:36px 0;
     border-bottom:1px solid var(--line);
@@ -267,9 +213,11 @@
   .chapter.visible{opacity:1; transform:translateY(0) rotate(0deg);}
   .chapter .tc{
     font-family:'Space Mono',monospace;
-    font-size:0.85rem;
+    font-size:1.6rem;
+    font-weight:700;
+    line-height:1.1;
     color:var(--amber);
-    padding-top:4px;
+    padding-top:2px;
   }
   .chapter:nth-child(even) .tc{color:var(--teal);}
   .chapter h3{
@@ -282,7 +230,27 @@
     font-size:0.8rem;
     color:var(--ink-dim);
     margin-bottom:14px;
-    display:block;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .chapter .role img.co-logo{
+    height:16px;
+    width:auto;
+    max-width:70px;
+    object-fit:contain;
+    border-radius:2px;
+    background:#fff;
+    padding:2px 4px;
+  }
+  .chapter .built-label img.co-logo{
+    height:15px;
+    width:auto;
+    max-width:60px;
+    object-fit:contain;
+    border-radius:2px;
+    background:#fff;
+    padding:2px 4px;
   }
   .chapter ul{list-style:none;}
   .chapter li{
@@ -294,65 +262,121 @@
     line-height:1.55;
   }
   .chapter li::before{
-    content:"—";
+    content:"▸";
     position:absolute; left:0; color:var(--ink-dim);
   }
   .chapter.closing{border-bottom:none;}
   .chapter.closing h3{color:var(--teal);}
 
+  .chapter .built{
+    margin-top:22px;
+    padding:20px 24px;
+    border-left:2px solid var(--amber);
+    background:var(--bg-alt);
+    transition:transform .25s cubic-bezier(.34,1.56,.64,1);
+    display:grid;
+    grid-template-columns:1fr 220px;
+    gap:24px;
+    align-items:center;
+  }
+  .chapter .built:hover{transform:translateX(4px) rotate(-0.3deg);}
+  .chapter:nth-child(even) .built{border-left-color:var(--teal);}
+  .chapter .built-label{
+    font-family:'Space Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+    margin-bottom:8px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .chapter .built h4{font-size:1rem; font-weight:600; margin-bottom:6px; color:var(--ink);}
+  .chapter .built p{font-size:0.88rem; color:var(--ink-dim); line-height:1.55; margin:0;}
+  .chapter .built-links{margin-top:14px; display:flex; gap:18px; flex-wrap:wrap;}
+  .chapter .built-links a{
+    font-family:'Space Mono',monospace;
+    font-size:0.75rem;
+    color:var(--teal);
+    text-decoration:none;
+    border-bottom:1px solid var(--teal);
+    padding-bottom:2px;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  .chapter .built-links a:hover{color:var(--amber); border-color:var(--amber);}
+
+  .chapter .built-shots{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/10;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 12px 28px rgba(0,0,0,0.4);
+    border:1px solid var(--line);
+    background:#0d0e11;
+  }
+  .chapter .built-shots img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    opacity:0;
+    transition:transform .4s ease;
+  }
+  .chapter .built-shots:hover img{transform:scale(1.04);}
+  .chapter .built-shots:hover img{animation-play-state:paused;}
+
+  .chapter .built-shots.count-2 img{animation:fadeCycle2 8s infinite;}
+  .chapter .built-shots.count-2 img:nth-child(1){animation-delay:0s;}
+  .chapter .built-shots.count-2 img:nth-child(2){animation-delay:4s;}
+  @keyframes fadeCycle2{
+    0%{opacity:0;}
+    4%{opacity:1;}
+    46%{opacity:1;}
+    50%{opacity:0;}
+    100%{opacity:0;}
+  }
+
+  .chapter .built-shots.count-3 img{animation:fadeCycle3 9s infinite;}
+  .chapter .built-shots.count-3 img:nth-child(1){animation-delay:0s;}
+  .chapter .built-shots.count-3 img:nth-child(2){animation-delay:3s;}
+  .chapter .built-shots.count-3 img:nth-child(3){animation-delay:6s;}
+  @keyframes fadeCycle3{
+    0%{opacity:0;}
+    3%{opacity:1;}
+    30%{opacity:1;}
+    33%{opacity:0;}
+    100%{opacity:0;}
+  }
+
+  .chapter .built-shots.count-4 img{animation:fadeCycle4 10s infinite;}
+  .chapter .built-shots.count-4 img:nth-child(1){animation-delay:0s;}
+  .chapter .built-shots.count-4 img:nth-child(2){animation-delay:2.5s;}
+  .chapter .built-shots.count-4 img:nth-child(3){animation-delay:5s;}
+  .chapter .built-shots.count-4 img:nth-child(4){animation-delay:7.5s;}
+  @keyframes fadeCycle4{
+    0%{opacity:0;}
+    2%{opacity:1;}
+    23%{opacity:1;}
+    25%{opacity:0;}
+    100%{opacity:0;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .chapter .built-shots img{animation:none !important; opacity:1 !important;}
+  }
+
+  @media (max-width:820px){
+    .chapter .built{grid-template-columns:1fr;}
+    .chapter .built-shots{max-width:320px;}
+  }
+
   @media (max-width:720px){
     .chapter{grid-template-columns:1fr; gap:8px;}
   }
-
-  /* ---------- Platforms ---------- */
-  .platforms-head{
-    font-family:'Space Mono',monospace;
-    font-size:12px;
-    letter-spacing:0.25em;
-    text-transform:uppercase;
-    color:var(--ink-dim);
-    margin-bottom:40px;
-    border-top:1px solid var(--line);
-    padding-top:24px;
-  }
-  .grid-platforms{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:1px;
-    background:var(--line);
-    border:1px solid var(--line);
-  }
-  .platform-card{
-    background:var(--bg);
-    padding:32px 28px;
-    opacity:0;
-    transform:translateY(16px);
-    transition:opacity .6s ease, transform .6s ease, background .3s ease;
-  }
-  .platform-card.visible{opacity:1; transform:translateY(0);}
-  .platform-card:hover{background:var(--bg-alt);}
-  .platform-card .num{
-    font-family:'Space Mono',monospace;
-    font-size:2rem;
-    font-weight:700;
-    color:var(--teal);
-    display:block;
-    margin-bottom:6px;
-  }
-  .platform-card:nth-child(1) .num{color:var(--amber);}
-  .platform-card:nth-child(2) .num{color:var(--coral);}
-  .platform-card:nth-child(3) .num{color:var(--teal);}
-  .platform-card .metric-label{
-    font-size:0.75rem;
-    color:var(--ink-dim);
-    text-transform:uppercase;
-    letter-spacing:0.08em;
-    margin-bottom:18px;
-    display:block;
-  }
-  .platform-card h4{font-size:1.05rem; margin-bottom:10px;}
-  .platform-card p{font-size:0.9rem; color:var(--ink-dim); line-height:1.55;}
-  @media (max-width:900px){ .grid-platforms{grid-template-columns:1fr;} }
 
   /* ---------- Skills (the "structured" endpoint) ---------- */
   .skills-head{
@@ -378,9 +402,16 @@
     padding:20px 18px;
     font-size:0.85rem;
     color:var(--ink-dim);
-    transition:color .2s ease, background .2s ease;
+    transition:color .2s ease, background .2s ease, transform .25s cubic-bezier(.34,1.56,.64,1);
   }
-  .skill-cell:hover{color:var(--ink); background:var(--bg-alt);}
+  .skill-cell:hover{
+    color:var(--ink);
+    background:var(--bg-alt);
+    transform:rotate(-1deg) scale(1.03);
+    position:relative;
+    z-index:2;
+  }
+  .skill-cell:nth-child(even):hover{transform:rotate(1deg) scale(1.03);}
   .skill-cell b{display:block; color:var(--ink); font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px;}
   @media (max-width:900px){ .skills-grid{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:520px){ .skills-grid{grid-template-columns:1fr;} }
@@ -413,14 +444,77 @@
   .contact-row a{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--amber); padding-bottom:2px;}
   .contact-row a:hover{color:var(--teal); border-color:var(--teal);}
   .contact-row .label{color:var(--ink-dim); display:block; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:6px;}
-  .foot-note{margin-top:64px; font-size:0.8rem; color:var(--ink-dim);}
+  .foot-note{
+    margin-top:64px;
+    display:flex;
+    gap:56px;
+    flex-wrap:wrap;
+    padding-top:32px;
+    border-top:1px solid var(--line);
+  }
+  .foot-note .fn-block{max-width:320px;}
+  .foot-note .fn-label{
+    font-family:'Space Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--teal);
+    display:block;
+    margin-bottom:8px;
+  }
+  .foot-note .fn-block:nth-child(2) .fn-label{color:var(--amber);}
+  .foot-note p{font-size:0.85rem; color:var(--ink-dim); line-height:1.55; margin:0;}
+  .foot-sign{
+    margin-top:40px;
+    font-size:0.75rem;
+    color:var(--ink-dim);
+    opacity:0.8;
+  }
 
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important; transition:none !important;}
   }
+
+  /* ---------- Language switcher ---------- */
+  .lang-switch{
+    position:fixed;
+    top:20px; right:24px;
+    z-index:70;
+    display:flex;
+    gap:6px;
+    font-family:'Space Mono',monospace;
+    font-size:0.75rem;
+    font-weight:700;
+    background:rgba(14,15,18,0.85);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:4px;
+    backdrop-filter:blur(4px);
+  }
+  .lang-switch button{
+    all:unset;
+    cursor:pointer;
+    padding:6px 14px;
+    border-radius:999px;
+    color:var(--ink-dim);
+    letter-spacing:0.05em;
+    transition:background .2s ease, color .2s ease;
+  }
+  .lang-switch button.active{
+    background:var(--amber);
+    color:var(--bg);
+  }
+  @media (max-width:720px){
+    .lang-switch{top:12px; right:12px;}
+  }
 </style>
 </head>
 <body>
+
+<div class="lang-switch mono" role="group" aria-label="Langue / Language">
+  <button type="button" id="btnFr" class="active" onclick="setLang('fr')">FR</button>
+  <button type="button" id="btnEn" onclick="setLang('en')">EN</button>
+</div>
 
 <div class="ruler mono" id="ruler">
   <div class="ruler-progress" id="rulerProgress"></div>
@@ -429,45 +523,40 @@
 <main>
 
   <section class="hero">
-    <div class="hero-marquee" aria-hidden="true">
-      <div class="marquee-row r1"><span>STRUCTURE · CHAOS · STRUCTURE · CHAOS · STRUCTURE · CHAOS · </span><span>STRUCTURE · CHAOS · STRUCTURE · CHAOS · STRUCTURE · CHAOS · </span></div>
-      <div class="marquee-row r2"><span>OPS MANAGER — PRODUCT LEAD — AREA MANAGER — CAMERA OPERATOR — </span><span>OPS MANAGER — PRODUCT LEAD — AREA MANAGER — CAMERA OPERATOR — </span></div>
-      <div class="marquee-row r3"><span>SAAS · WORKFLOW · KPI · ROADMAP · DELIVERY · SAAS · WORKFLOW · KPI · ROADMAP · DELIVERY · </span><span>SAAS · WORKFLOW · KPI · ROADMAP · DELIVERY · SAAS · WORKFLOW · KPI · ROADMAP · DELIVERY · </span></div>
-    </div>
+
     <div class="hero-content">
       <div class="hero-text">
-        <div class="eyebrow">Laurence Maestracci — Senior Product Manager</div>
-        <h1 class="thesis">J'aime apporter une <span class="accent">structure</span> au chaos.</h1>
-        <p class="hero-sub">Product Operations · SaaS B2B · Workflow Automation · Digital Transformation. Dix ans à transformer des besoins complexes en plateformes concrètes, adoptées et performantes.</p>
+        <div class="eyebrow">Laurence Maestracci · Senior Product Manager</div>
+        <h1 class="thesis" id="i-thesis"><span class="chaos">Chaos</span><span class="arrow">→</span><span class="accent">Structure.</span></h1>
+        <p class="hero-sub" id="i-herosub">Product Operations · SaaS B2B · Workflow Automation · Digital Transformation. Dix ans à transformer des besoins complexes en plateformes concrètes, adoptées et performantes.</p>
+        <p class="hero-wink mono" id="i-herowink">(oui, je barre vraiment le mot "chaos" dans la vraie vie aussi ✂️)</p>
       </div>
       <div class="hero-portrait">
-        <div class="rec mono">REC</div>
         <span class="bracket tl"></span>
         <span class="bracket tr"></span>
         <span class="bracket bl"></span>
         <span class="bracket br"></span>
-        <img src="portrait.png" alt="Portrait de Laurence Maestracci">
+        <img src="portrait.png" alt="Portrait de Laurence Maestracci" id="i-portrait">
       </div>
     </div>
-    <div class="scroll-cue mono">▾ FAIRE DÉFILER</div>
   </section>
 
   <section class="intro">
-    <p>Depuis une dizaine d'années, je conçois et fais évoluer des plateformes SaaS, des workflows métier et des produits digitaux qui simplifient les opérations et créent de la valeur.</p>
-    <p>À l'intersection du Product Management, des opérations et de la transformation digitale, je collabore avec les équipes Engineering, Data et Business pour transformer des besoins complexes en solutions concrètes, adoptées et performantes.</p>
+    <p id="i-intro1">Depuis une dizaine d'années, je conçois et fais évoluer des plateformes SaaS, des workflows métier et des produits digitaux qui simplifient les opérations et créent de la valeur.</p>
+    <p id="i-intro2">À l'intersection du Product Management, des opérations et de la transformation digitale, je collabore avec les équipes Engineering, Data et Business pour transformer des besoins complexes en solutions concrètes, adoptées et performantes.</p>
   </section>
 
   <section class="timeline">
-    <div class="timeline-head">Parcours — 2001 → 2025</div>
+    <div class="timeline-head" id="i-tlhead">🎬 Parcours · 2001 → 2025</div>
 
     <div class="chapter" style="--tilt:-1.4deg;">
       <div class="tc mono">2001—2017</div>
       <div>
-        <span class="role">EVENT TECHNOLOGY SPECIALIST · TECHNICAL CAMERA OPERATOR · STEREO OPERATOR — Encore Global</span>
-        <h3>Sur le terrain, dans l'urgence</h3>
+        <span class="role"><img class="co-logo" src="https://logo.clearbit.com/encoreglobal.com" alt="Encore Global" loading="lazy">EVENT TECHNOLOGY SPECIALIST · TECHNICAL CAMERA OPERATOR · STEREO OPERATOR · Encore Global</span>
+        <h3 id="i-c1-h3">Sur le terrain, dans l'urgence</h3>
         <ul>
-          <li>Coordination d'équipes dans des environnements exigeants à forte contrainte opérationnelle</li>
-          <li>Développement d'une culture de l'exécution, de la collaboration transverse et de la résolution de problèmes complexes</li>
+          <li id="i-c1-li1">Coordination d'équipes dans des environnements exigeants à forte contrainte opérationnelle</li>
+          <li id="i-c1-li2">Développement d'une culture de l'exécution, de la collaboration transverse et de la résolution de problèmes complexes</li>
         </ul>
       </div>
     </div>
@@ -475,12 +564,12 @@
     <div class="chapter" style="--tilt:1.1deg;">
       <div class="tc mono">2017—2020</div>
       <div>
-        <span class="role">OPERATIONS DEVELOPMENT MANAGER — Encore Global (PSAV)</span>
-        <h3>Structurer les premiers outils</h3>
+        <span class="role"><img class="co-logo" src="https://logo.clearbit.com/encoreglobal.com" alt="Encore Global" loading="lazy">OPERATIONS DEVELOPMENT MANAGER · Encore Global (PSAV)</span>
+        <h3 id="i-c2-h3">Structurer les premiers outils</h3>
         <ul>
-          <li>Pilotage de l'évolution du système Hiretrack NX sur le périmètre EMEA</li>
-          <li>Gestion des budgets d'investissement et analyses P&amp;L</li>
-          <li>Définition de standards opérationnels et amélioration continue des processus</li>
+          <li id="i-c2-li1">Pilotage de l'évolution du système Hiretrack NX sur le périmètre EMEA</li>
+          <li id="i-c2-li2">Gestion des budgets d'investissement et analyses P&amp;L</li>
+          <li id="i-c2-li3">Définition de standards opérationnels et amélioration continue des processus</li>
         </ul>
       </div>
     </div>
@@ -488,111 +577,131 @@
     <div class="chapter" style="--tilt:-0.6deg;">
       <div class="tc mono">2020—2022</div>
       <div>
-        <span class="role">AREA MANAGER — Encore Global</span>
-        <h3>Migrer un système entier, sans casser l'opérationnel</h3>
+        <span class="role"><img class="co-logo" src="https://logo.clearbit.com/encoreglobal.com" alt="Encore Global" loading="lazy">AREA MANAGER · Encore Global</span>
+        <h3 id="i-c3-h3">Migrer un système entier, sans casser l'opérationnel</h3>
         <ul>
-          <li>Pilotage d'un programme de transformation digitale et de migration système à l'échelle EMEA</li>
-          <li>Conduite de la migration de Hiretrack NX vers Easyjob, intégration des données et refonte des workflows métier</li>
-          <li>Gestion d'un budget CapEx annuel de 250 000 $, déploiement sur 12 sites en Île-de-France</li>
-          <li>Coordination d'équipes réparties sur plusieurs pays européens et au Moyen-Orient</li>
+          <li id="i-c3-li1">Pilotage d'un programme de transformation digitale et de migration système à l'échelle EMEA</li>
+          <li id="i-c3-li2">Conduite de la migration de Hiretrack NX vers Easyjob, intégration des données et refonte des workflows métier</li>
+          <li id="i-c3-li3">Gestion d'un budget CapEx annuel de 250 000 $, déploiement sur 12 sites en Île-de-France</li>
+          <li id="i-c3-li4">Coordination d'équipes réparties sur plusieurs pays européens et au Moyen-Orient</li>
         </ul>
+        <div class="built">
+          <div class="built-text">
+            <span class="built-label mono"><img class="co-logo" src="https://logo.clearbit.com/hiretracknx.com" alt="Hiretrack NX" loading="lazy"><img class="co-logo" src="https://logo.clearbit.com/protonic-software.com" alt="easyjob" loading="lazy">Construit · Hiretrack NX → Easyjob</span>
+            <h4 id="i-p1-h4">Migration système EMEA</h4>
+            <p id="i-p1-p">Refonte complète des workflows métier, intégration des données, formation des équipes sur plusieurs pays. Du premier devis à la dernière facture.</p>
+          </div>
+          <div class="built-shots count-3">
+            <img src="https://www.navigator.uk/wp-content/uploads/2014/07/jobbook-1024x683.png" alt="Interface Hiretrack NX (Job book)" loading="lazy">
+            <img src="https://www.navigator.uk/wp-content/uploads/2014/07/eqlist-1024x683.png" alt="Interface Hiretrack NX (liste d'équipement)" loading="lazy">
+            <img src="https://www.protonic-software.com/en/easyjob/default1.png" alt="Interface easyjob" loading="lazy">
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="chapter" style="--tilt:0.4deg;">
       <div class="tc mono">2022—2024</div>
       <div>
-        <span class="role">REGIONAL PROCESS &amp; PRODUCT LEAD — Elevate Global · Plateforme 1CRM</span>
-        <h3>De 7 à 70 collaborateurs en 6 mois</h3>
+        <span class="role"><img class="co-logo" src="https://logo.clearbit.com/weareelevate.global" alt="Elevate Global" loading="lazy">REGIONAL PROCESS &amp; PRODUCT LEAD · Elevate Global · Plateforme 1CRM</span>
+        <h3 id="i-c4-h3">De 7 à 70 collaborateurs en 6 mois</h3>
         <ul>
-          <li>Pilotage de l'évolution d'une plateforme CRM multi-marchés (France, Royaume-Uni, États-Unis, Allemagne, Autriche)</li>
-          <li>Conception et optimisation des workflows : onboarding, staffing, booking, paie, facturation, notes de frais, reporting</li>
-          <li>Accompagnement de la croissance de l'organisation française et structuration des process de conformité</li>
+          <li id="i-c4-li1">Pilotage de l'évolution d'une plateforme CRM multi-marchés (France, Royaume-Uni, États-Unis, Allemagne, Autriche)</li>
+          <li id="i-c4-li2">Conception et optimisation des workflows : onboarding, staffing, booking, paie, facturation, notes de frais, reporting</li>
+          <li id="i-c4-li3">Accompagnement de la croissance de l'organisation française et structuration des process de conformité</li>
         </ul>
+        <div class="built">
+          <div class="built-text">
+            <span class="built-label mono"><img class="co-logo" src="https://play-lh.googleusercontent.com/ZFNlzILlWmhVt3IE5kJpronBolVG5fWpuDA4OUH8F8xRR55xVa2dh66f5X2LMfbg0JshLTboyZbL5fNRNiyvFw=w96-h96" alt="1CRM" loading="lazy">Construit · 1CRM · B2C + B2B</span>
+            <h4 id="i-p2-h4">Plateforme d'embauche end-to-end</h4>
+            <p id="i-p2-p">Candidature, booking, notes de frais, fiches de paye, accès client aux profils staff, exports paye et signature de contrats, conçue avec RH, juristes et cabinets de paye.</p>
+            <div class="built-links">
+              <a href="https://apps.apple.com/fr/app/elevate-global-1crm-fr/id6476973106" target="_blank" rel="noopener">App Store ↗</a>
+              <a href="https://play.google.com/store/apps/details?id=com.elevate.crmfr&pcampaignid=web_share" target="_blank" rel="noopener">Google Play ↗</a>
+            </div>
+          </div>
+          <div class="built-shots count-4">
+            <img src="https://play-lh.googleusercontent.com/8jfBvlaZ96BSMPRpHI6PmVJH7AFaAKY7CJ1G9Q4FOZiiNc8CmfgeWhuOhms5nLDzZQNmdZxcpYEUlUncxkG2=w526-h296" alt="Capture d'écran de l'app 1CRM" loading="lazy">
+            <img src="https://play-lh.googleusercontent.com/if6ID0w1oj2nrV6F4AFjWXQ1hYWTDv8QcymFxWzZi1cyux6cKPEmqqNfooxqMm_gObRbjo9ocSwFHk5hbuJ7kw=w526-h296" alt="Capture d'écran de l'app 1CRM" loading="lazy">
+            <img src="https://play-lh.googleusercontent.com/y0Jcwhjglr2uC4OxsXEpGQlBdIM3_Fkg5De6RBKL4Gp6qWZlX_7b0lwCdjt3v9OOiUPUMzHJuM4jgiwnxmMh=w526-h296" alt="Capture d'écran de l'app 1CRM" loading="lazy">
+            <img src="https://play-lh.googleusercontent.com/XMgGzuXBWfSPZQiUTJZKnf3FgGzPaTqAnU2lGztqHEUM5RcEZJ7pohqvuDrkdklJJMleHoXCAQ7srNWMIe9c=w526-h296" alt="Capture d'écran de l'app 1CRM" loading="lazy">
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="chapter" style="--tilt:0deg;">
       <div class="tc mono">2024—2025</div>
       <div>
-        <span class="role">PROJECT MANAGER, IMPACT — Elevate Global</span>
-        <h3>150+ KPIs, un cycle de delivery complet</h3>
+        <span class="role"><img class="co-logo" src="https://logo.clearbit.com/weareelevate.global" alt="Elevate Global" loading="lazy">PROJECT MANAGER, IMPACT · Elevate Global</span>
+        <h3 id="i-c5-h3">150+ KPIs, un cycle de delivery complet</h3>
         <ul>
-          <li>Pilotage de la roadmap produit pour une plateforme SaaS de reporting opérant sur 5 marchés</li>
-          <li>Définition et suivi des KPIs produit pour orienter les priorités business</li>
-          <li>Coordination d'une équipe transverse Sales, Product et Reporting ; cycle complet cadrage → tests → releases</li>
+          <li id="i-c5-li1">Pilotage de la roadmap produit pour une plateforme SaaS de reporting opérant sur 5 marchés</li>
+          <li id="i-c5-li2">Définition et suivi des KPIs produit pour orienter les priorités business</li>
+          <li id="i-c5-li3">Coordination d'une équipe transverse Sales, Product et Reporting ; cycle complet cadrage → tests → releases</li>
         </ul>
+        <div class="built">
+          <div class="built-text">
+            <span class="built-label mono"><img class="co-logo" src="impact-logo.png" alt="Impact" loading="lazy">Construit · Impact · Pur B2B</span>
+            <h4 id="i-p3-h4">Mesure de performance en temps réel</h4>
+            <p id="i-p3-p">Catalogue de plus de 150 KPIs personnalisables, briefs clients, reporting actionnable d'une activation et d'un marché à l'autre.</p>
+            <div class="built-links">
+              <a href="https://impactv4.weareelevate.global/" target="_blank" rel="noopener"><span id="i-link-impact-platform">Plateforme</span> ↗</a>
+              <a href="https://weareelevate.global/fr/impact/" target="_blank" rel="noopener"><span id="i-link-impact-site">Site Impact</span> ↗</a>
+            </div>
+          </div>
+          <div class="built-shots count-2">
+            <img src="impact-1.jpg" alt="Dashboard Impact" loading="lazy">
+            <img src="impact-2.jpg" alt="Dashboard Impact" loading="lazy">
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="chapter closing" style="--tilt:0deg;">
       <div class="tc mono">2025—</div>
       <div>
-        <span class="role">NOUVEAU CHAPITRE</span>
-        <h3>Elevate France a fermé. La suite s'écrit maintenant.</h3>
+        <span class="role" id="i-c6-role">NOUVEAU CHAPITRE</span>
+        <h3 id="i-c6-h3">Elevate France a fermé. La suite s'écrit maintenant.</h3>
         <ul>
-          <li>Disponible pour construire la prochaine plateforme, structurer le prochain chaos</li>
+          <li id="i-c6-li1">Disponible pour construire la prochaine plateforme, structurer le prochain chaos</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="platforms">
-    <div class="platforms-head">Ce que j'ai construit de bout en bout</div>
-    <div class="grid-platforms">
-      <div class="platform-card">
-        <span class="num mono">01</span>
-        <span class="metric-label">Hiretrack NX → Easyjob</span>
-        <h4>Migration système EMEA</h4>
-        <p>Refonte complète des workflows métier, intégration des données, formation des équipes sur plusieurs pays. Du premier devis à la dernière facture.</p>
-      </div>
-      <div class="platform-card">
-        <span class="num mono">02</span>
-        <span class="metric-label">1CRM · B2C + B2B</span>
-        <h4>Plateforme d'embauche end-to-end</h4>
-        <p>Candidature, booking, notes de frais, fiches de paye, accès client aux profils staff, exports paye et signature de contrats — conçue avec RH, juristes et cabinets de paye.</p>
-      </div>
-      <div class="platform-card">
-        <span class="num mono">03</span>
-        <span class="metric-label">Impact · Pur B2B</span>
-        <h4>Mesure de performance en temps réel</h4>
-        <p>Catalogue de plus de 150 KPIs personnalisables, briefs clients, reporting actionnable d'une activation et d'un marché à l'autre.</p>
-      </div>
-    </div>
-  </section>
-
   <section class="skills">
-    <div class="skills-head">Compétences</div>
+    <div class="skills-head" id="i-skhead">🛠️ Compétences</div>
     <div class="skills-grid">
-      <div class="skill-cell"><b>Produit</b>Product Management &amp; Product Operations</div>
-      <div class="skill-cell"><b>Plateformes</b>SaaS B2B &amp; plateformes métiers</div>
-      <div class="skill-cell"><b>Process</b>Workflow Automation &amp; Digital Transformation</div>
-      <div class="skill-cell"><b>Delivery</b>Roadmap, Delivery &amp; Adoption</div>
-      <div class="skill-cell"><b>Data</b>KPIs &amp; automatisation par l'IA</div>
-      <div class="skill-cell"><b>Leadership</b>Gestion transverse des parties prenantes</div>
+      <div class="skill-cell"><b id="i-sk1-b">Produit</b><span id="i-sk1-t">Product Management &amp; Product Operations</span></div>
+      <div class="skill-cell"><b id="i-sk2-b">Plateformes</b><span id="i-sk2-t">SaaS B2B &amp; plateformes métiers</span></div>
+      <div class="skill-cell"><b id="i-sk3-b">Process</b><span id="i-sk3-t">Workflow Automation &amp; Digital Transformation</span></div>
+      <div class="skill-cell"><b id="i-sk4-b">Delivery</b><span id="i-sk4-t">Roadmap, Delivery &amp; Adoption</span></div>
+      <div class="skill-cell"><b id="i-sk5-b">Data</b><span id="i-sk5-t">KPIs &amp; automatisation par l'IA</span></div>
+      <div class="skill-cell"><b id="i-sk6-b">Leadership</b><span id="i-sk6-t">Gestion transverse des parties prenantes</span></div>
       <div class="skill-cell"><b>Outils</b>Jira, Trello, Asana, Bugasura</div>
       <div class="skill-cell"><b>Outils</b>Easyjob, Hiretrack NX, 1CRM</div>
-      <div class="skill-cell"><b>Data &amp; design</b>SQL (notions), PowerBI, Figma</div>
+      <div class="skill-cell"><b id="i-sk9-b">Data &amp; design</b>SQL (notions), PowerBI, Figma</div>
       <div class="skill-cell"><b>Support</b>Slack, Zendesk, Canva, Microsoft 365</div>
     </div>
     <div class="langs">
-      <span><b>FR</b> — langue maternelle</span>
-      <span><b>EN</b> — courant</span>
-      <span><b>PT</b> — bon niveau</span>
-      <span><b>ES</b> — bases</span>
+      <span>🇫🇷 <b>FR</b> · <span id="i-lang-fr">langue maternelle</span></span>
+      <span>🇬🇧 <b>EN</b> · <span id="i-lang-en">courant</span></span>
+      <span>🇵🇹 <b>PT</b> · <span id="i-lang-pt">bon niveau</span></span>
+      <span>🇪🇸 <b>ES</b> · <span id="i-lang-es">bases</span></span>
     </div>
   </section>
 
   <footer>
-    <div class="eyebrow">Disponible maintenant</div>
-    <h2>Prête à structurer le prochain chaos — dans une équipe produit qui construit vite et sans détour.</h2>
+    <div class="eyebrow" id="i-foot-eyebrow">✨ Disponible maintenant</div>
+    <h2 id="i-foot-h2">Prête à structurer le prochain chaos, dans une équipe produit qui construit vite et sans détour.</h2>
     <div class="contact-row">
       <div>
         <span class="label">Email</span>
         <a href="mailto:lomaestracci@gmail.com">lomaestracci@gmail.com</a>
       </div>
       <div>
-        <span class="label">Téléphone</span>
+        <span class="label" id="i-lbl-phone">Téléphone</span>
         <a href="tel:+33664141556">+33 (0)6 64 14 15 56</a>
       </div>
       <div>
@@ -600,16 +709,114 @@
         <a href="https://fr.linkedin.com/in/laurence-maestracci-3a09b4ab" target="_blank" rel="noopener">linkedin.com/in/laurence-maestracci</a>
       </div>
       <div>
-        <span class="label">Localisation</span>
+        <span class="label" id="i-lbl-loc">Localisation</span>
         <span class="mono">Île-de-France, France</span>
       </div>
     </div>
-    <div class="foot-note">Licence de cinéma, Université de Montréal — parcours en mathématiques et cinéma. Capoeira (pratique et enseignement), Hyrox et entraînement fonctionnel.</div>
+    <div class="foot-note">
+      <div class="fn-block">
+        <span class="fn-label" id="i-fn-formation-label">Formation</span>
+        <p id="i-fn-formation-p">Licence de cinéma, Université de Montréal. Parcours en mathématiques et cinéma.</p>
+      </div>
+      <div class="fn-block">
+        <span class="fn-label" id="i-fn-interests-label">Centres d'intérêt</span>
+        <p id="i-fn-interests-p">🥋 Capoeira (pratique et enseignement), 🏋️ Hyrox et entraînement fonctionnel.</p>
+      </div>
+    </div>
+    <div class="foot-sign mono" id="i-foot-sign">Fait avec structure. Et un peu de chaos, forcément. 💛</div>
   </footer>
 
 </main>
 
 <script>
+  // ---- i18n: FR (default, in markup) / EN (translations below) ----
+  const translations = {
+    'i-thesis': '<span class="chaos">Chaos</span><span class="arrow">→</span><span class="accent">Structure.</span>',
+    'i-herosub': 'Product Operations · SaaS B2B · Workflow Automation · Digital Transformation. Ten years turning complex needs into concrete platforms, adopted and performing.',
+    'i-intro1': 'For about ten years, I\'ve designed and evolved SaaS platforms, business workflows and digital products that simplify operations and create value.',
+    'i-intro2': 'At the intersection of Product Management, operations and digital transformation, I work with Engineering, Data and Business teams to turn complex needs into concrete, adopted, high-performing solutions.',
+    'i-tlhead': '🎬 Journey · 2001 → 2025',
+    'i-c1-h3': 'On the ground, under pressure',
+    'i-c1-li1': 'Coordinated teams in demanding, operationally constrained environments',
+    'i-c1-li2': 'Built a culture of execution, cross-team collaboration and complex problem-solving',
+    'i-c2-h3': 'Structuring the first tools',
+    'i-c2-li1': 'Led the evolution of the Hiretrack NX system across the EMEA region',
+    'i-c2-li2': 'Managed investment budgets and P&amp;L analysis',
+    'i-c2-li3': 'Defined operational standards and drove continuous process improvement',
+    'i-c3-h3': 'Migrating an entire system without breaking operations',
+    'i-c3-li1': 'Led a digital transformation and system migration program at EMEA scale',
+    'i-c3-li2': 'Drove the migration from Hiretrack NX to Easyjob, data integration and workflow redesign',
+    'i-c3-li3': 'Managed an annual CapEx budget of $250,000, rolled out across 12 sites in Île-de-France',
+    'i-c3-li4': 'Coordinated teams across several European countries and the Middle East',
+    'i-c4-h3': 'From 7 to 70 people in 6 months',
+    'i-c4-li1': 'Led the evolution of a multi-market CRM platform (France, UK, US, Germany, Austria)',
+    'i-c4-li2': 'Designed and optimized workflows: onboarding, staffing, booking, payroll, invoicing, expenses, reporting',
+    'i-c4-li3': 'Supported the growth of the French organization and structured compliance processes',
+    'i-c5-h3': '150+ KPIs, a full delivery cycle',
+    'i-c5-li1': 'Led the product roadmap for a SaaS reporting platform operating across 5 markets',
+    'i-c5-li2': 'Defined and tracked product KPIs to steer business priorities',
+    'i-c5-li3': 'Coordinated a cross-functional Sales, Product and Reporting team; full cycle from scoping to testing to release',
+    'i-c6-role': 'NEW CHAPTER',
+    'i-c6-h3': 'Elevate France has closed. What comes next starts now.',
+    'i-c6-li1': 'Available to build the next platform, structure the next chaos',
+    'i-p1-h4': 'EMEA system migration',
+    'i-p1-p': 'Full redesign of business workflows, data integration, team training across several countries. From the first quote to the last invoice.',
+    'i-p2-h4': 'End-to-end hiring platform',
+    'i-p2-p': 'Applications, booking, expenses, payslips, client access to staff profiles, payroll exports and contract signing, built with HR, legal and payroll partners.',
+    'i-p3-h4': 'Real-time performance measurement',
+    'i-p3-p': 'A catalog of 150+ customizable KPIs, client briefs, actionable reporting across activations and markets.',
+    'i-link-impact-platform': 'Platform',
+    'i-link-impact-site': 'Impact site',
+    'i-skhead': '🛠️ Skills',
+    'i-sk1-b': 'Product',
+    'i-sk1-t': 'Product Management &amp; Product Operations',
+    'i-sk2-b': 'Platforms',
+    'i-sk2-t': 'SaaS B2B &amp; business platforms',
+    'i-sk3-b': 'Process',
+    'i-sk3-t': 'Workflow Automation &amp; Digital Transformation',
+    'i-sk4-b': 'Delivery',
+    'i-sk4-t': 'Roadmap, Delivery &amp; Adoption',
+    'i-sk5-b': 'Data',
+    'i-sk5-t': 'KPIs &amp; AI-driven automation',
+    'i-sk6-b': 'Leadership',
+    'i-sk6-t': 'Cross-functional stakeholder management',
+    'i-sk9-b': 'Data &amp; design',
+    'i-lang-fr': 'native',
+    'i-lang-en': 'fluent',
+    'i-lang-pt': 'good level',
+    'i-lang-es': 'basic',
+    'i-herowink': '(yes, I really do cross out the word "chaos" in real life too ✂️)',
+    'i-foot-eyebrow': '✨ Available now',
+    'i-foot-h2': 'Ready to structure the next chaos, in a product team that builds fast and builds straight.',
+    'i-lbl-phone': 'Phone',
+    'i-lbl-loc': 'Location',
+    'i-fn-formation-label': 'Education',
+    'i-fn-formation-p': 'Film degree, Université de Montréal. Background in mathematics and film.',
+    'i-fn-interests-label': 'Interests',
+    'i-fn-interests-p': '🥋 Capoeira (practice and teaching), 🏋️ Hyrox and functional training.',
+    'i-foot-sign': 'Made with structure. And a bit of chaos, obviously. 💛'
+  };
+  const portraitAlt = { fr:'Portrait de Laurence Maestracci', en:'Portrait of Laurence Maestracci' };
+
+  const frCache = {};
+  Object.keys(translations).forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) frCache[id] = el.innerHTML;
+  });
+
+  function setLang(lang){
+    Object.keys(translations).forEach(id=>{
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.innerHTML = lang === 'en' ? translations[id] : frCache[id];
+    });
+    const img = document.getElementById('i-portrait');
+    if(img) img.alt = lang === 'en' ? portraitAlt.en : portraitAlt.fr;
+    document.documentElement.lang = lang;
+    document.getElementById('btnFr').classList.toggle('active', lang==='fr');
+    document.getElementById('btnEn').classList.toggle('active', lang==='en');
+  }
+
   // ---- Timecode ruler: ticks + scroll progress ----
   const ruler = document.getElementById('ruler');
   const rulerProgress = document.getElementById('rulerProgress');
@@ -633,7 +840,7 @@
   onScroll();
 
   // ---- Reveal chapters & cards on scroll ----
-  const revealEls = document.querySelectorAll('.chapter, .platform-card');
+  const revealEls = document.querySelectorAll('.chapter');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
       if(e.isIntersecting){ e.target.classList.add('visible'); }
@@ -641,11 +848,7 @@
   }, {threshold:0.2});
   revealEls.forEach(el=>io.observe(el));
 
-  // ---- Hero marquee: pause on hover for readability ----
-  document.querySelectorAll('.marquee-row').forEach(row=>{
-    row.addEventListener('mouseenter', ()=> row.style.animationPlayState='paused');
-    row.addEventListener('mouseleave', ()=> row.style.animationPlayState='running');
-  });
+
 </script>
 
 </body>
