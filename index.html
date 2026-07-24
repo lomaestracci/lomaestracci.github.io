@@ -406,7 +406,7 @@
     .chapter.has-built{grid-template-columns:1fr;}
   }
 
-  /* ---------- Backstage scene (2001-2017): green screen + spotlights + dolly cam + sound ---------- */
+  /* ---------- Backstage scene (2001-2017): film set with depth, crew silhouettes, cyc wall ---------- */
   .av-scene{
     position:relative;
     width:100%;
@@ -415,59 +415,97 @@
     border-radius:10px;
     overflow:hidden;
     border:1px solid var(--line);
-    background:radial-gradient(ellipse at 0% 0%, rgba(20,22,28,0.9), #08090b 70%);
-    box-shadow:0 12px 28px rgba(0,0,0,0.4), inset 0 0 60px rgba(0,0,0,0.55);
+    background:linear-gradient(180deg, #0a0b0d 0%, #0a0b0d 62%, #101214 62%, #16181b 100%);
+    box-shadow:0 12px 28px rgba(0,0,0,0.4), inset 0 0 70px rgba(0,0,0,0.6);
   }
-  .av-scene .greenscreen{
+  .av-scene .cyc{
     position:absolute;
-    top:0; left:14%; right:14%;
-    height:62%;
-    border-radius:0 0 4px 4px;
-    background:linear-gradient(180deg, rgba(67,232,216,0.22), rgba(67,232,216,0.04) 85%);
+    top:0; left:16%; right:16%;
+    height:58%;
+    border-radius:0 0 40px 40px;
+    background:linear-gradient(180deg, rgba(67,232,216,0.26) 0%, rgba(67,232,216,0.10) 70%, rgba(67,232,216,0.04) 100%);
+  }
+  .av-scene .haze{
+    position:absolute;
+    inset:0;
+    background:repeating-linear-gradient(115deg, rgba(255,255,255,0.05) 0 2px, transparent 2px 34px);
+    animation:hazeDrift 14s linear infinite;
+    mix-blend-mode:screen;
+    opacity:0.5;
+  }
+  @keyframes hazeDrift{
+    from{background-position:0 0;}
+    to{background-position:340px 0;}
   }
   .av-scene .beam{
     position:absolute;
-    top:-2%;
-    width:30%;
-    height:78%;
+    top:-4%;
+    width:24%;
+    height:66%;
     clip-path:polygon(47% 0, 53% 0, 100% 100%, 0% 100%);
     transform-origin:top center;
     filter:blur(3px);
-    animation:sweep 10s ease-in-out infinite;
+    animation:sweep 11s ease-in-out infinite;
     mix-blend-mode:screen;
   }
-  .av-scene .beam.b1{left:2%; background:linear-gradient(180deg, rgba(255,46,126,0.38), transparent 85%); animation-delay:0s;}
-  .av-scene .beam.b2{left:35%; background:linear-gradient(180deg, rgba(255,255,255,0.28), transparent 85%); animation-delay:-3.3s;}
-  .av-scene .beam.b3{left:68%; background:linear-gradient(180deg, rgba(255,138,194,0.34), transparent 85%); animation-delay:-6.6s;}
+  .av-scene .beam.b1{left:4%; background:linear-gradient(180deg, rgba(255,183,110,0.40), transparent 88%); animation-delay:0s;}
+  .av-scene .beam.b2{left:38%; background:linear-gradient(180deg, rgba(255,255,255,0.26), transparent 88%); animation-delay:-3.6s;}
+  .av-scene .beam.b3{left:70%; background:linear-gradient(180deg, rgba(255,46,126,0.32), transparent 88%); animation-delay:-7.2s;}
   @keyframes sweep{
-    0%,100%{transform:rotate(-11deg);}
-    50%{transform:rotate(11deg);}
+    0%,100%{transform:rotate(-9deg);}
+    50%{transform:rotate(9deg);}
   }
-  .av-scene .track{
+  .av-scene .rim{
     position:absolute;
-    left:10%; right:10%; bottom:22%;
-    height:2px;
-    background:rgba(247,242,233,0.2);
+    top:0; left:-6%;
+    width:40%; height:100%;
+    background:linear-gradient(105deg, rgba(255,183,110,0.16), transparent 55%);
+    pointer-events:none;
+  }
+  .av-scene .floor-shine{
+    position:absolute;
+    left:10%; right:10%; bottom:0;
+    height:38%;
+    background:linear-gradient(180deg, rgba(255,255,255,0.05), transparent 80%);
+  }
+  .av-scene .crew{
+    position:absolute;
+    bottom:8%;
+    width:26px; height:52px;
+  }
+  .av-scene .crew svg{width:100%; height:100%;}
+  .av-scene .crew.c1{left:20%; animation:idleBob 4.2s ease-in-out infinite;}
+  .av-scene .crew.c2{right:14%; bottom:7%; animation:idleBob 4.6s ease-in-out infinite -1.4s;}
+  @keyframes idleBob{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-2px);}
+  }
+  .av-scene .tripod-cam{
+    position:absolute;
+    left:46%;
+    bottom:8%;
+    width:34px; height:46px;
+  }
+  .av-scene .tripod-cam svg{width:100%; height:100%; stroke:rgba(247,242,233,0.55); fill:none; stroke-width:1.4;}
+  .av-scene .monitor{
+    position:absolute;
+    right:7%; bottom:10%;
+    width:20px; height:14px;
+    background:#0d3b3a;
+    border:1px solid rgba(67,232,216,0.5);
     border-radius:2px;
+    animation:monitorFlicker 3.6s ease-in-out infinite;
   }
-  .av-scene .dolly{
-    position:absolute;
-    bottom:22.5%;
-    width:30px; height:20px;
-    filter:drop-shadow(0 4px 6px rgba(0,0,0,0.6));
-    animation:dollyMove 10s ease-in-out infinite;
-  }
-  .av-scene .dolly svg{width:100%; height:100%; stroke:var(--ink); fill:#0d0e11; stroke-width:1.5;}
-  @keyframes dollyMove{
-    0%,8%{left:8%; transform:scaleX(1);}
-    42%,58%{left:66%; transform:scaleX(1);}
-    60%{transform:scaleX(-1);}
-    92%,100%{left:8%; transform:scaleX(-1);}
+  @keyframes monitorFlicker{
+    0%,100%{opacity:0.6;}
+    45%{opacity:1;}
+    50%{opacity:0.5;}
+    55%{opacity:0.95;}
   }
   .av-scene .eq{
     position:absolute;
-    left:12%; right:12%; bottom:8%;
-    height:11%;
+    left:12%; right:12%; bottom:2.5%;
+    height:9%;
     display:flex;
     align-items:flex-end;
     gap:5%;
@@ -475,6 +513,7 @@
   .av-scene .eq span{
     flex:1;
     min-width:3px;
+    height:100%;
     border-radius:2px 2px 0 0;
     background:linear-gradient(180deg, var(--teal), var(--amber));
     box-shadow:0 0 8px rgba(67,232,216,0.5);
@@ -551,7 +590,7 @@
   .platform-mini .pm-row{height:7px; border-radius:3px; background:rgba(247,242,233,0.18);}
   .platform-mini .pm-row.short{width:55%;}
   @media (prefers-reduced-motion: reduce){
-    .av-scene .beam, .av-scene .eq span, .av-scene .dolly, .chaos-item, .platform-mini{animation:none !important; opacity:1 !important; transform:none !important;}
+    .av-scene .beam, .av-scene .eq span, .av-scene .haze, .av-scene .crew, .av-scene .monitor, .chaos-item, .platform-mini{animation:none !important; opacity:1 !important; transform:none !important;}
   }
 
   @media (max-width:720px){
@@ -765,14 +804,23 @@
           <p>Caméra, stéréoscopie, son et lumière sur des plateaux d'événements en direct. L'urgence et la précision comme réflexe.</p>
         </div>
         <div class="av-scene" aria-hidden="true">
-          <div class="greenscreen"></div>
+          <div class="cyc"></div>
           <div class="beam b1"></div>
           <div class="beam b2"></div>
           <div class="beam b3"></div>
-          <div class="track"></div>
-          <div class="dolly">
-            <svg viewBox="0 0 24 24"><path d="M3 9a2 2 0 0 1 2-2h2l1.5-2h7L17 7h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><circle cx="12" cy="13" r="3.5"/></svg>
+          <div class="haze"></div>
+          <div class="rim"></div>
+          <div class="floor-shine"></div>
+          <div class="crew c1">
+            <svg viewBox="0 0 26 52"><circle cx="13" cy="8" r="6" fill="#05060a"/><path d="M4 52 6 20a8 8 0 0 1 16 0l2 32Z" fill="#05060a"/></svg>
           </div>
+          <div class="tripod-cam">
+            <svg viewBox="0 0 34 46"><path d="M17 6 6 44M17 6l11 38M17 6 3 30M17 6l14 24"/><rect x="8" y="0" width="18" height="12" rx="2" fill="#05060a" stroke="none"/><circle cx="26" cy="6" r="2.6" fill="#0a0b0d" stroke-width="1.2"/></svg>
+          </div>
+          <div class="crew c2">
+            <svg viewBox="0 0 26 52"><circle cx="13" cy="8" r="6" fill="#05060a"/><path d="M4 52 6 20a8 8 0 0 1 16 0l2 32Z" fill="#05060a"/></svg>
+          </div>
+          <div class="monitor"></div>
           <div class="eq">
             <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
           </div>
