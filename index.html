@@ -402,83 +402,138 @@
     overflow:hidden;
     border:1px solid var(--line);
     background:
-      radial-gradient(ellipse at 50% 130%, rgba(255,46,126,0.16), transparent 60%),
-      #0d0e11;
-    box-shadow:0 12px 28px rgba(0,0,0,0.4);
+      radial-gradient(ellipse 60% 45% at 50% 8%, rgba(255,255,255,0.05), transparent 70%),
+      radial-gradient(ellipse at 50% 140%, rgba(255,46,126,0.14), transparent 55%),
+      radial-gradient(ellipse at 0% 0%, rgba(20,22,28,0.9), #08090b 70%);
+    box-shadow:0 12px 28px rgba(0,0,0,0.4), inset 0 0 60px rgba(0,0,0,0.5);
   }
   .av-scene .truss{
     position:absolute;
-    top:14%; left:6%; right:6%;
-    height:2px;
-    background:repeating-linear-gradient(90deg, var(--ink-dim) 0 6px, transparent 6px 14px);
-    opacity:0.5;
+    top:12%; left:6%; right:6%;
+    height:3px;
+    background:repeating-linear-gradient(90deg, rgba(247,242,233,0.35) 0 5px, transparent 5px 12px);
+    border-radius:2px;
   }
   .av-scene .truss::before, .av-scene .truss::after{
     content:"";
     position:absolute;
-    top:-3px;
-    width:8px; height:8px;
+    top:-4px;
+    width:10px; height:10px;
     border-radius:50%;
-    background:var(--ink-dim);
+    background:#1a1c22;
+    border:2px solid rgba(247,242,233,0.35);
   }
-  .av-scene .truss::before{left:0;}
-  .av-scene .truss::after{right:0;}
+  .av-scene .truss::before{left:-2px;}
+  .av-scene .truss::after{right:-2px;}
   .av-scene .fixture{
     position:absolute;
-    top:14%;
-    width:14px; height:12px;
-    clip-path:polygon(20% 0, 80% 0, 100% 100%, 0 100%);
-    animation:glow 3.4s ease-in-out infinite;
+    top:12%;
+    width:22px; height:16px;
+    transform:translateX(-50%) translateY(-2px);
   }
-  .av-scene .fixture.f1{left:18%; background:var(--amber); animation-delay:0s;}
-  .av-scene .fixture.f2{left:47%; background:var(--teal); animation-delay:-1.1s;}
-  .av-scene .fixture.f3{left:74%; background:var(--coral); animation-delay:-2.2s;}
-  @keyframes glow{
-    0%,100%{filter:drop-shadow(0 0 2px currentColor); opacity:0.7;}
-    50%{filter:drop-shadow(0 0 10px currentColor); opacity:1;}
+  .av-scene .fixture::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:#1a1c22;
+    border-radius:3px;
+    border:1px solid rgba(247,242,233,0.2);
+  }
+  .av-scene .fixture::after{
+    content:"";
+    position:absolute;
+    left:50%; bottom:-4px;
+    width:9px; height:9px;
+    border-radius:50%;
+    transform:translateX(-50%);
+    background:currentColor;
+    animation:lensGlow 3.2s ease-in-out infinite;
+  }
+  .av-scene .fixture.f1{left:20%; color:var(--amber); animation-delay:0s;}
+  .av-scene .fixture.f2{left:50%; color:var(--teal); animation-delay:-1.1s;}
+  .av-scene .fixture.f3{left:78%; color:var(--coral); animation-delay:-2.2s;}
+  .av-scene .fixture::after{animation-delay:inherit;}
+  @keyframes lensGlow{
+    0%,100%{box-shadow:0 0 4px 1px currentColor; opacity:0.7;}
+    50%{box-shadow:0 0 14px 4px currentColor; opacity:1;}
   }
   .av-scene .beam{
     position:absolute;
-    top:15%;
-    width:120px;
-    height:85%;
-    background:linear-gradient(180deg, rgba(255,255,255,0.14), transparent 75%);
+    top:13%;
+    width:26%;
+    height:88%;
+    background:linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0.02) 55%, transparent 80%);
+    clip-path:polygon(46% 0, 54% 0, 100% 100%, 0% 100%);
     transform-origin:top center;
-    filter:blur(4px);
-    animation:sweep 8s ease-in-out infinite;
+    filter:blur(2px);
+    animation:sweep 9s ease-in-out infinite;
+    mix-blend-mode:screen;
   }
-  .av-scene .beam.b1{left:10%; background:linear-gradient(180deg, rgba(255,46,126,0.20), transparent 75%); animation-delay:0s;}
-  .av-scene .beam.b2{left:40%; background:linear-gradient(180deg, rgba(67,232,216,0.20), transparent 75%); animation-delay:-2.6s;}
-  .av-scene .beam.b3{left:65%; background:linear-gradient(180deg, rgba(255,138,194,0.18), transparent 75%); animation-delay:-5.2s;}
+  .av-scene .beam.b1{left:6%; background:linear-gradient(180deg, rgba(255,46,126,0.32), rgba(255,46,126,0.03) 55%, transparent 80%); animation-delay:0s;}
+  .av-scene .beam.b2{left:36%; background:linear-gradient(180deg, rgba(67,232,216,0.30), rgba(67,232,216,0.03) 55%, transparent 80%); animation-delay:-3s;}
+  .av-scene .beam.b3{left:64%; background:linear-gradient(180deg, rgba(255,138,194,0.28), rgba(255,138,194,0.03) 55%, transparent 80%); animation-delay:-6s;}
   @keyframes sweep{
     0%,100%{transform:rotate(-14deg);}
     50%{transform:rotate(14deg);}
   }
+  .av-scene .follow{
+    position:absolute;
+    top:20%;
+    width:70px; height:70px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(255,255,255,0.5), transparent 70%);
+    filter:blur(6px);
+    animation:followMove 9s ease-in-out infinite;
+    mix-blend-mode:screen;
+  }
+  @keyframes followMove{
+    0%,100%{left:12%; opacity:0.5;}
+    50%{left:78%; opacity:0.85;}
+  }
   .av-scene .eq{
     position:absolute;
-    left:8%; right:8%; bottom:14%;
-    height:26%;
+    left:8%; right:8%; bottom:10%;
+    height:24%;
     display:flex;
     align-items:flex-end;
-    gap:5%;
+    gap:4%;
   }
   .av-scene .eq span{
     flex:1;
     border-radius:2px 2px 0 0;
     background:linear-gradient(180deg, var(--teal), var(--amber));
-    animation:eqBar 1.6s ease-in-out infinite;
+    box-shadow:0 0 6px rgba(67,232,216,0.35);
+    animation:eqBar 1.4s ease-in-out infinite;
     transform-origin:bottom center;
   }
   .av-scene .eq span:nth-child(1){animation-delay:0s;}
-  .av-scene .eq span:nth-child(2){animation-delay:.15s;}
-  .av-scene .eq span:nth-child(3){animation-delay:.3s;}
-  .av-scene .eq span:nth-child(4){animation-delay:.45s;}
-  .av-scene .eq span:nth-child(5){animation-delay:.6s;}
-  .av-scene .eq span:nth-child(6){animation-delay:.75s;}
-  .av-scene .eq span:nth-child(7){animation-delay:.9s;}
+  .av-scene .eq span:nth-child(2){animation-delay:.12s;}
+  .av-scene .eq span:nth-child(3){animation-delay:.24s;}
+  .av-scene .eq span:nth-child(4){animation-delay:.36s;}
+  .av-scene .eq span:nth-child(5){animation-delay:.48s;}
+  .av-scene .eq span:nth-child(6){animation-delay:.6s;}
+  .av-scene .eq span:nth-child(7){animation-delay:.72s;}
+  .av-scene .eq span:nth-child(8){animation-delay:.84s;}
+  .av-scene .eq span:nth-child(9){animation-delay:.96s;}
   @keyframes eqBar{
-    0%,100%{transform:scaleY(0.25);}
+    0%,100%{transform:scaleY(0.15);}
     50%{transform:scaleY(1);}
+  }
+  .av-scene .role-icon{
+    position:absolute;
+    bottom:38%;
+    width:20px; height:20px;
+    opacity:0;
+    animation:iconFade 9s ease-in-out infinite;
+  }
+  .av-scene .role-icon svg{width:100%; height:100%; stroke:var(--ink); fill:none; stroke-width:1.6;}
+  .av-scene .role-icon.ri1{left:14%; animation-delay:0s;}
+  .av-scene .role-icon.ri2{left:47%; animation-delay:3s;}
+  .av-scene .role-icon.ri3{left:80%; animation-delay:6s;}
+  @keyframes iconFade{
+    0%,6%{opacity:0; transform:translateY(6px);}
+    12%,22%{opacity:0.9; transform:translateY(0);}
+    30%,100%{opacity:0;}
   }
 
   /* ---------- Chaos -> structure scene (2017-2020) ---------- */
@@ -495,11 +550,13 @@
   }
   .chaos-item{
     position:absolute;
-    font-size:30px;
+    width:34px;
+    height:34px;
     opacity:1;
     animation:chaosFade 10s ease-in-out infinite;
     filter:drop-shadow(0 3px 6px rgba(0,0,0,0.5));
   }
+  .chaos-item svg{width:100%; height:100%;}
   @keyframes chaosFade{
     0%,35%{opacity:1; transform:translateY(0) rotate(var(--r,0deg));}
     50%,92%{opacity:0; transform:translateY(-16px) rotate(var(--r,0deg));}
@@ -534,7 +591,7 @@
   .platform-mini .pm-row{height:7px; border-radius:3px; background:rgba(247,242,233,0.18);}
   .platform-mini .pm-row.short{width:55%;}
   @media (prefers-reduced-motion: reduce){
-    .av-scene .fixture, .av-scene .beam, .av-scene .eq span, .chaos-item, .platform-mini{animation:none !important; opacity:1 !important; transform:none !important;}
+    .av-scene .fixture::after, .av-scene .beam, .av-scene .follow, .av-scene .role-icon, .av-scene .eq span, .chaos-item, .platform-mini{animation:none !important; opacity:1 !important; transform:none !important;}
   }
 
   @media (max-width:720px){
@@ -756,8 +813,18 @@
           <div class="beam b1"></div>
           <div class="beam b2"></div>
           <div class="beam b3"></div>
+          <div class="follow"></div>
+          <span class="role-icon ri1" title="Caméra">
+            <svg viewBox="0 0 24 24"><path d="M3 9a2 2 0 0 1 2-2h2l1.5-2h7L17 7h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><circle cx="12" cy="13" r="3.5"/></svg>
+          </span>
+          <span class="role-icon ri2" title="Son">
+            <svg viewBox="0 0 24 24"><path d="M4 10v4h3l4 4V6L7 10H4Z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></svg>
+          </span>
+          <span class="role-icon ri3" title="Lumière">
+            <svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0 0 12 3Z"/></svg>
+          </span>
           <div class="eq">
-            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
           </div>
         </div>
       </div>
@@ -781,11 +848,21 @@
           <p>Développement en méthodologie agile, du premier devis à la dernière facture : gestion du matériel, sous-traitance, bons de commande. Une plateforme unique pour remplacer les mails, Excel et devis papier qui circulaient jusque-là.</p>
         </div>
         <div class="chaos-scene" aria-hidden="true">
-          <span class="chaos-item" style="--r:-8deg; top:12%; left:10%;">✉️</span>
-          <span class="chaos-item" style="--r:6deg; top:18%; right:12%; animation-delay:.5s;">📊</span>
-          <span class="chaos-item" style="--r:-4deg; bottom:16%; left:16%; animation-delay:1s;">📄</span>
-          <span class="chaos-item" style="--r:9deg; bottom:14%; right:10%; animation-delay:1.5s;">🗂️</span>
-          <span class="chaos-item" style="--r:0deg; top:44%; left:44%; animation-delay:2s;">📋</span>
+          <span class="chaos-item" style="--r:-8deg; top:10%; left:9%; color:var(--amber);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
+          </span>
+          <span class="chaos-item" style="--r:6deg; top:16%; right:11%; color:var(--teal); animation-delay:.5s;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 17V11"/><path d="M12 17V7"/><path d="M16 17v-4"/></svg>
+          </span>
+          <span class="chaos-item" style="--r:-4deg; bottom:14%; left:15%; color:var(--coral); animation-delay:1s;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M8 13h8M8 17h5"/></svg>
+          </span>
+          <span class="chaos-item" style="--r:9deg; bottom:12%; right:9%; color:var(--amber); animation-delay:1.5s;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg>
+          </span>
+          <span class="chaos-item" style="--r:0deg; top:42%; left:42%; color:var(--teal); animation-delay:2s;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="4" width="12" height="17" rx="1.5"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 11h6M9 15h6"/></svg>
+          </span>
           <div class="platform-mini">
             <span class="pm-label">Hiretrack NX</span>
             <div class="pm-row"></div>
@@ -814,10 +891,9 @@
           <h4 id="i-p1-h4">Migration système EMEA</h4>
           <p id="i-p1-p">Refonte complète des workflows métier, intégration des données, formation des équipes sur plusieurs pays. Du premier devis à la dernière facture.</p>
         </div>
-        <div class="built-shots count-3">
+        <div class="built-shots count-2">
           <img src="https://www.navigator.uk/wp-content/uploads/2014/07/jobbook-1024x683.png" alt="Interface Hiretrack NX (Job book)" loading="lazy">
           <img src="https://www.navigator.uk/wp-content/uploads/2014/07/eqlist-1024x683.png" alt="Interface Hiretrack NX (liste d'équipement)" loading="lazy">
-          <img src="https://www.protonic-software.com/en/easyjob/default1.png" alt="Interface easyjob" loading="lazy">
         </div>
       </div>
     </div>
