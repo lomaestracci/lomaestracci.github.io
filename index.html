@@ -179,8 +179,12 @@
   /* ---------- Intro ---------- */
   .intro{
     border-top:1px solid var(--line);
-    max-width:760px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+    align-items:start;
   }
+  .intro-text{max-width:560px;}
   .intro p{
     font-size:clamp(1.1rem,2vw,1.5rem);
     line-height:1.7;
@@ -188,6 +192,9 @@
     font-weight:500;
   }
   .intro p + p{margin-top:20px; color:var(--ink-dim); font-weight:400; font-size:1.05rem;}
+  @media (max-width:900px){
+    .intro{grid-template-columns:1fr; gap:48px;}
+  }
 
   /* ---------- Timeline ---------- */
   .timeline-head{
@@ -210,9 +217,9 @@
     transform:translateY(24px) rotate(var(--tilt,0deg));
     transition:opacity .7s ease, transform .7s ease;
   }
-  .chapter.has-built{grid-template-columns:150px 1fr 380px; align-items:stretch;}
+  .chapter.has-built{grid-template-columns:150px 1fr 1fr; align-items:stretch;}
   @media (max-width:1080px){
-    .chapter.has-built{grid-template-columns:150px 1fr 300px;}
+    .chapter.has-built{grid-template-columns:150px 1fr 1fr; gap:24px;}
   }
   .chapter.visible{opacity:1; transform:translateY(0) rotate(0deg);}
   .chapter .tc{
@@ -385,7 +392,7 @@
     .chapter.has-built{grid-template-columns:1fr;}
   }
 
-  /* ---------- AV stage scene (2001-2017) ---------- */
+  /* ---------- Backstage scene (2001-2017): lighting rig + beams + sound ---------- */
   .av-scene{
     position:relative;
     width:100%;
@@ -395,39 +402,84 @@
     overflow:hidden;
     border:1px solid var(--line);
     background:
-      radial-gradient(ellipse at 50% 130%, rgba(255,46,126,0.22), transparent 60%),
+      radial-gradient(ellipse at 50% 130%, rgba(255,46,126,0.16), transparent 60%),
       #0d0e11;
     box-shadow:0 12px 28px rgba(0,0,0,0.4);
   }
-  .av-scene .spot{
+  .av-scene .truss{
     position:absolute;
-    top:-30%;
-    left:0;
-    width:90px;
-    height:220%;
-    background:linear-gradient(180deg, rgba(255,255,255,0.16), transparent 70%);
+    top:14%; left:6%; right:6%;
+    height:2px;
+    background:repeating-linear-gradient(90deg, var(--ink-dim) 0 6px, transparent 6px 14px);
+    opacity:0.5;
+  }
+  .av-scene .truss::before, .av-scene .truss::after{
+    content:"";
+    position:absolute;
+    top:-3px;
+    width:8px; height:8px;
+    border-radius:50%;
+    background:var(--ink-dim);
+  }
+  .av-scene .truss::before{left:0;}
+  .av-scene .truss::after{right:0;}
+  .av-scene .fixture{
+    position:absolute;
+    top:14%;
+    width:14px; height:12px;
+    clip-path:polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+    animation:glow 3.4s ease-in-out infinite;
+  }
+  .av-scene .fixture.f1{left:18%; background:var(--amber); animation-delay:0s;}
+  .av-scene .fixture.f2{left:47%; background:var(--teal); animation-delay:-1.1s;}
+  .av-scene .fixture.f3{left:74%; background:var(--coral); animation-delay:-2.2s;}
+  @keyframes glow{
+    0%,100%{filter:drop-shadow(0 0 2px currentColor); opacity:0.7;}
+    50%{filter:drop-shadow(0 0 10px currentColor); opacity:1;}
+  }
+  .av-scene .beam{
+    position:absolute;
+    top:15%;
+    width:120px;
+    height:85%;
+    background:linear-gradient(180deg, rgba(255,255,255,0.14), transparent 75%);
     transform-origin:top center;
-    animation:sweep 7s ease-in-out infinite;
-    filter:blur(3px);
+    filter:blur(4px);
+    animation:sweep 8s ease-in-out infinite;
   }
-  .av-scene .spot.s2{
-    animation-delay:-3.5s;
-    background:linear-gradient(180deg, rgba(67,232,216,0.18), transparent 70%);
-  }
+  .av-scene .beam.b1{left:10%; background:linear-gradient(180deg, rgba(255,46,126,0.20), transparent 75%); animation-delay:0s;}
+  .av-scene .beam.b2{left:40%; background:linear-gradient(180deg, rgba(67,232,216,0.20), transparent 75%); animation-delay:-2.6s;}
+  .av-scene .beam.b3{left:65%; background:linear-gradient(180deg, rgba(255,138,194,0.18), transparent 75%); animation-delay:-5.2s;}
   @keyframes sweep{
-    0%,100%{transform:translateX(-10%) rotate(-16deg);}
-    50%{transform:translateX(200%) rotate(16deg);}
+    0%,100%{transform:rotate(-14deg);}
+    50%{transform:rotate(14deg);}
   }
-  .av-scene .emoji{
+  .av-scene .eq{
     position:absolute;
-    font-size:38px;
-    filter:drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+    left:8%; right:8%; bottom:14%;
+    height:26%;
+    display:flex;
+    align-items:flex-end;
+    gap:5%;
   }
-  .av-scene .cam{bottom:12%; left:12%; animation:bobSlow 3.2s ease-in-out infinite;}
-  .av-scene .reel{top:16%; right:14%; animation:spinSlow 6s linear infinite;}
-  .av-scene .clap{bottom:16%; right:18%; animation:bobSlow 3.2s ease-in-out infinite 1.1s;}
-  @keyframes bobSlow{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
-  @keyframes spinSlow{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+  .av-scene .eq span{
+    flex:1;
+    border-radius:2px 2px 0 0;
+    background:linear-gradient(180deg, var(--teal), var(--amber));
+    animation:eqBar 1.6s ease-in-out infinite;
+    transform-origin:bottom center;
+  }
+  .av-scene .eq span:nth-child(1){animation-delay:0s;}
+  .av-scene .eq span:nth-child(2){animation-delay:.15s;}
+  .av-scene .eq span:nth-child(3){animation-delay:.3s;}
+  .av-scene .eq span:nth-child(4){animation-delay:.45s;}
+  .av-scene .eq span:nth-child(5){animation-delay:.6s;}
+  .av-scene .eq span:nth-child(6){animation-delay:.75s;}
+  .av-scene .eq span:nth-child(7){animation-delay:.9s;}
+  @keyframes eqBar{
+    0%,100%{transform:scaleY(0.25);}
+    50%{transform:scaleY(1);}
+  }
 
   /* ---------- Chaos -> structure scene (2017-2020) ---------- */
   .chaos-scene{
@@ -482,7 +534,7 @@
   .platform-mini .pm-row{height:7px; border-radius:3px; background:rgba(247,242,233,0.18);}
   .platform-mini .pm-row.short{width:55%;}
   @media (prefers-reduced-motion: reduce){
-    .av-scene .spot, .av-scene .emoji, .chaos-item, .platform-mini{animation:none !important; opacity:1 !important;}
+    .av-scene .fixture, .av-scene .beam, .av-scene .eq span, .chaos-item, .platform-mini{animation:none !important; opacity:1 !important; transform:none !important;}
   }
 
   @media (max-width:720px){
@@ -496,13 +548,11 @@
     letter-spacing:0.25em;
     text-transform:uppercase;
     color:var(--ink-dim);
-    margin-bottom:40px;
-    border-top:1px solid var(--line);
-    padding-top:24px;
+    margin-bottom:20px;
   }
   .skills-grid{
     display:grid;
-    grid-template-columns:repeat(4, 1fr);
+    grid-template-columns:repeat(2, 1fr);
     gap:0;
     border-top:1px solid var(--line);
     border-left:1px solid var(--line);
@@ -510,8 +560,8 @@
   .skill-cell{
     border-right:1px solid var(--line);
     border-bottom:1px solid var(--line);
-    padding:20px 18px;
-    font-size:0.85rem;
+    padding:16px 16px;
+    font-size:0.82rem;
     color:var(--ink-dim);
     transition:color .2s ease, background .2s ease, transform .25s cubic-bezier(.34,1.56,.64,1);
   }
@@ -524,7 +574,6 @@
   }
   .skill-cell:nth-child(even):hover{transform:rotate(1deg) scale(1.03);}
   .skill-cell b{display:block; color:var(--ink); font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px;}
-  @media (max-width:900px){ .skills-grid{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:520px){ .skills-grid{grid-template-columns:1fr;} }
 
   .langs{
@@ -638,7 +687,7 @@
     <div class="hero-content">
       <div class="hero-text">
         <div class="eyebrow">Laurence Maestracci · Senior Product Manager</div>
-        <h1 class="thesis" id="i-thesis"><span class="chaos">Chaos</span><span class="arrow">→</span><span class="accent">Structure.</span></h1>
+        <h1 class="thesis" id="i-thesis"><span class="chaos">Chaos</span><span class="arrow">→</span><span class="accent">Flow.</span></h1>
         <p class="hero-sub" id="i-herosub">Product Operations · SaaS B2B · Workflow Automation · Digital Transformation. Dix ans à transformer des besoins complexes en plateformes concrètes, adoptées et performantes.</p>
         <p class="hero-wink mono" id="i-herowink">(oui, je barre vraiment le mot "chaos" dans la vraie vie aussi ✂️)</p>
       </div>
@@ -653,8 +702,31 @@
   </section>
 
   <section class="intro">
-    <p id="i-intro1">Depuis une dizaine d'années, je conçois et fais évoluer des plateformes SaaS, des workflows métier et des produits digitaux qui simplifient les opérations et créent de la valeur.</p>
-    <p id="i-intro2">À l'intersection du Product Management, des opérations et de la transformation digitale, je collabore avec les équipes Engineering, Data et Business pour transformer des besoins complexes en solutions concrètes, adoptées et performantes.</p>
+    <div class="intro-text">
+      <p id="i-intro1">Depuis une dizaine d'années, je conçois et fais évoluer des plateformes SaaS, des workflows métier et des produits digitaux qui simplifient les opérations et créent de la valeur.</p>
+      <p id="i-intro2">À l'intersection du Product Management, des opérations et de la transformation digitale, je collabore avec les équipes Engineering, Data et Business pour transformer des besoins complexes en solutions concrètes, adoptées et performantes.</p>
+    </div>
+    <div class="intro-skills">
+      <div class="skills-head" id="i-skhead">🛠️ Compétences</div>
+      <div class="skills-grid">
+        <div class="skill-cell"><b id="i-sk1-b">Produit</b><span id="i-sk1-t">Product Management &amp; Product Operations</span></div>
+        <div class="skill-cell"><b id="i-sk2-b">Plateformes</b><span id="i-sk2-t">SaaS B2B &amp; plateformes métiers</span></div>
+        <div class="skill-cell"><b id="i-sk3-b">Process</b><span id="i-sk3-t">Workflow Automation &amp; Digital Transformation</span></div>
+        <div class="skill-cell"><b id="i-sk4-b">Delivery</b><span id="i-sk4-t">Roadmap, Delivery &amp; Adoption</span></div>
+        <div class="skill-cell"><b id="i-sk5-b">Data</b><span id="i-sk5-t">KPIs &amp; automatisation par l'IA</span></div>
+        <div class="skill-cell"><b id="i-sk6-b">Leadership</b><span id="i-sk6-t">Gestion transverse des parties prenantes</span></div>
+        <div class="skill-cell"><b>Outils</b>Jira, Trello, Asana, Bugasura</div>
+        <div class="skill-cell"><b>Outils</b>Easyjob, Hiretrack NX, 1CRM</div>
+        <div class="skill-cell"><b id="i-sk9-b">Data &amp; design</b>SQL (notions), PowerBI, Figma</div>
+        <div class="skill-cell"><b>Support</b>Slack, Zendesk, Canva, Microsoft 365</div>
+      </div>
+      <div class="langs">
+        <span>🇫🇷 <b>FR</b> · <span id="i-lang-fr">langue maternelle</span></span>
+        <span>🇬🇧 <b>EN</b> · <span id="i-lang-en">courant</span></span>
+        <span>🇵🇹 <b>PT</b> · <span id="i-lang-pt">bon niveau</span></span>
+        <span>🇪🇸 <b>ES</b> · <span id="i-lang-es">bases</span></span>
+      </div>
+    </div>
   </section>
 
   <section class="timeline">
@@ -672,16 +744,21 @@
       </div>
       <div class="built visual-only">
         <div class="built-text">
-          <span class="built-label mono">Sur le terrain</span>
-          <h4>16 ans derrière la caméra</h4>
-          <p>Régie technique, tournages, plateaux d'événements en direct. L'urgence et la précision comme réflexe.</p>
+          <span class="built-label mono">Backstage</span>
+          <h4>16 ans en régie : caméra, son, lumière</h4>
+          <p>Caméra, stéréoscopie, son et lumière sur des plateaux d'événements en direct. L'urgence et la précision comme réflexe.</p>
         </div>
         <div class="av-scene" aria-hidden="true">
-          <div class="spot"></div>
-          <div class="spot s2"></div>
-          <span class="emoji cam">🎥</span>
-          <span class="emoji reel">🎞️</span>
-          <span class="emoji clap">🎬</span>
+          <div class="truss"></div>
+          <div class="fixture f1"></div>
+          <div class="fixture f2"></div>
+          <div class="fixture f3"></div>
+          <div class="beam b1"></div>
+          <div class="beam b2"></div>
+          <div class="beam b3"></div>
+          <div class="eq">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
         </div>
       </div>
     </div>
@@ -767,10 +844,10 @@
           </div>
         </div>
         <div class="built-shots count-4">
-          <img src="https://play-lh.googleusercontent.com/8jfBvlaZ96BSMPRpHI6PmVJH7AFaAKY7CJ1G9Q4FOZiiNc8CmfgeWhuOhms5nLDzZQNmdZxcpYEUlUncxkG2=w526-h296" alt="Capture d'écran de l'app 1CRM" loading="lazy">
-          <img src="https://play-lh.googleusercontent.com/if6ID0w1oj2nrV6F4AFjWXQ1hYWTDv8QcymFxWzZi1cyux6cKPEmqqNfooxqMm_gObRbjo9ocSwFHk5hbuJ7kw=w526-h296" alt="Capture d'écran de l'app 1CRM" loading="lazy">
-          <img src="https://play-lh.googleusercontent.com/y0Jcwhjglr2uC4OxsXEpGQlBdIM3_Fkg5De6RBKL4Gp6qWZlX_7b0lwCdjt3v9OOiUPUMzHJuM4jgiwnxmMh=w526-h296" alt="Capture d'écran de l'app 1CRM" loading="lazy">
-          <img src="https://play-lh.googleusercontent.com/XMgGzuXBWfSPZQiUTJZKnf3FgGzPaTqAnU2lGztqHEUM5RcEZJ7pohqvuDrkdklJJMleHoXCAQ7srNWMIe9c=w526-h296" alt="Capture d'écran de l'app 1CRM" loading="lazy">
+          <img src="https://play-lh.googleusercontent.com/8jfBvlaZ96BSMPRpHI6PmVJH7AFaAKY7CJ1G9Q4FOZiiNc8CmfgeWhuOhms5nLDzZQNmdZxcpYEUlUncxkG2=w1200-h675" alt="Capture d'écran de l'app 1CRM" loading="lazy">
+          <img src="https://play-lh.googleusercontent.com/if6ID0w1oj2nrV6F4AFjWXQ1hYWTDv8QcymFxWzZi1cyux6cKPEmqqNfooxqMm_gObRbjo9ocSwFHk5hbuJ7kw=w1200-h675" alt="Capture d'écran de l'app 1CRM" loading="lazy">
+          <img src="https://play-lh.googleusercontent.com/y0Jcwhjglr2uC4OxsXEpGQlBdIM3_Fkg5De6RBKL4Gp6qWZlX_7b0lwCdjt3v9OOiUPUMzHJuM4jgiwnxmMh=w1200-h675" alt="Capture d'écran de l'app 1CRM" loading="lazy">
+          <img src="https://play-lh.googleusercontent.com/XMgGzuXBWfSPZQiUTJZKnf3FgGzPaTqAnU2lGztqHEUM5RcEZJ7pohqvuDrkdklJJMleHoXCAQ7srNWMIe9c=w1200-h675" alt="Capture d'écran de l'app 1CRM" loading="lazy">
         </div>
       </div>
     </div>
@@ -796,9 +873,11 @@
             <a href="https://weareelevate.global/fr/impact/" target="_blank" rel="noopener"><span id="i-link-impact-site">Site Impact</span> ↗</a>
           </div>
         </div>
-        <div class="built-shots count-2">
+        <div class="built-shots count-4">
           <img src="impact-1.jpg" alt="Dashboard Impact" loading="lazy">
           <img src="impact-2.jpg" alt="Dashboard Impact" loading="lazy">
+          <img src="impact-3.jpg" alt="Résultats de campagne Impact (anonymisé)" loading="lazy">
+          <img src="impact-4.jpg" alt="Résultats de campagne Impact (anonymisé)" loading="lazy">
         </div>
       </div>
     </div>
@@ -812,28 +891,6 @@
           <li id="i-c6-li1">Disponible pour construire la prochaine plateforme, structurer le prochain chaos</li>
         </ul>
       </div>
-    </div>
-  </section>
-
-  <section class="skills">
-    <div class="skills-head" id="i-skhead">🛠️ Compétences</div>
-    <div class="skills-grid">
-      <div class="skill-cell"><b id="i-sk1-b">Produit</b><span id="i-sk1-t">Product Management &amp; Product Operations</span></div>
-      <div class="skill-cell"><b id="i-sk2-b">Plateformes</b><span id="i-sk2-t">SaaS B2B &amp; plateformes métiers</span></div>
-      <div class="skill-cell"><b id="i-sk3-b">Process</b><span id="i-sk3-t">Workflow Automation &amp; Digital Transformation</span></div>
-      <div class="skill-cell"><b id="i-sk4-b">Delivery</b><span id="i-sk4-t">Roadmap, Delivery &amp; Adoption</span></div>
-      <div class="skill-cell"><b id="i-sk5-b">Data</b><span id="i-sk5-t">KPIs &amp; automatisation par l'IA</span></div>
-      <div class="skill-cell"><b id="i-sk6-b">Leadership</b><span id="i-sk6-t">Gestion transverse des parties prenantes</span></div>
-      <div class="skill-cell"><b>Outils</b>Jira, Trello, Asana, Bugasura</div>
-      <div class="skill-cell"><b>Outils</b>Easyjob, Hiretrack NX, 1CRM</div>
-      <div class="skill-cell"><b id="i-sk9-b">Data &amp; design</b>SQL (notions), PowerBI, Figma</div>
-      <div class="skill-cell"><b>Support</b>Slack, Zendesk, Canva, Microsoft 365</div>
-    </div>
-    <div class="langs">
-      <span>🇫🇷 <b>FR</b> · <span id="i-lang-fr">langue maternelle</span></span>
-      <span>🇬🇧 <b>EN</b> · <span id="i-lang-en">courant</span></span>
-      <span>🇵🇹 <b>PT</b> · <span id="i-lang-pt">bon niveau</span></span>
-      <span>🇪🇸 <b>ES</b> · <span id="i-lang-es">bases</span></span>
     </div>
   </section>
 
@@ -876,7 +933,7 @@
 <script>
   // ---- i18n: FR (default, in markup) / EN (translations below) ----
   const translations = {
-    'i-thesis': '<span class="chaos">Chaos</span><span class="arrow">→</span><span class="accent">Structure.</span>',
+    'i-thesis': '<span class="chaos">Chaos</span><span class="arrow">→</span><span class="accent">Flow.</span>',
     'i-herosub': 'Product Operations · SaaS B2B · Workflow Automation · Digital Transformation. Ten years turning complex needs into concrete platforms, adopted and performing.',
     'i-intro1': 'For about ten years, I\'ve designed and evolved SaaS platforms, business workflows and digital products that simplify operations and create value.',
     'i-intro2': 'At the intersection of Product Management, operations and digital transformation, I work with Engineering, Data and Business teams to turn complex needs into concrete, adopted, high-performing solutions.',
