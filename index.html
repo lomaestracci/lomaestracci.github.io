@@ -85,7 +85,7 @@
     display:flex;
     flex-direction:column;
     justify-content:center;
-    padding:110px 0 64px;
+    padding:110px 8vw 64px;
     position:relative;
   }
   .hero-content{
@@ -179,11 +179,14 @@
   /* ---------- Intro ---------- */
   .intro{
     border-top:1px solid var(--line);
+    padding-top:56px;
+    padding-bottom:56px;
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:64px;
     align-items:start;
   }
+  .timeline{padding-top:56px; padding-bottom:56px;}
   .intro-text{max-width:560px;}
   .intro p{
     font-size:clamp(1.1rem,2vw,1.5rem);
@@ -281,16 +284,13 @@
 
   .chapter .built{
     margin-top:0;
-    padding:22px 24px;
-    border-left:2px solid var(--amber);
-    background:var(--bg-alt);
+    padding:0;
     transition:transform .25s cubic-bezier(.34,1.56,.64,1);
     display:flex;
     flex-direction:column;
     height:100%;
   }
   .chapter .built:hover{transform:translateX(4px) rotate(-0.3deg);}
-  .chapter:nth-child(even) .built{border-left-color:var(--teal);}
   .chapter .built-text{margin-bottom:18px;}
   .chapter .built-label{
     font-family:'Space Mono',monospace;
@@ -324,7 +324,6 @@
     min-height:200px;
     border-radius:10px;
     overflow:hidden;
-    background:#0d0e11;
   }
   .chapter .built-shots img{
     position:absolute;
@@ -523,7 +522,6 @@
     min-height:200px;
     border-radius:10px;
     overflow:hidden;
-    background:#0d0e11;
   }
   .chaos-item{
     position:absolute;
@@ -1037,7 +1035,7 @@
   // ---- Timecode ruler: ticks + scroll progress ----
   const ruler = document.getElementById('ruler');
   const rulerProgress = document.getElementById('rulerProgress');
-  const years = [2001,2004,2007,2010,2013,2016,2019,2022,2025];
+  const years = [2016,2018,2020,2022,2024,2026];
   years.forEach(y=>{
     const t = document.createElement('div');
     t.className='ruler-tick';
