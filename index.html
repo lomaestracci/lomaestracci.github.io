@@ -81,11 +81,11 @@
 
   /* ---------- Hero ---------- */
   .hero{
-    min-height:100vh;
+    min-height:auto;
     display:flex;
     flex-direction:column;
     justify-content:center;
-    padding-top:80px;
+    padding:110px 0 64px;
     position:relative;
   }
   .hero-content{
@@ -209,7 +209,7 @@
   }
   .chapter{
     display:grid;
-    grid-template-columns:150px 1fr;
+    grid-template-columns:90px 1fr;
     gap:32px;
     padding:36px 0;
     border-bottom:1px solid var(--line);
@@ -217,9 +217,9 @@
     transform:translateY(24px) rotate(var(--tilt,0deg));
     transition:opacity .7s ease, transform .7s ease;
   }
-  .chapter.has-built{grid-template-columns:150px 1fr 1fr; align-items:stretch;}
+  .chapter.has-built{grid-template-columns:90px 1fr 1fr; align-items:stretch;}
   @media (max-width:1080px){
-    .chapter.has-built{grid-template-columns:150px 1fr 1fr; gap:24px;}
+    .chapter.has-built{grid-template-columns:90px 1fr 1fr; gap:24px;}
   }
   .chapter.visible{opacity:1; transform:translateY(0) rotate(0deg);}
   .chapter .tc{
@@ -324,8 +324,6 @@
     min-height:200px;
     border-radius:10px;
     overflow:hidden;
-    box-shadow:0 12px 28px rgba(0,0,0,0.4);
-    border:1px solid var(--line);
     background:#0d0e11;
   }
   .chapter .built-shots img{
@@ -396,7 +394,7 @@
   }
 
   @media (max-width:900px){
-    .chapter.has-built{grid-template-columns:150px 1fr;}
+    .chapter.has-built{grid-template-columns:90px 1fr;}
     .chapter .built{grid-column:1/-1; margin-top:22px; height:auto;}
     .chapter .built-shots,
     .chapter .av-scene,
@@ -525,9 +523,7 @@
     min-height:200px;
     border-radius:10px;
     overflow:hidden;
-    border:1px solid var(--line);
     background:#0d0e11;
-    box-shadow:0 12px 28px rgba(0,0,0,0.4);
   }
   .chaos-item{
     position:absolute;
@@ -625,7 +621,7 @@
   /* ---------- Footer / contact ---------- */
   footer{
     border-top:1px solid var(--line);
-    padding:120px 8vw 80px;
+    padding:56px 8vw 80px;
     text-align:left;
   }
   footer .eyebrow{margin-bottom:20px;}
@@ -769,41 +765,7 @@
   </section>
 
   <section class="timeline">
-    <div class="timeline-head" id="i-tlhead">🎬 Parcours · 2001 → 2025</div>
-
-    <div class="chapter has-built" style="--tilt:-1.4deg;">
-      <div class="tc mono">2001—2017</div>
-      <div>
-        <span class="role"><img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=encoreglobal.com" alt="Encore Global" loading="lazy">EVENT TECHNOLOGY SPECIALIST · TECHNICAL CAMERA OPERATOR · STEREO OPERATOR · Encore Global</span>
-        <h3 id="i-c1-h3">Sur le terrain, dans l'urgence</h3>
-        <ul>
-          <li id="i-c1-li1">Coordination d'équipes dans des environnements exigeants à forte contrainte opérationnelle</li>
-          <li id="i-c1-li2">Développement d'une culture de l'exécution, de la collaboration transverse et de la résolution de problèmes complexes</li>
-        </ul>
-      </div>
-      <div class="built visual-only">
-        <div class="built-text">
-          <span class="built-label mono">Backstage</span>
-          <h4>16 ans en régie : caméra, son, lumière</h4>
-          <p>Caméra, stéréoscopie, son et lumière sur des plateaux d'événements en direct. L'urgence et la précision comme réflexe.</p>
-        </div>
-        <div class="av-scene" aria-hidden="true">
-          <div class="flash"></div>
-          <span class="punch-word w1">CAMÉRA</span>
-          <span class="punch-word w2">SON</span>
-          <span class="punch-word w3">LUMIÈRE</span>
-          <span class="punch-word w4">LIVE</span>
-          <div class="vf-bracket tl"></div>
-          <div class="vf-bracket tr"></div>
-          <div class="vf-bracket bl"></div>
-          <div class="vf-bracket br"></div>
-          <div class="scan"></div>
-          <div class="eq">
-            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="timeline-head" id="i-tlhead">🎬 Parcours · 2017 → 2026</div>
 
     <div class="chapter has-built" style="--tilt:1.1deg;">
       <div class="tc mono">2017—2020</div>
@@ -991,7 +953,7 @@
     'i-herosub': 'Product Operations · SaaS B2B · Workflow Automation · Digital Transformation. Ten years turning complex needs into concrete platforms, adopted and performing.',
     'i-intro1': 'For about ten years, I\'ve designed and evolved SaaS platforms, business workflows and digital products that simplify operations and create value.',
     'i-intro2': 'At the intersection of Product Management, operations and digital transformation, I work with Engineering, Data and Business teams to turn complex needs into concrete, adopted, high-performing solutions.',
-    'i-tlhead': '🎬 Journey · 2001 → 2025',
+    'i-tlhead': '🎬 Journey · 2017 → 2026',
     'i-c1-h3': 'On the ground, under pressure',
     'i-c1-li1': 'Coordinated teams in demanding, operationally constrained environments',
     'i-c1-li2': 'Built a culture of execution, cross-team collaboration and complex problem-solving',
