@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Laurence Maestracci · Structurer le chaos</title>
+<title>Laurence Maestracci · Senior Product Manager</title>
+<meta name="description" content="Senior Product Manager spécialisée dans les produits SaaS B2B, les plateformes métiers, le delivery et l'adoption produit." id="meta-desc">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -142,27 +143,48 @@
     text-transform:uppercase;
   }
   h1.thesis .chaos{
+    position:relative;
     color:var(--ink-dim);
-    text-decoration:line-through;
-    text-decoration-color:var(--ink-dim);
-    text-decoration-thickness:5px;
     display:inline-block;
     transition:transform .2s ease;
     cursor:default;
   }
+  h1.thesis .chaos::after{
+    content:"";
+    position:absolute;
+    left:-2%; right:-2%; top:50%;
+    height:5px;
+    background:var(--ink-dim);
+    transform:scaleX(0);
+    transform-origin:left center;
+    animation:strikeIn .5s ease .4s forwards;
+  }
   h1.thesis .chaos:hover{transform:rotate(-4deg) scale(1.05);}
+  @keyframes strikeIn{to{transform:scaleX(1);}}
   h1.thesis .arrow{
     color:var(--teal);
     margin:0 0.15em;
     display:inline-block;
+    opacity:0;
+    animation:arrowIn .4s ease .95s forwards;
   }
+  @keyframes arrowIn{to{opacity:1;}}
   h1.thesis .accent{
     color:var(--amber);
     display:inline-block;
+    opacity:0;
+    transform:translateX(-10px);
     transition:transform .2s cubic-bezier(.34,1.56,.64,1);
+    animation:flowIn .55s cubic-bezier(.34,1.56,.64,1) 1.1s forwards;
     cursor:default;
   }
   h1.thesis .accent:hover{transform:scale(1.06) rotate(1deg);}
+  @keyframes flowIn{to{opacity:1; transform:translateX(0);}}
+  @media (prefers-reduced-motion: reduce){
+    h1.thesis .chaos::after{animation:none; transform:scaleX(1);}
+    h1.thesis .arrow{animation:none; opacity:1;}
+    h1.thesis .accent{animation:none; opacity:1; transform:none;}
+  }
   .hero-wink{
     font-family:'Space Mono',monospace;
     font-size:0.8rem;
@@ -515,6 +537,78 @@
     50%{transform:scaleY(1);}
   }
 
+  /* ---------- Hiretrack NX before/after scene (2017-2020) ---------- */
+  .hiretrack-scene{
+    position:relative;
+    width:100%;
+    flex:1;
+    min-height:220px;
+    display:flex;
+    align-items:stretch;
+    gap:16px;
+  }
+  .hs-before{
+    position:relative;
+    flex:1;
+    min-width:0;
+    border-radius:10px;
+    background:#0d0e11;
+    overflow:hidden;
+  }
+  .hs-icon{
+    position:absolute;
+    width:38px; height:38px;
+    animation:hsFloat 4s ease-in-out infinite;
+    transform:rotate(var(--r,0deg));
+    filter:drop-shadow(0 3px 6px rgba(0,0,0,0.5));
+  }
+  .hs-icon:nth-child(2){animation-delay:-1.3s;}
+  .hs-icon:nth-child(3){animation-delay:-2.6s;}
+  @keyframes hsFloat{
+    0%,100%{transform:rotate(var(--r,0deg)) translateY(0);}
+    50%{transform:rotate(var(--r,0deg)) translateY(-6px);}
+  }
+  .hs-tag{
+    position:absolute;
+    left:8%; bottom:6%;
+    font-family:'Space Mono',monospace;
+    font-size:0.65rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+  }
+  .hs-arrow{
+    display:flex;
+    align-items:center;
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    font-size:1.6rem;
+    color:var(--teal);
+    flex-shrink:0;
+  }
+  .hs-after{
+    position:relative;
+    flex:1.3;
+    min-width:0;
+    border-radius:10px;
+    overflow:hidden;
+  }
+  .hs-after img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    opacity:0;
+  }
+  .hs-after.count-2 img{animation:fadeCycle2 8s infinite;}
+  .hs-after.count-2 img:nth-child(1){animation-delay:0s;}
+  .hs-after.count-2 img:nth-child(2){animation-delay:4s;}
+  @media (max-width:640px){
+    .hiretrack-scene{flex-direction:column;}
+    .hs-arrow{transform:rotate(90deg); align-self:center;}
+  }
+
   .chaos-scene{
     position:relative;
     width:100%;
@@ -566,7 +660,9 @@
   .platform-mini .pm-row{height:7px; border-radius:3px; background:rgba(247,242,233,0.18);}
   .platform-mini .pm-row.short{width:55%;}
   @media (prefers-reduced-motion: reduce){
-    .av-scene .flash, .av-scene .punch-word, .av-scene .vf-bracket, .av-scene .scan, .av-scene .eq span, .chaos-item, .platform-mini{animation:none !important; opacity:1 !important; transform:none !important;}
+    .av-scene .flash, .av-scene .punch-word, .av-scene .vf-bracket, .av-scene .scan, .av-scene .eq span, .chaos-item, .platform-mini, .hs-icon, .hs-after img{animation:none !important; opacity:1 !important; transform:none !important;}
+    .hs-after img{opacity:1 !important;}
+    .hs-after img:not(:first-child){display:none;}
     .av-scene .punch-word{display:none;}
     .av-scene .punch-word.w1{display:flex;}
   }
@@ -722,7 +818,7 @@
       <div class="hero-text">
         <div class="eyebrow">Laurence Maestracci · Senior Product Manager</div>
         <h1 class="thesis" id="i-thesis"><span class="chaos">Chaos</span><span class="arrow">→</span><span class="accent">Flow.</span></h1>
-        <p class="hero-sub" id="i-herosub">Product Operations · SaaS B2B · Workflow Automation · Digital Transformation. Dix ans à transformer des besoins complexes en plateformes concrètes, adoptées et performantes.</p>
+        <p class="hero-sub" id="i-herosub">Product Strategy · SaaS B2B · Product Operations · Delivery &amp; Adoption. Une dizaine d'années à transformer des besoins complexes en produits concrets, adoptés et performants.</p>
       </div>
       <div class="hero-portrait">
         <span class="bracket tl"></span>
@@ -736,22 +832,22 @@
 
   <section class="intro">
     <div class="intro-text">
-      <p id="i-intro1">Depuis une dizaine d'années, je conçois et fais évoluer des plateformes SaaS, des workflows métier et des produits digitaux qui simplifient les opérations et créent de la valeur.</p>
-      <p id="i-intro2">À l'intersection du Product Management, des opérations et de la transformation digitale, je collabore avec les équipes Engineering, Data et Business pour transformer des besoins complexes en solutions concrètes, adoptées et performantes.</p>
+      <p id="i-intro1">Senior Product Manager à l'intersection du produit, de la tech et des opérations. Depuis une dizaine d'années, je transforme des besoins métiers complexes en produits SaaS et plateformes digitales, de la vision et de la roadmap jusqu'au delivery, à l'adoption et à la mesure d'impact. Je travaille au plus près des équipes Engineering, Data, Business et des utilisateurs pour arbitrer les priorités et construire des solutions utiles, capables de passer à l'échelle et performantes.</p>
     </div>
     <div class="intro-skills">
       <div class="skills-head" id="i-skhead">🛠️ Compétences</div>
       <div class="skills-grid">
-        <div class="skill-cell"><b id="i-sk1-b">Produit</b><span id="i-sk1-t">Product Management &amp; Product Operations</span></div>
-        <div class="skill-cell"><b id="i-sk2-b">Plateformes</b><span id="i-sk2-t">SaaS B2B &amp; plateformes métiers</span></div>
-        <div class="skill-cell"><b id="i-sk3-b">Process</b><span id="i-sk3-t">Workflow Automation &amp; Digital Transformation</span></div>
-        <div class="skill-cell"><b id="i-sk4-b">Delivery</b><span id="i-sk4-t">Roadmap, Delivery &amp; Adoption</span></div>
-        <div class="skill-cell"><b id="i-sk5-b">Data</b><span id="i-sk5-t">KPIs &amp; automatisation par l'IA</span></div>
-        <div class="skill-cell"><b id="i-sk6-b">Leadership</b><span id="i-sk6-t">Gestion transverse des parties prenantes</span></div>
-        <div class="skill-cell"><b>Outils</b>Jira, Trello, Asana, Bugasura</div>
-        <div class="skill-cell"><b>Outils</b>Easyjob, Hiretrack NX, 1CRM</div>
-        <div class="skill-cell"><b id="i-sk9-b">Data &amp; design</b>SQL (notions), PowerBI, Figma</div>
-        <div class="skill-cell"><b>Support</b>Slack, Zendesk, Canva, Microsoft 365</div>
+        <div class="skill-cell"><b id="i-sk1-b">Stratégie produit</b><span id="i-sk1-t">Vision, discovery et priorisation</span></div>
+        <div class="skill-cell"><b id="i-sk2-b">Roadmap &amp; delivery</b><span id="i-sk2-t">Cadrage, coordination, tests et releases</span></div>
+        <div class="skill-cell"><b id="i-sk3-b">Adoption</b><span id="i-sk3-t">Onboarding, formation et conduite du changement</span></div>
+        <div class="skill-cell"><b id="i-sk4-b">Plateformes</b><span id="i-sk4-t">SaaS B2B, produits web et mobile, workflows métiers</span></div>
+        <div class="skill-cell"><b id="i-sk5-b">Data &amp; impact</b><span id="i-sk5-t">KPIs, reporting et amélioration continue</span></div>
+        <div class="skill-cell"><b id="i-sk6-b">Leadership transverse</b><span id="i-sk6-t">Alignement Engineering, Data, Business et utilisateurs</span></div>
+        <div class="skill-cell"><b id="i-sk7-b">Product &amp; delivery</b><span id="i-sk7-t">Jira, Asana, Trello, Notion, Bugasura</span></div>
+        <div class="skill-cell"><b id="i-sk8-b">Data &amp; insights</b><span id="i-sk8-t">Power BI (notions), SQL (notions), Microsoft Clarity</span></div>
+        <div class="skill-cell"><b id="i-sk9-b">Design &amp; collaboration</b><span id="i-sk9-t">Figma, Slack, Microsoft 365</span></div>
+        <div class="skill-cell"><b id="i-sk10-b">Plateformes métiers</b><span id="i-sk10-t">1CRM, Easyjob, Hiretrack NX, Zendesk</span></div>
+        <div class="skill-cell"><b id="i-sk11-b">IA générative</b><span id="i-sk11-t">ChatGPT, Claude, Gemini, Canva AI, Voiceform AI</span></div>
       </div>
       <div class="langs">
         <span>🇫🇷 <b>FR</b> · <span id="i-lang-fr">langue maternelle</span></span>
@@ -768,40 +864,37 @@
       <div class="tc mono">2017—2020</div>
       <div>
         <span class="role"><img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=encoreglobal.com" alt="Encore Global" loading="lazy">OPERATIONS DEVELOPMENT MANAGER · Encore Global (PSAV)</span>
-        <h3 id="i-c2-h3">Structurer les premiers outils</h3>
+        <h3 id="i-c2-h3">Écouter le terrain, construire les bons outils</h3>
         <ul>
-          <li id="i-c2-li1">Pilotage de l'évolution du système Hiretrack NX sur le périmètre EMEA</li>
-          <li id="i-c2-li2">Gestion des budgets d'investissement et analyses P&amp;L</li>
-          <li id="i-c2-li3">Définition de standards opérationnels et amélioration continue des processus</li>
+          <li id="i-c2-li1">Pilotage de l'évolution fonctionnelle de Hiretrack NX sur le périmètre EMEA</li>
+          <li id="i-c2-li2">Recueil des besoins terrain et traduction en améliorations de workflows</li>
+          <li id="i-c2-li3">Gestion des budgets d'investissement, analyses P&amp;L et définition de standards opérationnels</li>
+          <li id="i-c2-li4">Accompagnement des utilisateurs et amélioration continue des processus</li>
         </ul>
       </div>
       <div class="built">
         <div class="built-text">
-          <span class="built-label mono"><img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=hiretracknx.com" alt="Hiretrack NX" loading="lazy">Construit · Hiretrack NX EMEA</span>
+          <span class="built-label mono"><img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=hiretracknx.com" alt="Hiretrack NX" loading="lazy"><span id="i-bl1">Produit piloté · Hiretrack NX EMEA</span></span>
           <h4>Hiretrack NX, de bout en bout</h4>
-          <p>Développement en méthodologie agile, du premier devis à la dernière facture : gestion du matériel, sous-traitance, bons de commande. Une plateforme unique pour remplacer les mails, Excel et devis papier qui circulaient jusque-là.</p>
+          <p id="i-p1b-p">Évolution fonctionnelle d'une plateforme couvrant l'ensemble du cycle opérationnel, du premier devis à la dernière facture : gestion du matériel, sous-traitance, bons de commande et facturation. L'objectif était de remplacer les échanges dispersés par un workflow métier commun.</p>
         </div>
-        <div class="chaos-scene" aria-hidden="true">
-          <span class="chaos-item" style="--r:-8deg; top:10%; left:9%; color:var(--amber);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
-          </span>
-          <span class="chaos-item" style="--r:6deg; top:16%; right:11%; color:var(--teal); animation-delay:.5s;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 17V11"/><path d="M12 17V7"/><path d="M16 17v-4"/></svg>
-          </span>
-          <span class="chaos-item" style="--r:-4deg; bottom:14%; left:15%; color:var(--coral); animation-delay:1s;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M8 13h8M8 17h5"/></svg>
-          </span>
-          <span class="chaos-item" style="--r:9deg; bottom:12%; right:9%; color:var(--amber); animation-delay:1.5s;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg>
-          </span>
-          <span class="chaos-item" style="--r:0deg; top:42%; left:42%; color:var(--teal); animation-delay:2s;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="4" width="12" height="17" rx="1.5"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 11h6M9 15h6"/></svg>
-          </span>
-          <div class="platform-mini">
-            <span class="pm-label">Hiretrack NX</span>
-            <div class="pm-row"></div>
-            <div class="pm-row short"></div>
-            <div class="pm-row"></div>
+        <div class="hiretrack-scene" aria-hidden="true">
+          <div class="hs-before">
+            <span class="hs-icon" style="--r:-7deg; top:6%; left:8%; color:var(--amber);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
+            </span>
+            <span class="hs-icon" style="--r:5deg; top:38%; left:38%; color:var(--teal);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M8 13h8M8 17h5"/></svg>
+            </span>
+            <span class="hs-icon" style="--r:-4deg; bottom:8%; left:14%; color:var(--coral);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 17V11"/><path d="M12 17V7"/><path d="M16 17v-4"/></svg>
+            </span>
+            <span class="hs-tag" id="i-hs-tag">Mails · devis · Excel</span>
+          </div>
+          <div class="hs-arrow">→</div>
+          <div class="hs-after count-2">
+            <img src="https://www.navigator.uk/wp-content/uploads/2014/07/jobbook-1024x683.png" alt="Interface Hiretrack NX (Job book)" loading="lazy">
+            <img src="https://www.navigator.uk/wp-content/uploads/2014/07/eqlist-1024x683.png" alt="Interface Hiretrack NX (liste d'équipement)" loading="lazy">
           </div>
         </div>
       </div>
@@ -813,24 +906,24 @@
         <span class="role"><img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=encoreglobal.com" alt="Encore Global" loading="lazy">AREA MANAGER · Encore Global</span>
         <h3 id="i-c3-h3">Migrer un système entier, sans casser l'opérationnel</h3>
         <ul>
-          <li id="i-c3-li1">Pilotage d'un programme de transformation digitale et de migration système à l'échelle EMEA</li>
-          <li id="i-c3-li2">Conduite de la migration de Hiretrack NX vers Easyjob, intégration des données et refonte des workflows métier</li>
-          <li id="i-c3-li3">Gestion d'un budget CapEx annuel de 250 000 $, déploiement sur 12 sites en Île-de-France</li>
-          <li id="i-c3-li4">Coordination d'équipes réparties sur plusieurs pays européens et au Moyen-Orient</li>
+          <li id="i-c3-li1">Pilotage du déploiement France et Monaco dans le cadre de la migration EMEA de Hiretrack NX vers Easyjob</li>
+          <li id="i-c3-li2">Préparation et contrôle des données, adaptation des workflows, traduction et recette fonctionnelle</li>
+          <li id="i-c3-li3">Formation et accompagnement des équipes pour sécuriser l'adoption sans perturber les opérations</li>
+          <li id="i-c3-li4">Gestion d'un budget CapEx annuel d'environ 250 000 $ et coordination du déploiement sur 12 sites en Île-de-France</li>
         </ul>
       </div>
       <div class="built">
         <div class="built-text">
-          <span class="built-label mono"><img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=hiretracknx.com" alt="Hiretrack NX" loading="lazy"><img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=protonic-software.com" alt="easyjob" loading="lazy">Construit · Hiretrack NX → Easyjob</span>
+          <span class="built-label mono"><img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=hiretracknx.com" alt="Hiretrack NX" loading="lazy"><img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=protonic-software.com" alt="easyjob" loading="lazy"><span id="i-bl2">Transformation pilotée · Hiretrack NX → Easyjob</span></span>
           <h4 id="i-p1-h4">Migration système EMEA</h4>
-          <p id="i-p1-p">Refonte complète des workflows métier, intégration des données, formation des équipes sur plusieurs pays. Du premier devis à la dernière facture.</p>
+          <p id="i-p1-p">Migration système, reprise des données, adaptation des workflows, recette et formation des utilisateurs. Une transformation menée au plus près du terrain pour préserver la continuité des opérations.</p>
         </div>
         <div class="built-shots count-5">
-          <img src="https://www.navigator.uk/wp-content/uploads/2014/07/jobbook-1024x683.png" alt="Interface Hiretrack NX (Job book)" loading="lazy">
-          <img src="https://www.navigator.uk/wp-content/uploads/2014/07/eqlist-1024x683.png" alt="Interface Hiretrack NX (liste d'équipement)" loading="lazy">
-          <img src="easyjob-1.jpg" alt="Interface easyjob (Jobcenter)" loading="lazy">
-          <img src="easyjob-2.jpg" alt="Interface easyjob (vue ressources)" loading="lazy">
-          <img src="easyjob-3.jpg" alt="Interface easyjob (Kanban tâches)" loading="lazy">
+          <img id="i-shot1" src="https://www.navigator.uk/wp-content/uploads/2014/07/jobbook-1024x683.png" alt="Interface Hiretrack NX (Job book)" loading="lazy">
+          <img id="i-shot2" src="https://www.navigator.uk/wp-content/uploads/2014/07/eqlist-1024x683.png" alt="Interface Hiretrack NX (liste d'équipement)" loading="lazy">
+          <img id="i-shot3" src="easyjob-1.jpg" alt="Interface easyjob (Jobcenter)" loading="lazy">
+          <img id="i-shot4" src="easyjob-2.jpg" alt="Interface easyjob (vue ressources)" loading="lazy">
+          <img id="i-shot5" src="easyjob-3.jpg" alt="Interface easyjob (Kanban tâches)" loading="lazy">
         </div>
       </div>
     </div>
@@ -838,29 +931,31 @@
     <div class="chapter has-built" style="--tilt:0.4deg;">
       <div class="tc mono">2022—2024</div>
       <div>
-        <span class="role"><img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=weareelevate.global" alt="Elevate Global" loading="lazy">REGIONAL PROCESS &amp; PRODUCT LEAD · Elevate Global · Plateforme 1CRM</span>
-        <h3 id="i-c4-h3">De 7 à 70 collaborateurs en 6 mois</h3>
+        <span class="role"><img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=weareelevate.global" alt="Elevate Global" loading="lazy">REGIONAL PROCESS &amp; PRODUCT LEAD · Elevate Global · <span id="i-c4-role-suffix">Plateforme 1CRM</span></span>
+        <h3 id="i-c4-h3">Une plateforme taillée pour l'hypercroissance</h3>
         <ul>
-          <li id="i-c4-li1">Pilotage de l'évolution d'une plateforme CRM multi-marchés (France, Royaume-Uni, États-Unis, Allemagne, Autriche)</li>
-          <li id="i-c4-li2">Conception et optimisation des workflows : onboarding, staffing, booking, paie, facturation, notes de frais, reporting</li>
-          <li id="i-c4-li3">Accompagnement de la croissance de l'organisation française et structuration des process de conformité</li>
+          <li id="i-c4-li1">Pilotage de la roadmap et des priorités d'une plateforme CRM web et mobile utilisée sur cinq marchés</li>
+          <li id="i-c4-li2">Recueil des besoins utilisateurs, optimisation des parcours et coordination des évolutions avec les équipes Product et Engineering</li>
+          <li id="i-c4-li3">Pilotage des tests, du suivi des anomalies, des releases et de l'adoption</li>
+          <li id="i-c4-li4">Accompagnement de la croissance de l'équipe française, passée de 7 à 70 collaborateurs en six mois</li>
         </ul>
       </div>
       <div class="built">
         <div class="built-text">
-          <span class="built-label mono"><img class="co-logo" src="https://play-lh.googleusercontent.com/ZFNlzILlWmhVt3IE5kJpronBolVG5fWpuDA4OUH8F8xRR55xVa2dh66f5X2LMfbg0JshLTboyZbL5fNRNiyvFw=w96-h96" alt="1CRM" loading="lazy">Construit · 1CRM · B2C + B2B</span>
-          <h4 id="i-p2-h4">Plateforme d'embauche end-to-end</h4>
-          <p id="i-p2-p">Candidature, booking, notes de frais, fiches de paye, accès client aux profils staff, exports paye et signature de contrats, conçue avec RH, juristes et cabinets de paye.</p>
+          <span class="built-label mono"><img class="co-logo" src="https://play-lh.googleusercontent.com/ZFNlzILlWmhVt3IE5kJpronBolVG5fWpuDA4OUH8F8xRR55xVa2dh66f5X2LMfbg0JshLTboyZbL5fNRNiyvFw=w96-h96" alt="1CRM" loading="lazy"><span id="i-bl3">Produit piloté · 1CRM · Web + mobile · B2B2C</span></span>
+          <h4 id="i-p2-h4"><span id="i-p2-h4t">Du recrutement à la dernière fiche de paie</span></h4>
+          <p id="i-p2-p">Candidature, onboarding, staffing, booking, notes de frais, fiches de paie, signature des contrats et accès client aux profils. Une plateforme conçue avec les équipes RH, juridiques, paie, opérations et produit.</p>
           <div class="built-links">
             <a href="https://apps.apple.com/fr/app/elevate-global-1crm-fr/id6476973106" target="_blank" rel="noopener">App Store ↗</a>
             <a href="https://play.google.com/store/apps/details?id=com.elevate.crmfr&pcampaignid=web_share" target="_blank" rel="noopener">Google Play ↗</a>
           </div>
         </div>
-        <div class="built-shots count-4">
-          <img src="https://play-lh.googleusercontent.com/8jfBvlaZ96BSMPRpHI6PmVJH7AFaAKY7CJ1G9Q4FOZiiNc8CmfgeWhuOhms5nLDzZQNmdZxcpYEUlUncxkG2=w1200-h675" alt="Capture d'écran de l'app 1CRM" loading="lazy">
-          <img src="https://play-lh.googleusercontent.com/if6ID0w1oj2nrV6F4AFjWXQ1hYWTDv8QcymFxWzZi1cyux6cKPEmqqNfooxqMm_gObRbjo9ocSwFHk5hbuJ7kw=w1200-h675" alt="Capture d'écran de l'app 1CRM" loading="lazy">
-          <img src="https://play-lh.googleusercontent.com/y0Jcwhjglr2uC4OxsXEpGQlBdIM3_Fkg5De6RBKL4Gp6qWZlX_7b0lwCdjt3v9OOiUPUMzHJuM4jgiwnxmMh=w1200-h675" alt="Capture d'écran de l'app 1CRM" loading="lazy">
-          <img src="https://play-lh.googleusercontent.com/XMgGzuXBWfSPZQiUTJZKnf3FgGzPaTqAnU2lGztqHEUM5RcEZJ7pohqvuDrkdklJJMleHoXCAQ7srNWMIe9c=w1200-h675" alt="Capture d'écran de l'app 1CRM" loading="lazy">
+        <div class="built-shots count-5">
+          <img id="i-shot6" src="1crm-1.jpg" alt="Capture d'écran de l'app 1CRM (dashboard)" loading="lazy">
+          <img id="i-shot7" src="1crm-2.jpg" alt="Capture d'écran de l'app 1CRM (accueil)" loading="lazy">
+          <img id="i-shot8" src="1crm-3.jpg" alt="Capture d'écran de l'app 1CRM (menu)" loading="lazy">
+          <img id="i-shot9" src="https://play-lh.googleusercontent.com/8jfBvlaZ96BSMPRpHI6PmVJH7AFaAKY7CJ1G9Q4FOZiiNc8CmfgeWhuOhms5nLDzZQNmdZxcpYEUlUncxkG2=w1200-h675" alt="Capture d'écran de l'app 1CRM" loading="lazy">
+          <img id="i-shot9b" src="https://play-lh.googleusercontent.com/if6ID0w1oj2nrV6F4AFjWXQ1hYWTDv8QcymFxWzZi1cyux6cKPEmqqNfooxqMm_gObRbjo9ocSwFHk5hbuJ7kw=w1200-h675" alt="Capture d'écran de l'app 1CRM" loading="lazy">
         </div>
       </div>
     </div>
@@ -871,26 +966,28 @@
         <span class="role"><img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=weareelevate.global" alt="Elevate Global" loading="lazy">PROJECT MANAGER, IMPACT · Elevate Global</span>
         <h3 id="i-c5-h3">150+ KPIs, un cycle de delivery complet</h3>
         <ul>
-          <li id="i-c5-li1">Pilotage de la roadmap produit pour une plateforme SaaS de reporting opérant sur 5 marchés</li>
-          <li id="i-c5-li2">Définition et suivi des KPIs produit pour orienter les priorités business</li>
-          <li id="i-c5-li3">Coordination d'une équipe transverse Sales, Product et Reporting ; cycle complet cadrage → tests → releases</li>
+          <li id="i-c5-li1">Pilotage de la roadmap et des priorités d'une plateforme SaaS B2B de reporting opérant sur cinq marchés</li>
+          <li id="i-c5-li2">Traduction des besoins clients et business en évolutions fonctionnelles et arbitrage des priorités</li>
+          <li id="i-c5-li3">Coordination transverse des équipes Product, Reporting, Sales et opérations sur l'ensemble du cycle de delivery</li>
+          <li id="i-c5-li4">Pilotage du cadrage, des tests, des releases, de l'onboarding et de l'adoption post-lancement</li>
+          <li id="i-c5-li5">Encadrement d'une Project Coordinator et structuration du suivi des livraisons</li>
         </ul>
       </div>
       <div class="built">
         <div class="built-text">
-          <span class="built-label mono"><img class="co-logo" src="impact-logo.png" alt="Impact" loading="lazy">Construit · Impact · Pur B2B</span>
+          <span class="built-label mono"><img class="co-logo" src="impact-logo.png" alt="Impact" loading="lazy"><span id="i-bl4">Produit piloté · Impact · SaaS B2B</span></span>
           <h4 id="i-p3-h4">Mesure de performance en temps réel</h4>
-          <p id="i-p3-p">Catalogue de plus de 150 KPIs personnalisables, briefs clients, reporting actionnable d'une activation et d'un marché à l'autre.</p>
+          <p id="i-p3-p">Une plateforme de reporting et d'insights proposant plus de 150 KPIs personnalisables, des briefs clients structurés et des résultats actionnables d'une campagne et d'un marché à l'autre.</p>
           <div class="built-links">
             <a href="https://impactv4.weareelevate.global/" target="_blank" rel="noopener"><span id="i-link-impact-platform">Plateforme</span> ↗</a>
             <a href="https://weareelevate.global/fr/impact/" target="_blank" rel="noopener"><span id="i-link-impact-site">Site Impact</span> ↗</a>
           </div>
         </div>
         <div class="built-shots count-4">
-          <img src="impact-1.jpg" alt="Dashboard Impact" loading="lazy">
-          <img src="impact-2.jpg" alt="Dashboard Impact" loading="lazy">
-          <img src="impact-3.jpg" alt="Résultats de campagne Impact (anonymisé)" loading="lazy">
-          <img src="impact-4.jpg" alt="Résultats de campagne Impact (anonymisé)" loading="lazy">
+          <img id="i-shot10" src="impact-1.jpg" alt="Dashboard Impact" loading="lazy">
+          <img id="i-shot11" src="impact-2.jpg" alt="Dashboard Impact" loading="lazy">
+          <img id="i-shot12" src="impact-3.jpg" alt="Résultats de campagne Impact (anonymisé)" loading="lazy">
+          <img id="i-shot13" src="impact-4.jpg" alt="Résultats de campagne Impact (anonymisé)" loading="lazy">
         </div>
       </div>
     </div>
@@ -937,55 +1034,69 @@
   // ---- i18n: FR (default, in markup) / EN (translations below) ----
   const translations = {
     'i-thesis': '<span class="chaos">Chaos</span><span class="arrow">→</span><span class="accent">Flow.</span>',
-    'i-herosub': 'Product Operations · SaaS B2B · Workflow Automation · Digital Transformation. Ten years turning complex needs into concrete platforms, adopted and performing.',
-    'i-intro1': 'For about ten years, I\'ve designed and evolved SaaS platforms, business workflows and digital products that simplify operations and create value.',
-    'i-intro2': 'At the intersection of Product Management, operations and digital transformation, I work with Engineering, Data and Business teams to turn complex needs into concrete, adopted, high-performing solutions.',
-    'i-tlhead': '🎬 Journey · 2017 → 2026',
-    'i-c1-h3': 'On the ground, under pressure',
-    'i-c1-li1': 'Coordinated teams in demanding, operationally constrained environments',
-    'i-c1-li2': 'Built a culture of execution, cross-team collaboration and complex problem-solving',
-    'i-c2-h3': 'Structuring the first tools',
-    'i-c2-li1': 'Led the evolution of the Hiretrack NX system across the EMEA region',
-    'i-c2-li2': 'Managed investment budgets and P&amp;L analysis',
-    'i-c2-li3': 'Defined operational standards and drove continuous process improvement',
-    'i-c3-h3': 'Migrating an entire system without breaking operations',
-    'i-c3-li1': 'Led a digital transformation and system migration program at EMEA scale',
-    'i-c3-li2': 'Drove the migration from Hiretrack NX to Easyjob, data integration and workflow redesign',
-    'i-c3-li3': 'Managed an annual CapEx budget of $250,000, rolled out across 12 sites in Île-de-France',
-    'i-c3-li4': 'Coordinated teams across several European countries and the Middle East',
-    'i-c4-h3': 'From 7 to 70 people in 6 months',
-    'i-c4-li1': 'Led the evolution of a multi-market CRM platform (France, UK, US, Germany, Austria)',
-    'i-c4-li2': 'Designed and optimized workflows: onboarding, staffing, booking, payroll, invoicing, expenses, reporting',
-    'i-c4-li3': 'Supported the growth of the French organization and structured compliance processes',
-    'i-c5-h3': '150+ KPIs, a full delivery cycle',
-    'i-c5-li1': 'Led the product roadmap for a SaaS reporting platform operating across 5 markets',
-    'i-c5-li2': 'Defined and tracked product KPIs to steer business priorities',
-    'i-c5-li3': 'Coordinated a cross-functional Sales, Product and Reporting team; full cycle from scoping to testing to release',
+    'i-herosub': 'Product Strategy · B2B SaaS · Product Operations · Delivery &amp; Adoption. About ten years turning complex needs into useful, widely adopted and high-performing products.',
+    'i-intro1': 'Senior Product Manager working at the intersection of product, technology and operations. For about ten years, I have turned complex business needs into SaaS products and digital platforms, from product vision and roadmap to delivery, adoption and impact measurement. I work closely with Engineering, Data, Business and users to prioritize effectively and build useful, scalable and high-performing solutions.',
+    'i-c2-h3': 'Listen to the ground, build the right tools',
+    'i-c2-li1': 'Led the functional evolution of Hiretrack NX across the EMEA region',
+    'i-c2-li2': 'Gathered operational needs and translated them into workflow improvements',
+    'i-c2-li3': 'Managed investment budgets, P&amp;L analysis and operational standards',
+    'i-c2-li4': 'Supported users and drove continuous process improvement',
+    'i-bl1': 'Product scope · Hiretrack NX EMEA',
+    'i-hs-tag': 'Emails · quotes · Excel',
+    'i-p1b-p': 'Functional evolution of a platform covering the full operational cycle, from the first quote to the final invoice: equipment, subcontracting, purchase orders and invoicing. The goal was to replace fragmented exchanges with a shared business workflow.',
+    'i-c3-li1': 'Led the France and Monaco rollout as part of the EMEA migration from Hiretrack NX to Easyjob',
+    'i-c3-li2': 'Managed data preparation and validation, workflow adaptation, translation and functional testing',
+    'i-c3-li3': 'Trained and supported teams to secure adoption without disrupting operations',
+    'i-c3-li4': 'Managed an annual CapEx budget of approximately $250,000 and coordinated rollout across 12 sites in the Paris region',
+    'i-bl2': 'Transformation led · Hiretrack NX → Easyjob',
+    'i-p1-h4': 'EMEA system migration',
+    'i-p1-p': 'System migration, data transition, workflow adaptation, functional testing and user training. A transformation delivered close to operational teams to maintain business continuity.',
+    'i-c4-role-suffix': 'Platform',
+    'i-c4-h3': 'A platform built for hypergrowth',
+    'i-c4-li1': 'Led the roadmap and priorities of a web and mobile CRM platform used across five markets',
+    'i-c4-li2': 'Gathered user needs, improved journeys and coordinated product changes with Product and Engineering',
+    'i-c4-li3': 'Managed testing, issue tracking, releases and adoption',
+    'i-c4-li4': 'Supported the growth of the French organization from 7 to 70 employees in six months',
+    'i-bl3': 'Product scope · 1CRM · Web + mobile · B2B2C',
+    'i-p2-h4t': 'From application to the last payslip',
+    'i-p2-p': 'Applications, onboarding, staffing, booking, expenses, payslips, contract signing and client access to staff profiles. A platform shaped with HR, Legal, Payroll, Operations and Product teams.',
+    'i-c5-h3': '150+ KPIs, a complete delivery cycle',
+    'i-c5-li1': 'Led the roadmap and priorities of a B2B SaaS reporting platform operating across five markets',
+    'i-c5-li2': 'Translated customer and business needs into functional changes and prioritized the roadmap',
+    'i-c5-li3': 'Coordinated Product, Reporting, Sales and Operations throughout the delivery cycle',
+    'i-c5-li4': 'Led scoping, testing, releases, onboarding and post-launch adoption',
+    'i-c5-li5': 'Managed a Project Coordinator and structured delivery tracking',
+    'i-bl4': 'Product scope · Impact · B2B SaaS',
+    'i-p3-h4': 'Real-time performance measurement',
+    'i-p3-p': 'A reporting and insights platform offering 150+ customizable KPIs, structured client briefs and actionable results across campaigns and markets.',
+    'i-link-impact-platform': 'Platform',
+    'i-link-impact-site': 'Impact site',
     'i-c6-role': 'NEW CHAPTER',
     'i-c6-h3': 'Elevate France has closed. What comes next starts now.',
     'i-c6-li1': 'Available to build the next platform, structure the next chaos',
-    'i-p1-h4': 'EMEA system migration',
-    'i-p1-p': 'Full redesign of business workflows, data integration, team training across several countries. From the first quote to the last invoice.',
-    'i-p2-h4': 'End-to-end hiring platform',
-    'i-p2-p': 'Applications, booking, expenses, payslips, client access to staff profiles, payroll exports and contract signing, built with HR, legal and payroll partners.',
-    'i-p3-h4': 'Real-time performance measurement',
-    'i-p3-p': 'A catalog of 150+ customizable KPIs, client briefs, actionable reporting across activations and markets.',
-    'i-link-impact-platform': 'Platform',
-    'i-link-impact-site': 'Impact site',
     'i-skhead': '🛠️ Skills',
-    'i-sk1-b': 'Product',
-    'i-sk1-t': 'Product Management &amp; Product Operations',
-    'i-sk2-b': 'Platforms',
-    'i-sk2-t': 'SaaS B2B &amp; business platforms',
-    'i-sk3-b': 'Process',
-    'i-sk3-t': 'Workflow Automation &amp; Digital Transformation',
-    'i-sk4-b': 'Delivery',
-    'i-sk4-t': 'Roadmap, Delivery &amp; Adoption',
-    'i-sk5-b': 'Data',
-    'i-sk5-t': 'KPIs &amp; AI-driven automation',
-    'i-sk6-b': 'Leadership',
-    'i-sk6-t': 'Cross-functional stakeholder management',
-    'i-sk9-b': 'Data &amp; design',
+    'i-sk1-b': 'Product strategy',
+    'i-sk1-t': 'Vision, discovery and prioritization',
+    'i-sk2-b': 'Roadmap &amp; delivery',
+    'i-sk2-t': 'Scoping, coordination, testing and releases',
+    'i-sk3-b': 'Adoption',
+    'i-sk3-t': 'Onboarding, training and change management',
+    'i-sk4-b': 'Platforms',
+    'i-sk4-t': 'B2B SaaS, web and mobile products, business workflows',
+    'i-sk5-b': 'Data &amp; impact',
+    'i-sk5-t': 'KPIs, reporting and continuous improvement',
+    'i-sk6-b': 'Cross-functional leadership',
+    'i-sk6-t': 'Aligning Engineering, Data, Business and users',
+    'i-sk7-b': 'Product &amp; delivery',
+    'i-sk7-t': 'Jira, Asana, Trello, Notion, Bugasura',
+    'i-sk8-b': 'Data &amp; insights',
+    'i-sk8-t': 'Power BI (basic), basic SQL, Microsoft Clarity',
+    'i-sk9-b': 'Design &amp; collaboration',
+    'i-sk9-t': 'Figma, Slack, Microsoft 365',
+    'i-sk10-b': 'Business platforms',
+    'i-sk10-t': '1CRM, Easyjob, Hiretrack NX, Zendesk',
+    'i-sk11-b': 'Generative AI',
+    'i-sk11-t': 'ChatGPT, Claude, Gemini, Canva AI, Voiceform AI',
     'i-lang-fr': 'native',
     'i-lang-en': 'fluent',
     'i-lang-pt': 'good level',
@@ -994,13 +1105,29 @@
     'i-foot-h2': 'Ready to structure the next chaos, in a product team that builds fast and builds straight.',
     'i-lbl-phone': 'Phone',
     'i-lbl-loc': 'Location',
-    'i-fn-formation-label': 'Education',
-    'i-fn-formation-p': 'Film degree, Université de Montréal. Background in mathematics and film.',
-    'i-fn-interests-label': 'Interests',
-    'i-fn-interests-p': '🥋 Capoeira (practice and teaching), 🏋️ Hyrox and functional training.',
     'i-foot-sign': 'Made with structure. And a bit of chaos, obviously. 🩷'
   };
-  const portraitAlt = { fr:'Portrait de Laurence Maestracci', en:'Portrait of Laurence Maestracci' };
+  const altTranslations = {
+    'i-portrait': { fr:'Portrait de Laurence Maestracci', en:'Portrait of Laurence Maestracci' },
+    'i-shot1': { fr:"Interface Hiretrack NX (Job book)", en:'Hiretrack NX interface (Job book)' },
+    'i-shot2': { fr:"Interface Hiretrack NX (liste d'équipement)", en:'Hiretrack NX interface (equipment list)' },
+    'i-shot3': { fr:'Interface easyjob (Jobcenter)', en:'easyjob interface (Jobcenter)' },
+    'i-shot4': { fr:'Interface easyjob (vue ressources)', en:'easyjob interface (resource view)' },
+    'i-shot5': { fr:'Interface easyjob (Kanban tâches)', en:'easyjob interface (task Kanban)' },
+    'i-shot6': { fr:"Capture d'écran de l'app 1CRM (dashboard)", en:'1CRM app screenshot (dashboard)' },
+    'i-shot7': { fr:"Capture d'écran de l'app 1CRM (accueil)", en:'1CRM app screenshot (home)' },
+    'i-shot8': { fr:"Capture d'écran de l'app 1CRM (menu)", en:'1CRM app screenshot (menu)' },
+    'i-shot9': { fr:"Capture d'écran de l'app 1CRM", en:'1CRM app screenshot' },
+    'i-shot9b': { fr:"Capture d'écran de l'app 1CRM", en:'1CRM app screenshot' },
+    'i-shot10': { fr:'Dashboard Impact', en:'Impact dashboard' },
+    'i-shot11': { fr:'Dashboard Impact', en:'Impact dashboard' },
+    'i-shot12': { fr:'Résultats de campagne Impact (anonymisé)', en:'Impact campaign results (anonymized)' },
+    'i-shot13': { fr:'Résultats de campagne Impact (anonymisé)', en:'Impact campaign results (anonymized)' }
+  };
+  const metaTranslations = {
+    title: { fr:"Laurence Maestracci · Senior Product Manager", en:"Laurence Maestracci · Senior Product Manager" },
+    desc: { fr:"Senior Product Manager spécialisée dans les produits SaaS B2B, les plateformes métiers, le delivery et l'adoption produit.", en:"Senior Product Manager specializing in B2B SaaS products, business platforms, product delivery and adoption." }
+  };
 
   const frCache = {};
   Object.keys(translations).forEach(id=>{
@@ -1014,8 +1141,14 @@
       if(!el) return;
       el.innerHTML = lang === 'en' ? translations[id] : frCache[id];
     });
-    const img = document.getElementById('i-portrait');
-    if(img) img.alt = lang === 'en' ? portraitAlt.en : portraitAlt.fr;
+    Object.keys(altTranslations).forEach(id=>{
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.alt = lang === 'en' ? altTranslations[id].en : altTranslations[id].fr;
+    });
+    document.title = lang === 'en' ? metaTranslations.title.en : metaTranslations.title.fr;
+    const metaDesc = document.getElementById('meta-desc');
+    if(metaDesc) metaDesc.setAttribute('content', lang === 'en' ? metaTranslations.desc.en : metaTranslations.desc.fr);
     document.documentElement.lang = lang;
     document.getElementById('btnFr').classList.toggle('active', lang==='fr');
     document.getElementById('btnEn').classList.toggle('active', lang==='en');
