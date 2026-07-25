@@ -555,18 +555,42 @@
     background:#0d0e11;
     overflow:hidden;
   }
+  .hs-before-art img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .hs-before-art .hs-tag{
+    background:rgba(13,14,17,0.75);
+    padding:3px 8px;
+    border-radius:4px;
+    backdrop-filter:blur(2px);
+  }
   .hs-icon{
     position:absolute;
-    width:38px; height:38px;
-    animation:hsFloat 4s ease-in-out infinite;
+    width:34px; height:34px;
+    animation:hsFloat 4.5s ease-in-out infinite;
     transform:rotate(var(--r,0deg));
     filter:drop-shadow(0 3px 6px rgba(0,0,0,0.5));
   }
-  .hs-icon:nth-child(2){animation-delay:-1.3s;}
-  .hs-icon:nth-child(3){animation-delay:-2.6s;}
   @keyframes hsFloat{
     0%,100%{transform:rotate(var(--r,0deg)) translateY(0);}
-    50%{transform:rotate(var(--r,0deg)) translateY(-6px);}
+    50%{transform:rotate(var(--r,0deg)) translateY(-7px);}
+  }
+  .hs-screen{
+    position:absolute;
+    top:50%; left:50%;
+    width:56px; height:56px;
+    transform:translate(-50%,-50%);
+    color:var(--ink-dim);
+    opacity:0.5;
+    animation:hsScreenPulse 3.4s ease-in-out infinite;
+  }
+  .hs-screen svg{width:100%; height:100%;}
+  @keyframes hsScreenPulse{
+    0%,100%{opacity:0.35;}
+    50%{opacity:0.6;}
   }
   .hs-tag{
     position:absolute;
@@ -607,6 +631,103 @@
   @media (max-width:640px){
     .hiretrack-scene{flex-direction:column;}
     .hs-arrow{transform:rotate(90deg); align-self:center;}
+  }
+
+  /* ---------- Transformation scene (proposal 2, plays once) ---------- */
+  .ts-scene{
+    position:relative;
+    width:100%;
+    min-height:220px;
+    aspect-ratio:16/9;
+    margin-top:16px;
+    border-radius:10px;
+    overflow:hidden;
+    background:#0d0e11;
+  }
+  .ts-figure{
+    position:absolute;
+    left:6%; bottom:8%;
+    width:34px; height:56px;
+    color:var(--ink-dim);
+    transform:rotate(-4deg) translateY(3px) scale(0.96);
+    transform-origin:bottom center;
+    transition:transform 1.5s cubic-bezier(.22,1,.36,1) .3s;
+  }
+  .ts-scene.play .ts-figure{transform:none;}
+  .ts-figure svg{width:100%; height:100%;}
+
+  .ts-clutter{
+    position:absolute;
+    width:30px; height:30px;
+    opacity:0.85;
+    transition:opacity 1s ease .2s, transform 1s ease .2s;
+  }
+  .ts-scene.play .ts-clutter{opacity:0; transform:scale(0.5);}
+  .ts-filename{
+    position:absolute;
+    top:100%; left:0;
+    white-space:nowrap;
+    font-family:'Space Mono',monospace;
+    font-size:0.55rem;
+    color:var(--ink-dim);
+    opacity:0.7;
+  }
+  .ts-line1, .ts-line2{
+    width:70px; height:2px;
+    background:var(--ink-dim);
+    opacity:0.3;
+  }
+  .ts-line1{transform:rotate(22deg);}
+  .ts-line2{transform:rotate(-16deg);}
+
+  .ts-item{
+    position:absolute;
+    width:30px; height:30px;
+    transform:var(--from);
+    transition:transform 1.6s cubic-bezier(.22,1,.36,1) .35s;
+    filter:drop-shadow(0 3px 6px rgba(0,0,0,0.5));
+  }
+  .ts-scene.play .ts-item{transform:var(--to);}
+  .ts-item svg{width:100%; height:100%;}
+
+  .ts-line{
+    position:absolute;
+    left:20%; right:16%; top:52%;
+    height:2px;
+    background:linear-gradient(90deg, var(--teal), var(--amber));
+    transform:scaleX(0);
+    transform-origin:left center;
+    transition:transform 1.2s cubic-bezier(.65,0,.35,1) .3s;
+  }
+  .ts-scene.play .ts-line{transform:scaleX(1);}
+
+  .ts-label{
+    position:absolute;
+    top:58%;
+    transform:translate(-50%,4px);
+    font-family:'Space Mono',monospace;
+    font-size:0.62rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+    opacity:0;
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .ts-scene.play .ts-label{opacity:1; transform:translate(-50%,0);}
+  .ts-scene.play #i-ts-l1{transition-delay:1.5s;}
+  .ts-scene.play #i-ts-l2{transition-delay:1.65s;}
+  .ts-scene.play #i-ts-l3{transition-delay:1.8s;}
+  .ts-scene.play #i-ts-l4{transition-delay:1.95s;}
+
+  @media (max-width:640px){
+    .ts-clutter:nth-of-type(4), .ts-clutter:nth-of-type(5){display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ts-figure{transform:none !important; transition:none !important;}
+    .ts-clutter{opacity:0 !important; transform:scale(0.5) !important; transition:none !important;}
+    .ts-item{transform:var(--to) !important; transition:none !important;}
+    .ts-line{transform:scaleX(1) !important; transition:none !important;}
+    .ts-label{opacity:1 !important; transform:translate(-50%,0) !important; transition:none !important;}
   }
 
   .chaos-scene{
@@ -660,7 +781,7 @@
   .platform-mini .pm-row{height:7px; border-radius:3px; background:rgba(247,242,233,0.18);}
   .platform-mini .pm-row.short{width:55%;}
   @media (prefers-reduced-motion: reduce){
-    .av-scene .flash, .av-scene .punch-word, .av-scene .vf-bracket, .av-scene .scan, .av-scene .eq span, .chaos-item, .platform-mini, .hs-icon, .hs-after img{animation:none !important; opacity:1 !important; transform:none !important;}
+    .av-scene .flash, .av-scene .punch-word, .av-scene .vf-bracket, .av-scene .scan, .av-scene .eq span, .chaos-item, .platform-mini, .hs-icon, .hs-screen, .hs-after img{animation:none !important; opacity:1 !important; transform:none !important;}
     .hs-after img{opacity:1 !important;}
     .hs-after img:not(:first-child){display:none;}
     .av-scene .punch-word{display:none;}
@@ -879,23 +1000,50 @@
           <p id="i-p1b-p">Évolution fonctionnelle d'une plateforme couvrant l'ensemble du cycle opérationnel, du premier devis à la dernière facture : gestion du matériel, sous-traitance, bons de commande et facturation. L'objectif était de remplacer les échanges dispersés par un workflow métier commun.</p>
         </div>
         <div class="hiretrack-scene" aria-hidden="true">
-          <div class="hs-before">
-            <span class="hs-icon" style="--r:-7deg; top:6%; left:8%; color:var(--amber);">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
-            </span>
-            <span class="hs-icon" style="--r:5deg; top:38%; left:38%; color:var(--teal);">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M8 13h8M8 17h5"/></svg>
-            </span>
-            <span class="hs-icon" style="--r:-4deg; bottom:8%; left:14%; color:var(--coral);">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 17V11"/><path d="M12 17V7"/><path d="M16 17v-4"/></svg>
-            </span>
-            <span class="hs-tag" id="i-hs-tag">Mails · devis · Excel</span>
+          <div class="hs-before hs-before-art">
+            <img src="hiretrack-chaos-art.jpg" alt="Illustration du chaos administratif avant Hiretrack NX : mails, devis et Excel qui s'accumulent" loading="lazy">
+            <span class="hs-tag" id="i-hs-tag">Mails · devis · Excel · factures</span>
           </div>
           <div class="hs-arrow">→</div>
           <div class="hs-after count-2">
             <img src="https://www.navigator.uk/wp-content/uploads/2014/07/jobbook-1024x683.png" alt="Interface Hiretrack NX (Job book)" loading="lazy">
             <img src="https://www.navigator.uk/wp-content/uploads/2014/07/eqlist-1024x683.png" alt="Interface Hiretrack NX (liste d'équipement)" loading="lazy">
           </div>
+        </div>
+
+        <div class="ts-scene" role="img" aria-label="Illustration animée : un processus dispersé (mails, devis, Excel) se réorganise en workflow structuré, en quatre étapes : demande, devis, planning, facturation.">
+          <div class="ts-figure">
+            <svg viewBox="0 0 24 40" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="6" r="5"/><path d="M4 39 6 16a6 6 0 0 1 12 0l2 23Z"/></svg>
+          </div>
+
+          <div class="ts-clutter" style="top:6%; left:6%; color:var(--coral);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
+          </div>
+          <div class="ts-clutter" style="top:10%; right:8%; color:var(--teal);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M8 13h8M8 17h5"/></svg>
+            <span class="ts-filename">DEVIS_v8_FINAL</span>
+          </div>
+          <div class="ts-clutter ts-line1" style="top:34%; left:30%;"></div>
+          <div class="ts-clutter ts-line2" style="top:52%; right:26%;"></div>
+
+          <div class="ts-item" style="top:14%; left:22%; color:var(--amber); --from:translate(-30px,-14px) rotate(-10deg) scale(0.9); --to:translate(0,0) rotate(0deg) scale(1);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
+          </div>
+          <div class="ts-item" style="top:18%; left:60%; color:var(--teal); --from:translate(24px,-18px) rotate(9deg) scale(0.9); --to:translate(0,0) rotate(0deg) scale(1);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M8 13h8M8 17h5"/></svg>
+          </div>
+          <div class="ts-item" style="top:16%; left:36%; color:var(--coral); --from:translate(-18px,20px) rotate(-6deg) scale(0.9); --to:translate(0,0) rotate(0deg) scale(1);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 17V11"/><path d="M12 17V7"/><path d="M16 17v-4"/></svg>
+          </div>
+          <div class="ts-item" style="top:20%; left:48%; color:var(--amber); --from:translate(22px,16px) rotate(8deg) scale(0.9); --to:translate(0,0) rotate(0deg) scale(1);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2h9l3 3v17H6z"/><path d="M9 8h6M9 12h6M9 16h3"/><circle cx="17" cy="18" r="3.4"/><path d="M15.7 18h2.6M17 16.7v2.6"/></svg>
+          </div>
+
+          <div class="ts-line"></div>
+          <span class="ts-label" id="i-ts-l1" style="left:22%;">Demande</span>
+          <span class="ts-label" id="i-ts-l2" style="left:36%;">Devis</span>
+          <span class="ts-label" id="i-ts-l3" style="left:48%;">Planning</span>
+          <span class="ts-label" id="i-ts-l4" style="left:60%;">Facturation</span>
         </div>
       </div>
     </div>
@@ -1042,7 +1190,11 @@
     'i-c2-li3': 'Managed investment budgets, P&amp;L analysis and operational standards',
     'i-c2-li4': 'Supported users and drove continuous process improvement',
     'i-bl1': 'Product scope · Hiretrack NX EMEA',
-    'i-hs-tag': 'Emails · quotes · Excel',
+    'i-hs-tag': 'Emails · quotes · Excel · invoices',
+    'i-ts-l1': 'Request',
+    'i-ts-l2': 'Quote',
+    'i-ts-l3': 'Planning',
+    'i-ts-l4': 'Invoicing',
     'i-p1b-p': 'Functional evolution of a platform covering the full operational cycle, from the first quote to the final invoice: equipment, subcontracting, purchase orders and invoicing. The goal was to replace fragmented exchanges with a shared business workflow.',
     'i-c3-li1': 'Led the France and Monaco rollout as part of the EMEA migration from Hiretrack NX to Easyjob',
     'i-c3-li2': 'Managed data preparation and validation, workflow adaptation, translation and functional testing',
@@ -1152,6 +1304,7 @@
     document.documentElement.lang = lang;
     document.getElementById('btnFr').classList.toggle('active', lang==='fr');
     document.getElementById('btnEn').classList.toggle('active', lang==='en');
+    if(typeof replayTransformScene === 'function') replayTransformScene();
   }
 
   // ---- Timecode ruler: ticks + scroll progress ----
@@ -1185,6 +1338,25 @@
   }, {threshold:0.2});
   revealEls.forEach(el=>io.observe(el));
 
+  // ---- Transformation scene (proposal 2): plays once on scroll ----
+  const tsScene = document.querySelector('.ts-scene');
+  if(tsScene){
+    const tsIO = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          tsScene.classList.add('play');
+          tsIO.unobserve(tsScene);
+        }
+      });
+    }, {threshold:0.35});
+    tsIO.observe(tsScene);
+  }
+  function replayTransformScene(){
+    if(!tsScene || !tsScene.classList.contains('play')) return;
+    tsScene.classList.remove('play');
+    void tsScene.offsetWidth;
+    requestAnimationFrame(()=> tsScene.classList.add('play'));
+  }
 
 </script>
 
