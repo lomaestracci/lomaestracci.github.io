@@ -836,7 +836,7 @@
   /* ---------- Footer / contact ---------- */
   .ask-box{
     position:fixed;
-    top:66px; right:24px;
+    top:20px; right:24px;
     z-index:69;
     width:240px;
     padding:14px 16px;
@@ -913,37 +913,58 @@
     color:var(--ink-dim);
   }
   .pblock{
-    padding:40px 0;
+    padding:48px 0;
     border-bottom:1px solid var(--line);
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
-    align-items:start;
+    display:block;
   }
   .pblock:last-child{border-bottom:none;}
   .pb-head{
     display:flex;
     align-items:center;
-    gap:12px;
-    margin-bottom:6px;
+    gap:16px;
+    margin-bottom:10px;
   }
   .pb-head img.co-logo{
-    height:30px;
+    height:44px;
     width:auto;
-    max-width:110px;
+    max-width:160px;
     object-fit:contain;
-    border-radius:4px;
+    border-radius:5px;
     background:#fff;
-    padding:3px 6px;
+    padding:4px 8px;
   }
-  .pb-head h3{font-size:1.3rem;}
+  .pb-head h3{
+    font-family:'Space Mono',monospace;
+    font-size:clamp(1.8rem, 4vw, 2.6rem);
+    font-weight:700;
+  }
   .pb-meta{
-    font-size:0.75rem;
+    font-family:'Space Mono',monospace;
+    font-size:1rem;
     color:var(--ink-dim);
-    letter-spacing:0.04em;
-    margin-bottom:14px;
+    letter-spacing:0.03em;
+    margin-bottom:20px;
   }
-  .pblock p{font-size:0.92rem; line-height:1.65; color:var(--ink-dim); max-width:520px;}
+  .pblock p{font-size:1.05rem; line-height:1.75; color:var(--ink-dim); max-width:none;}
+  .pb-tagline{
+    font-size:1.25rem;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:10px;
+  }
+  .pblock:nth-child(odd) .pb-tagline{color:var(--amber);}
+  .pblock:nth-child(even) .pb-tagline{color:var(--teal);}
+  .pb-keywords{
+    margin-top:18px;
+    font-size:0.78rem;
+    letter-spacing:0.04em;
+    color:var(--ink-dim);
+    opacity:0.85;
+  }
+  .pb-visual{
+    margin-top:28px;
+    max-width:560px;
+  }
   .pb-visual .built-shots{
     position:relative;
     width:100%;
@@ -951,8 +972,9 @@
     border-radius:10px;
     overflow:hidden;
   }
-  @media (max-width:900px){
-    .pblock{grid-template-columns:1fr;}
+  @media (max-width:720px){
+    .pb-head{flex-wrap:wrap;}
+    .pb-visual{max-width:none;}
   }
 
   footer{
@@ -1010,7 +1032,7 @@
   /* ---------- Language switcher ---------- */
   .lang-switch{
     position:fixed;
-    top:20px; right:24px;
+    top:20px; left:88px;
     z-index:70;
     display:flex;
     gap:6px;
@@ -1037,8 +1059,8 @@
     color:var(--bg);
   }
   @media (max-width:720px){
-    .lang-switch{top:12px; right:12px;}
-    .ask-box{top:56px; right:12px; width:min(230px, calc(100vw - 24px));}
+    .lang-switch{top:12px; left:12px;}
+    .ask-box{top:12px; right:12px; width:min(230px, calc(100vw - 24px));}
   }
 </style>
 </head>
@@ -1050,7 +1072,7 @@
 </div>
 
 <div class="ask-box">
-  <div class="ask-label mono" id="i-ask-label">Une question pour moi ?</div>
+  <div class="ask-label mono" id="i-ask-label">Une question pour moi ? Réponse instantanée ci-dessous ↓</div>
   <div class="ask-row">
     <input type="text" id="askInput" class="ask-input" placeholder="Ex : quand es-tu disponible ?" autocomplete="off">
     <button type="button" id="askBtn" class="ask-btn" aria-label="Envoyer">→</button>
@@ -1126,7 +1148,7 @@
       </div>
       <div class="built">
         <div class="built-text">
-          <span class="built-label mono"><img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=hiretracknx.com" alt="Hiretrack NX" loading="lazy"><span id="i-bl1">Produit piloté · Hiretrack NX EMEA</span></span>
+          <span class="built-label mono"><img class="co-logo" src="hiretrack-logo.png" alt="Hiretrack NX" loading="lazy"><span id="i-bl1">Produit piloté · Hiretrack NX EMEA</span></span>
           <h4>Hiretrack NX, de bout en bout</h4>
           <p id="i-p1b-p">Évolution fonctionnelle d'une plateforme couvrant l'ensemble du cycle opérationnel, du premier devis à la dernière facture : gestion du matériel, sous-traitance, bons de commande et facturation. L'objectif était de remplacer les échanges dispersés par un workflow métier commun.</p>
         </div>
@@ -1158,7 +1180,7 @@
       </div>
       <div class="built">
         <div class="built-text">
-          <span class="built-label mono"><img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=hiretracknx.com" alt="Hiretrack NX" loading="lazy"><img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=protonic-software.com" alt="easyjob" loading="lazy"><span id="i-bl2">Transformation pilotée · Hiretrack NX → Easyjob</span></span>
+          <span class="built-label mono"><img class="co-logo" src="hiretrack-logo.png" alt="Hiretrack NX" loading="lazy"><img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=protonic-software.com" alt="easyjob" loading="lazy"><span id="i-bl2">Transformation pilotée · Hiretrack NX → Easyjob</span></span>
           <h4 id="i-p1-h4">Migration système EMEA</h4>
           <p id="i-p1-p">Migration système, reprise des données, adaptation des workflows, recette et formation des utilisateurs. Une transformation menée au plus près du terrain pour préserver la continuité des opérations.</p>
         </div>
@@ -1250,18 +1272,19 @@
 
   <section class="platforms-alt">
     <div class="pa-head">
-      <div class="pa-eyebrow mono" id="i-pa-eyebrow">Format alternatif — à l'essai</div>
-      <h2 id="i-pa-h2">Quatre plateformes, un même fil conducteur</h2>
-      <p id="i-pa-sub">Hiretrack NX · Easyjob · 1CRM · Impact</p>
+      <h2 id="i-pa-h2">Quatre plateformes, un même fil rouge</h2>
+      <p id="i-pa-sub">De la structuration des opérations au pilotage de produits SaaS internationaux, j'ai accompagné quatre plateformes à des moments clés de leur évolution : optimisation, migration, passage à l'échelle et développement d'une culture de la performance.</p>
     </div>
 
     <div class="pblock">
       <div class="pb-head">
-        <img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=hiretracknx.com" alt="Hiretrack NX" loading="lazy">
+        <img class="co-logo" src="hiretrack-logo.png" alt="Hiretrack NX" loading="lazy">
         <h3>Hiretrack NX</h3>
       </div>
-      <div class="pb-meta mono" id="i-pb1-meta">2017—2020 · Operations Development Manager · Encore Global (PSAV)</div>
-      <p id="i-pb1-text">Hiretrack NX était l'outil central de gestion opérationnelle sur le périmètre EMEA, mais ne suivait plus les besoins du terrain. J'ai piloté son évolution fonctionnelle : recueil des besoins opérationnels, traduction en améliorations de workflows, gestion des budgets d'investissement et des analyses P&amp;L, définition de standards. Résultat : une plateforme couvrant l'ensemble du cycle opérationnel, du premier devis à la dernière facture, remplaçant des échanges jusque-là dispersés.</p>
+      <div class="pb-tagline" id="i-pb1-tagline">Structurer les opérations</div>
+      <div class="pb-meta mono" id="i-pb1-meta">ERP métier événementiel · 2017–2020 · Encore Global (PSAV) · Operations Development Manager</div>
+      <p id="i-pb1-text">Hiretrack NX centralisait l'ensemble du cycle opérationnel, du premier devis à la dernière facture : planning, matériel, sous-traitance, achats, staffing, facturation et rentabilité. À partir des besoins des équipes terrain, j'ai piloté son évolution fonctionnelle sur le périmètre EMEA, structuré les workflows et les standards associés, puis accompagné les utilisateurs dans leur adoption. L'objectif : remplacer des pratiques dispersées par un outil et des processus communs, plus fiables et plus fluides.</p>
+      <div class="pb-keywords mono" id="i-pb1-kw">Cycle end-to-end · Périmètre EMEA · Adoption utilisateur</div>
       <div class="pb-visual">
         <div class="built-shots count-2">
           <img src="https://www.navigator.uk/wp-content/uploads/2014/07/jobbook-1024x683.png" alt="Interface Hiretrack NX (Job book)" loading="lazy">
@@ -1275,8 +1298,10 @@
         <img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=protonic-software.com" alt="easyjob" loading="lazy">
         <h3>Easyjob</h3>
       </div>
-      <div class="pb-meta mono" id="i-pb2-meta">2020—2022 · Area Manager · Encore Global</div>
-      <p id="i-pb2-text">Face aux limites de Hiretrack NX, Encore Global a engagé sa migration vers Easyjob à l'échelle EMEA. J'ai piloté le déploiement pour la France et Monaco : préparation et contrôle des données, adaptation des workflows, traduction, recette fonctionnelle, formation des équipes. Résultat : une transformation menée au plus près du terrain, sans perturber les opérations, sur un budget CapEx annuel d'environ 250 000 $ et un déploiement coordonné sur 12 sites en Île-de-France.</p>
+      <div class="pb-tagline" id="i-pb2-tagline">Transformer sans interrompre les opérations</div>
+      <div class="pb-meta mono" id="i-pb2-meta">Migration d'un ERP métier critique · 2020–2022 · Encore Global · Area Manager</div>
+      <p id="i-pb2-text">Dans le cadre de la migration EMEA de Hiretrack NX vers Easyjob, j'ai piloté le déploiement pour la France et Monaco : reprise et fiabilisation des données, adaptation des workflows, traduction, recette fonctionnelle et formation des équipes. La transformation concernait douze sites en Île-de-France et devait préserver la continuité d'opérations quotidiennes particulièrement exigeantes. Au-delà du changement d'outil, l'enjeu était de faire évoluer les pratiques et de sécuriser l'adoption du nouveau système.</p>
+      <div class="pb-keywords mono" id="i-pb2-kw">12 sites · France &amp; Monaco · Migration et conduite du changement</div>
       <div class="pb-visual">
         <div class="built-shots count-3">
           <img src="easyjob-1.jpg" alt="Interface easyjob (Jobcenter)" loading="lazy">
@@ -1291,8 +1316,10 @@
         <img class="co-logo" src="https://play-lh.googleusercontent.com/ZFNlzILlWmhVt3IE5kJpronBolVG5fWpuDA4OUH8F8xRR55xVa2dh66f5X2LMfbg0JshLTboyZbL5fNRNiyvFw=w96-h96" alt="1CRM" loading="lazy">
         <h3>1CRM</h3>
       </div>
-      <div class="pb-meta mono" id="i-pb3-meta">2022—2024 · Regional Process &amp; Product Lead · Elevate Global</div>
-      <p id="i-pb3-text">1CRM est la plateforme CRM web et mobile d'Elevate Global, utilisée sur cinq marchés, en pleine hypercroissance. J'ai piloté sa roadmap et ses priorités : recueil des besoins utilisateurs, optimisation des parcours, coordination avec les équipes Product et Engineering, pilotage des tests, du suivi des anomalies, des releases et de l'adoption. Résultat : une plateforme couvrant tout le cycle de gestion des équipes terrain, de la candidature à la dernière fiche de paie, qui a accompagné la croissance de l'équipe française de 7 à 70 collaborateurs en six mois.</p>
+      <div class="pb-tagline" id="i-pb3-tagline">Passer de 7 à 70 collaborateurs</div>
+      <div class="pb-meta mono" id="i-pb3-meta">Plateforme web et mobile B2B2C · 2022–2024 · Elevate Global · Regional Process &amp; Product Lead</div>
+      <p id="i-pb3-text">1CRM réunissait dans une même plateforme les parcours des équipes terrain, des opérations et des clients : candidature, onboarding, publication des missions, booking, check-in, notes de frais, paie, facturation et reporting. J'ai piloté sa roadmap et ses priorités sur cinq marchés, en transformant les besoins utilisateurs, opérationnels et réglementaires en évolutions produit. J'ai également coordonné les tests, les releases et l'adoption afin que la plateforme puisse accompagner la croissance rapide de l'organisation française, passée de 7 à 70 collaborateurs en six mois.</p>
+      <div class="pb-keywords mono" id="i-pb3-kw">5 marchés · Web + mobile · 7 → 70 collaborateurs</div>
       <div class="pb-visual">
         <div class="built-shots count-5">
           <img src="1crm-1.jpg" alt="Capture d'écran de l'app 1CRM (dashboard)" loading="lazy">
@@ -1309,8 +1336,10 @@
         <img class="co-logo" src="impact-logo.png" alt="Impact" loading="lazy">
         <h3>Impact</h3>
       </div>
-      <div class="pb-meta mono" id="i-pb4-meta">2024—2025 · Project Manager, Impact · Elevate Global</div>
-      <p id="i-pb4-text">Impact est la plateforme SaaS B2B de reporting et de mesure de performance d'Elevate Global, opérant sur cinq marchés. J'ai piloté sa roadmap et ses priorités : traduction des besoins clients et business en évolutions fonctionnelles, coordination transverse des équipes Product, Reporting, Sales et opérations, pilotage du cadrage, des tests, des releases, de l'onboarding et de l'adoption post-lancement, encadrement d'une Project Coordinator. Résultat : plus de 150 KPIs personnalisables, des briefs clients structurés et des résultats actionnables d'une campagne et d'un marché à l'autre.</p>
+      <div class="pb-tagline" id="i-pb4-tagline">Transformer les données en décisions</div>
+      <div class="pb-meta mono" id="i-pb4-meta">Plateforme SaaS B2B de reporting et d'insights · 2024–2025 · Elevate Global · Project Manager, Impact</div>
+      <p id="i-pb4-text">Impact permettait aux clients de suivre et comparer la performance de leurs campagnes grâce à un catalogue de plus de 150 KPIs personnalisables. J'ai piloté la roadmap et les priorités de la plateforme sur cinq marchés, traduit les besoins clients et business en évolutions fonctionnelles et coordonné le delivery avec les équipes Product, Reporting, Sales et Operations. Mon périmètre couvrait le cadrage, les tests, les releases, l'onboarding et l'adoption post-lancement, avec l'encadrement d'une Project Coordinator.</p>
+      <div class="pb-keywords mono" id="i-pb4-kw">150+ KPIs · 5 marchés · Roadmap, delivery et adoption</div>
       <div class="pb-visual">
         <div class="built-shots count-4">
           <img src="impact-1.jpg" alt="Dashboard Impact" loading="lazy">
@@ -1424,7 +1453,7 @@
     'i-lang-en': 'fluent',
     'i-lang-pt': 'good level',
     'i-lang-es': 'basic',
-    'i-ask-label': 'Got a question for me?',
+    'i-ask-label': 'Got a question? Instant answer below ↓',
     'i-foot-eyebrow': '✨ Available now',
     'i-foot-h2': 'Ready to structure the next chaos, in a product team that builds fast and builds straight.',
     'i-lbl-phone': 'Phone',
@@ -1447,17 +1476,24 @@
     'i-shot11': { fr:'Dashboard Impact', en:'Impact dashboard' },
     'i-shot12': { fr:'Résultats de campagne Impact (anonymisé)', en:'Impact campaign results (anonymized)' },
     'i-shot13': { fr:'Résultats de campagne Impact (anonymisé)', en:'Impact campaign results (anonymized)' }
-    'i-pa-eyebrow': 'Alternative format — trial',
-    'i-pa-h2': 'Four platforms, one thread',
-    'i-pa-sub': 'Hiretrack NX · Easyjob · 1CRM · Impact',
-    'i-pb1-meta': '2017—2020 · Operations Development Manager · Encore Global (PSAV)',
-    'i-pb1-text': "Hiretrack NX was the core operational tool across the EMEA region, but it no longer matched real operational needs. I led its functional evolution: gathering operational needs, translating them into workflow improvements, managing investment budgets and P&amp;L analysis, and defining standards. Result: a platform covering the full operational cycle, from the first quote to the final invoice, replacing what had been fragmented exchanges.",
-    'i-pb2-meta': '2020—2022 · Area Manager · Encore Global',
-    'i-pb2-text': "Facing the limits of Hiretrack NX, Encore Global began migrating to Easyjob across EMEA. I led the rollout for France and Monaco: data preparation and validation, workflow adaptation, translation, functional testing, and team training. Result: a transformation delivered close to operational teams without disrupting the business, on an annual CapEx budget of approximately $250,000, coordinated across 12 sites in the Paris region.",
-    'i-pb3-meta': '2022—2024 · Regional Process &amp; Product Lead · Elevate Global',
-    'i-pb3-text': "1CRM is Elevate Global's web and mobile CRM platform, used across five markets during a period of rapid growth. I led its roadmap and priorities: gathering user needs, improving journeys, coordinating with Product and Engineering, and managing testing, issue tracking, releases and adoption. Result: a platform covering the full workforce cycle, from application to the last payslip, that supported the French team's growth from 7 to 70 people in six months.",
-    'i-pb4-meta': '2024—2025 · Project Manager, Impact · Elevate Global',
-    'i-pb4-text': "Impact is Elevate Global's B2B SaaS reporting and performance measurement platform, operating across five markets. I led its roadmap and priorities: translating customer and business needs into functional changes, coordinating Product, Reporting, Sales and Operations, leading scoping, testing, releases, onboarding and post-launch adoption, and managing a Project Coordinator. Result: 150+ customizable KPIs, structured client briefs and actionable results across campaigns and markets.",
+    'i-pa-h2': 'Four platforms, one common thread',
+    'i-pa-sub': 'From structuring operations to steering international SaaS products, I supported four platforms at key moments in their evolution: optimization, migration, scaling, and building a culture of performance.',
+    'i-pb1-tagline': 'Structuring operations',
+    'i-pb1-meta': 'Event-industry ERP · 2017–2020 · Encore Global (PSAV) · Operations Development Manager',
+    'i-pb1-text': "Hiretrack NX centralized the entire operational cycle, from the first quote to the final invoice: planning, equipment, subcontracting, purchasing, staffing, invoicing and profitability. Based on the needs of field teams, I led its functional evolution across the EMEA region, structured the associated workflows and standards, and supported users through adoption. The goal: replace scattered practices with a shared tool and shared processes — more reliable and smoother.",
+    'i-pb1-kw': 'End-to-end cycle · EMEA scope · User adoption',
+    'i-pb2-tagline': 'Transforming without disrupting operations',
+    'i-pb2-meta': 'Migration of a critical business ERP · 2020–2022 · Encore Global · Area Manager',
+    'i-pb2-text': "As part of the EMEA migration from Hiretrack NX to Easyjob, I led the rollout for France and Monaco: data recovery and validation, workflow adaptation, translation, functional testing and team training. The transformation covered twelve sites across the Paris region and had to preserve continuity for particularly demanding daily operations. Beyond the change of tool, the challenge was to evolve working practices and secure adoption of the new system.",
+    'i-pb2-kw': '12 sites · France &amp; Monaco · Migration and change management',
+    'i-pb3-tagline': 'Growing from 7 to 70 people',
+    'i-pb3-meta': 'B2B2C web and mobile platform · 2022–2024 · Elevate Global · Regional Process &amp; Product Lead',
+    'i-pb3-text': "1CRM brought together the journeys of field teams, operations and clients in a single platform: applications, onboarding, job postings, booking, check-in, expenses, payroll, invoicing and reporting. I led its roadmap and priorities across five markets, turning user, operational and regulatory needs into product changes. I also coordinated testing, releases and adoption so the platform could support the French organization's rapid growth, from 7 to 70 people in six months.",
+    'i-pb3-kw': '5 markets · Web + mobile · 7 → 70 people',
+    'i-pb4-tagline': 'Turning data into decisions',
+    'i-pb4-meta': 'B2B SaaS reporting and insights platform · 2024–2025 · Elevate Global · Project Manager, Impact',
+    'i-pb4-text': "Impact let clients track and compare their campaign performance through a catalog of 150+ customizable KPIs. I led the platform's roadmap and priorities across five markets, translated customer and business needs into functional changes, and coordinated delivery with the Product, Reporting, Sales and Operations teams. My scope covered scoping, testing, releases, onboarding and post-launch adoption, including managing a Project Coordinator.",
+    'i-pb4-kw': '150+ KPIs · 5 markets · Roadmap, delivery and adoption',
   };
   const metaTranslations = {
     title: { fr:"Laurence Maestracci · Senior Product Manager", en:"Laurence Maestracci · Senior Product Manager" },
