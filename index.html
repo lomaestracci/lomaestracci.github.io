@@ -327,8 +327,8 @@
   }
   .chapter .built h4{font-size:1.1rem; font-weight:600; margin-bottom:8px; color:var(--ink);}
   .chapter .built p{font-size:0.9rem; color:var(--ink-dim); line-height:1.6; margin:0;}
-  .chapter .built-links{margin-top:14px; display:flex; gap:18px; flex-wrap:wrap;}
-  .chapter .built-links a{
+  .built-links{margin-top:14px; display:flex; gap:18px; flex-wrap:wrap;}
+  .built-links a{
     font-family:'Space Mono',monospace;
     font-size:0.75rem;
     color:var(--teal);
@@ -337,7 +337,7 @@
     padding-bottom:2px;
     transition:color .2s ease, border-color .2s ease;
   }
-  .chapter .built-links a:hover{color:var(--amber); border-color:var(--amber);}
+  .built-links a:hover{color:var(--amber); border-color:var(--amber);}
 
   .built-shots{
     position:relative;
@@ -994,6 +994,8 @@
     letter-spacing:0.03em;
     margin-bottom:4px;
   }
+  .pb-meta a{color:inherit; text-decoration:underline; text-underline-offset:3px; transition:color .2s ease;}
+  .pb-meta a:hover{color:var(--teal);}
   .pb-role{
     font-family:'Space Mono',monospace;
     font-size:1rem;
@@ -1066,6 +1068,25 @@
     .pb-visual{max-width:none;}
   }
 
+  .chapter-note{
+    max-width:640px;
+    padding:32px 8vw 0;
+    opacity:0.8;
+  }
+  .cn-label{
+    font-size:11px;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--teal);
+    display:block;
+    margin-bottom:8px;
+  }
+  .chapter-note p{
+    font-size:0.95rem;
+    color:var(--ink-dim);
+    line-height:1.6;
+    margin:0;
+  }
   footer{
     border-top:1px solid var(--line);
     padding:32px 8vw 80px;
@@ -1161,7 +1182,7 @@
 </div>
 
 <div class="ask-box">
-  <div class="ask-label mono" id="i-ask-label">Une question pour moi ? Réponse instantanée ci-dessous ↓</div>
+  <div class="ask-label mono" id="i-ask-label">Une question pour moi ?<br>Réponse instantanée ci-dessous ↓</div>
   <div class="ask-row">
     <input type="text" id="askInput" class="ask-input" placeholder="Ex : quand es-tu disponible ?" autocomplete="off">
     <button type="button" id="askBtn" class="ask-btn" aria-label="Envoyer">→</button>
@@ -1181,7 +1202,7 @@
       <div class="hero-text">
         <div class="eyebrow">Laurence Maestracci · Senior Product Manager</div>
         <h1 class="thesis" id="i-thesis"><span class="chaos">Chaos</span><span class="arrow">→</span><span class="accent">Flow.</span></h1>
-        <p class="hero-sub" id="i-herosub">Product Strategy · SaaS B2B · Product Operations · Delivery &amp; Adoption. Une dizaine d'années à transformer des besoins complexes en produits concrets, adoptés et performants.</p>
+        <p class="hero-sub" id="i-herosub">Product Strategy · SaaS B2B · Product Operations · Delivery &amp; Adoption.<br>Une dizaine d'années à transformer des besoins complexes en produits concrets, adoptés et performants.</p>
       </div>
       <div class="hero-portrait">
         <span class="bracket tl"></span>
@@ -1234,7 +1255,7 @@
         <h3>Hiretrack NX</h3>
       </div>
       <div class="pb-tagline" id="i-pb1-tagline">Structurer les opérations</div>
-      <div class="pb-meta mono" id="i-pb1-meta">ERP métier événementiel · 2017–2020 · Encore Global (PSAV)</div>
+      <div class="pb-meta mono" id="i-pb1-meta">ERP métier événementiel · 2017–2020 · <a href="https://www.encore-emea.com/fr/" target="_blank" rel="noopener">Encore Global</a> (PSAV)</div>
       <div class="pb-role" id="i-pb1-role">Operations Development Manager</div>
       <div class="pb-keywords mono" id="i-pb1-kw">Cycle end-to-end · Périmètre EMEA · Adoption utilisateur</div>
       <div class="pb-sec">
@@ -1284,7 +1305,7 @@
         <h3>Easyjob</h3>
       </div>
       <div class="pb-tagline" id="i-pb2-tagline">Transformer sans interrompre les opérations</div>
-      <div class="pb-meta mono" id="i-pb2-meta">Migration d'un ERP métier critique · 2020–2022 · Encore Global</div>
+      <div class="pb-meta mono" id="i-pb2-meta">Migration d'un ERP métier critique · 2020–2022 · <a href="https://www.encore-emea.com/fr/" target="_blank" rel="noopener">Encore Global</a></div>
       <div class="pb-role" id="i-pb2-role">Area Manager</div>
       <div class="pb-keywords mono" id="i-pb2-kw">12 sites · France &amp; Monaco · Migration et conduite du changement</div>
       <div class="pb-sec">
@@ -1328,7 +1349,7 @@
         <h3>1CRM</h3>
       </div>
       <div class="pb-tagline" id="i-pb3-tagline">Accompagner le passage à l'échelle</div>
-      <div class="pb-meta mono" id="i-pb3-meta">Plateforme web et mobile B2B2C · 2022–2024 · Elevate Global</div>
+      <div class="pb-meta mono" id="i-pb3-meta">Plateforme web et mobile B2B2C · 2022–2024 · <a href="https://weareelevate.global/fr/" target="_blank" rel="noopener">Elevate Global</a></div>
       <div class="pb-role" id="i-pb3-role">Regional Process &amp; Product Lead</div>
       <div class="pb-keywords mono" id="i-pb3-kw">5 marchés · Web + mobile · 7 → 70 collaborateurs</div>
       <div class="pb-sec">
@@ -1357,6 +1378,10 @@
           <li id="i-pb3-res3">Une plateforme déployée et adaptée aux besoins de cinq marchés</li>
         </ul>
       </div>
+      <div class="built-links">
+        <a href="https://apps.apple.com/fr/app/elevate-global-1crm-fr/id6476973106" target="_blank" rel="noopener">App Store ↗</a>
+        <a href="https://play.google.com/store/apps/details?id=com.elevate.crmfr&pcampaignid=web_share" target="_blank" rel="noopener">Google Play ↗</a>
+      </div>
       <div class="pb-visual pb-visual-portrait">
         <div class="built-shots count-3">
           <img id="i-shot6" src="1crm-1.jpg" alt="Capture d'écran de l'app 1CRM (dashboard)" loading="lazy">
@@ -1373,7 +1398,7 @@
         <h3>Impact</h3>
       </div>
       <div class="pb-tagline" id="i-pb4-tagline">Transformer les données en décisions</div>
-      <div class="pb-meta mono" id="i-pb4-meta">Plateforme SaaS B2B de reporting et d'insights · 2024–2025 · Elevate Global</div>
+      <div class="pb-meta mono" id="i-pb4-meta">Plateforme SaaS B2B de reporting et d'insights · 2024–2025 · <a href="https://weareelevate.global/fr/" target="_blank" rel="noopener">Elevate Global</a></div>
       <div class="pb-role" id="i-pb4-role">Project Manager, Impact</div>
       <div class="pb-keywords mono" id="i-pb4-kw">150+ KPIs · 5 marchés · Roadmap, delivery et adoption</div>
       <div class="pb-sec">
@@ -1403,6 +1428,10 @@
           <li id="i-pb4-res3">Une plateforme opérant sur cinq marchés avec plus de 150 KPIs personnalisables</li>
         </ul>
       </div>
+      <div class="built-links">
+        <a href="https://impactv4.weareelevate.global/" target="_blank" rel="noopener"><span id="i-link-impact-platform">Plateforme</span> ↗</a>
+        <a href="https://weareelevate.global/fr/impact/" target="_blank" rel="noopener"><span id="i-link-impact-site">Site Impact</span> ↗</a>
+      </div>
       <div class="pb-visual">
         <div class="built-shots count-4">
           <img id="i-shot10" src="impact-1.jpg" alt="Dashboard Impact" loading="lazy">
@@ -1414,6 +1443,11 @@
       </div>
     </div>
   </section>
+
+  <div class="chapter-note">
+    <span class="cn-label mono" id="i-cn-label">Nouveau chapitre</span>
+    <p id="i-cn-text">Elevate France a fermé. La prochaine aventure commence maintenant.</p>
+  </div>
 
   <footer>
     <div class="eyebrow" id="i-foot-eyebrow">✨ Disponible maintenant</div>
@@ -1446,7 +1480,7 @@
   // ---- i18n: FR (default, in markup) / EN (translations below) ----
   const translations = {
     'i-thesis': '<span class="chaos">Chaos</span><span class="arrow">→</span><span class="accent">Flow.</span>',
-    'i-herosub': 'Product Strategy · B2B SaaS · Product Operations · Delivery &amp; Adoption. About ten years turning complex needs into useful, widely adopted and high-performing products.',
+    'i-herosub': 'Product Strategy · B2B SaaS · Product Operations · Delivery &amp; Adoption.<br>About ten years turning complex needs into useful, widely adopted and high-performing products.',
     'i-intro1': 'Senior Product Manager working at the intersection of product, technology and operations. For about ten years, I have turned complex business needs into SaaS products and digital platforms, from product vision and roadmap to delivery, adoption and impact measurement. I work closely with Engineering, Data, Business and users to prioritize effectively and build useful, scalable and high-performing solutions.',
     'i-c2-h3': 'Listen to the ground, build the right tools',
     'i-c2-li1': 'Led the functional evolution of Hiretrack NX across the EMEA region',
@@ -1517,7 +1551,9 @@
     'i-lang-en': 'fluent',
     'i-lang-pt': 'good level',
     'i-lang-es': 'basic',
-    'i-ask-label': 'Got a question? Instant answer below ↓',
+    'i-ask-label': 'Got a question?<br>Instant answer below ↓',
+    'i-cn-label': 'New chapter',
+    'i-cn-text': 'Elevate France has closed. The next adventure starts now.',
     'i-foot-eyebrow': '✨ Available now',
     'i-foot-h2': 'Ready to structure the next chaos, in a product team that builds fast and builds straight.',
     'i-lbl-phone': 'Phone',
@@ -1526,7 +1562,7 @@
     'i-pa-h2': 'Four platforms, one common thread',
     'i-pa-sub': 'From structuring operations to steering international SaaS products, I supported four platforms at key moments in their evolution: optimization, migration, scaling, and building a culture of performance.',
     'i-pb1-tagline': 'Structuring operations',
-    'i-pb1-meta': 'Event-industry ERP · 2017–2020 · Encore Global (PSAV)',
+    'i-pb1-meta': 'Event-industry ERP · 2017–2020 · <a href="https://www.encore-emea.com/fr/" target="_blank" rel="noopener">Encore Global</a> (PSAV)',
     'i-pb1-role': 'Operations Development Manager',
     'i-pb1-ctx-l': 'Context',
     'i-pb1-ctx1': 'A full operational cycle split across emails, spreadsheets, paper quotes and local practices',
@@ -1543,7 +1579,7 @@
     'i-pb1-res3': 'More consistent, reliable processes that are easier to manage',
     'i-pb1-kw': 'End-to-end cycle · EMEA scope · User adoption',
     'i-pb2-tagline': 'Transforming without disrupting operations',
-    'i-pb2-meta': 'Migration of a critical business ERP · 2020–2022 · Encore Global',
+    'i-pb2-meta': 'Migration of a critical business ERP · 2020–2022 · <a href="https://www.encore-emea.com/fr/" target="_blank" rel="noopener">Encore Global</a>',
     'i-pb2-role': 'Area Manager',
     'i-pb2-ctx-l': 'Context',
     'i-pb2-ctx1': 'EMEA migration from Hiretrack NX to Easyjob, in an international environment heavily dependent on its business tool',
@@ -1560,7 +1596,7 @@
     'i-pb2-res3': 'Adoption of a shared system and workflows by the teams involved',
     'i-pb2-kw': '12 sites · France &amp; Monaco · Migration and change management',
     'i-pb3-tagline': 'Supporting the shift to scale',
-    'i-pb3-meta': 'B2B2C web and mobile platform · 2022–2024 · Elevate Global',
+    'i-pb3-meta': 'B2B2C web and mobile platform · 2022–2024 · <a href="https://weareelevate.global/fr/" target="_blank" rel="noopener">Elevate Global</a>',
     'i-pb3-role': 'Regional Process &amp; Product Lead',
     'i-pb3-ctx-l': 'Context',
     'i-pb3-ctx1': 'A platform bringing together the journeys of field teams, operations and clients',
@@ -1578,7 +1614,7 @@
     'i-pb3-res3': 'A platform rolled out and adapted to the needs of five markets',
     'i-pb3-kw': '5 markets · Web + mobile · 7 → 70 people',
     'i-pb4-tagline': 'Turning data into decisions',
-    'i-pb4-meta': 'B2B SaaS reporting and insights platform · 2024–2025 · Elevate Global',
+    'i-pb4-meta': 'B2B SaaS reporting and insights platform · 2024–2025 · <a href="https://weareelevate.global/fr/" target="_blank" rel="noopener">Elevate Global</a>',
     'i-pb4-role': 'Project Manager, Impact',
     'i-pb4-ctx-l': 'Context',
     'i-pb4-ctx1': 'A platform letting clients track and compare their campaign performance across five markets',
@@ -1724,18 +1760,73 @@
     }
   ];
   const faqFallback = {
-    fr: "Bonne question ! Écris-moi directement par email ou LinkedIn, je te répondrai avec plaisir.",
-    en: "Good question! Send me an email or a LinkedIn message directly — happy to answer."
+    fr: "Je n'ai pas trouvé de réponse claire sur la page — écris-moi directement par email ou LinkedIn, je te répondrai avec plaisir.",
+    en: "I couldn't find a clear answer on the page — send me an email or a LinkedIn message directly, happy to answer."
   };
+  const stopwords = new Set(['le','la','les','un','une','des','de','du','et','ou','tu','vous','je','est','es','sais','sait','sur','peux','peut','pour','avec','dans','ce','cette','qui','que','quoi','comment','ton','ta','tes','mon','ma','mes','au','aux','en','se','sa','son','ses','utiliser','utilises','utilisez','the','you','know','do','does','is','are','can','your','to','of','in','on','and','with','use','using','used']);
+  function normalize(s){
+    return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9\s]/g,' ');
+  }
+  function tokenize(s){
+    return normalize(s).split(/\s+/).filter(w => w.length >= 3 && !stopwords.has(w));
+  }
+  function buildPageIndex(){
+    const chunks = [];
+    document.querySelectorAll('.skill-cell').forEach(el=>{
+      const text = el.textContent.replace(/\s+/g,' ').trim();
+      if(text) chunks.push({text, source: currentLang==='en' ? 'Skills' : 'Compétences'});
+    });
+    document.querySelectorAll('.pblock').forEach(el=>{
+      const name = el.querySelector('h3')?.textContent.trim() || '';
+      el.querySelectorAll('.pb-tagline, .pb-meta, .pb-role, .pb-sec li, .pb-keywords').forEach(li=>{
+        const text = li.textContent.replace(/\s+/g,' ').trim();
+        if(text) chunks.push({text, source: name});
+      });
+    });
+    document.querySelectorAll('.langs span').forEach(el=>{
+      const text = el.textContent.replace(/\s+/g,' ').trim();
+      if(text) chunks.push({text, source: currentLang==='en' ? 'Languages' : 'Langues'});
+    });
+    const heroSub = document.getElementById('i-herosub');
+    if(heroSub) chunks.push({text: heroSub.textContent.trim(), source: 'Profil'});
+    const intro = document.getElementById('i-intro1');
+    if(intro) chunks.push({text: intro.textContent.trim(), source: 'Profil'});
+    return chunks;
+  }
+  function searchPage(question){
+    const qTokens = tokenize(question);
+    if(!qTokens.length) return null;
+    const chunks = buildPageIndex();
+    let best = null, bestScore = 0;
+    chunks.forEach(chunk=>{
+      const chunkNorm = normalize(chunk.text);
+      let score = 0;
+      qTokens.forEach(t=>{ if(chunkNorm.includes(t)) score++; });
+      if(score > bestScore){ bestScore = score; best = chunk; }
+    });
+    return bestScore > 0 ? best : null;
+  }
   const askInput = document.getElementById('askInput');
   const askBtn = document.getElementById('askBtn');
   const askAnswer = document.getElementById('askAnswer');
   function answerQuestion(){
     if(!askInput || !askAnswer) return;
-    const q = askInput.value.trim().toLowerCase();
-    if(!q) return;
+    const raw = askInput.value.trim();
+    if(!raw) return;
+    const q = raw.toLowerCase();
+    let answer;
     const hit = faq.find(entry => entry.kw.some(k => q.includes(k)));
-    const answer = hit ? hit[currentLang] : faqFallback[currentLang];
+    if(hit){
+      answer = hit[currentLang];
+    } else {
+      const found = searchPage(raw);
+      if(found){
+        const prefix = currentLang==='en' ? `Found in "${found.source}": ` : `Trouvé dans « ${found.source} » : `;
+        answer = prefix + found.text;
+      } else {
+        answer = faqFallback[currentLang];
+      }
+    }
     askAnswer.textContent = answer;
     askAnswer.classList.remove('show');
     void askAnswer.offsetWidth;
