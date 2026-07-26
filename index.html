@@ -1,112 +1,1742 @@
-# HIRETRACK NX
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laurence Maestracci · Senior Product Manager</title>
+<meta name="description" content="Senior Product Manager spécialisée dans les produits SaaS B2B, les plateformes métiers, le delivery et l'adoption produit." id="meta-desc">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#131417;
+    --bg-alt:#1F2024;
+    --ink:#F7F2E9;
+    --ink-dim:#BDAFCB;
+    --amber:#FF2E7E;
+    --teal:#43E8D8;
+    --coral:#FF8AC2;
+    --line: rgba(247,242,233,0.16);
+    --order: 0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 600px at 12% -10%, rgba(255,46,126,0.12), transparent 60%),
+      radial-gradient(ellipse 900px 700px at 100% 10%, rgba(67,232,216,0.10), transparent 60%),
+      radial-gradient(ellipse 700px 900px at 50% 100%, rgba(255,138,194,0.06), transparent 55%),
+      var(--bg);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:'Karla',sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--amber);color:#131417;}
 
-### Structurer les opérations
+  .mono{font-family:'Space Mono',monospace;}
 
-**ERP métier événementiel · 2017–2020 · Encore Global (PSAV)**
-**Operations Development Manager**
+  /* ---------- Timecode ruler (signature element) ---------- */
+  .ruler{
+    position:fixed;
+    left:0; top:0; bottom:0;
+    width:64px;
+    border-right:2px solid var(--amber);
+    z-index:50;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:24px 0;
+    background:#0E0F12;
+    box-shadow:2px 0 24px rgba(0,0,0,0.35);
+  }
+  .ruler-tick{
+    font-family:'Space Mono',monospace;
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:0.05em;
+    color:var(--ink);
+    writing-mode:vertical-rl;
+    text-orientation:mixed;
+    transform:rotate(180deg) translateX(calc(var(--order) * -1px)) skewY(calc((1 - var(--order)) * 3deg));
+    opacity:calc(0.55 + var(--order) * 0.45);
+    transition:opacity .3s ease;
+  }
+  .ruler-progress{
+    position:absolute;
+    left:-1px; top:0;
+    width:2px;
+    background:linear-gradient(180deg, var(--amber), var(--teal));
+    height:0%;
+  }
+  @media (max-width:720px){ .ruler{display:none;} }
 
-**Contexte**
+  main{margin-left:64px;}
+  @media (max-width:720px){ main{margin-left:0;} }
 
-* Un cycle opérationnel complet réparti entre emails, fichiers Excel, devis papier et pratiques locales.
-* Une plateforme couvrant planning, matériel, sous-traitance, achats, staffing, facturation et rentabilité.
+  section{
+    padding:120px 8vw;
+    position:relative;
+  }
 
-**Ce que j’ai piloté**
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:110px 8vw 64px;
+    position:relative;
+  }
+  .hero-content{
+    position:relative; z-index:1;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:64px;
+    max-width:1200px;
+  }
+  .hero-text{max-width:640px;}
+  .hero-portrait{
+    position:relative;
+    flex-shrink:0;
+    width:260px;
+    height:340px;
+  }
+  .hero-portrait img{
+    width:100%; height:100%;
+    object-fit:cover;
+    filter:grayscale(0.15) contrast(1.05);
+    border:1px solid var(--line);
+  }
+  .hero-portrait .bracket{
+    position:absolute;
+    width:22px; height:22px;
+    border-color:var(--teal);
+    border-style:solid;
+    border-width:0;
+  }
+  .hero-portrait .bracket.tl{top:-10px; left:-10px; border-top-width:2px; border-left-width:2px;}
+  .hero-portrait .bracket.tr{top:-10px; right:-10px; border-top-width:2px; border-right-width:2px; border-color:var(--amber);}
+  .hero-portrait .bracket.bl{bottom:-10px; left:-10px; border-bottom-width:2px; border-left-width:2px; border-color:var(--amber);}
+  .hero-portrait .bracket.br{bottom:-10px; right:-10px; border-bottom-width:2px; border-right-width:2px; border-color:var(--teal);}
+  @media (max-width:820px){
+    .hero-content{flex-direction:column-reverse; align-items:flex-start; gap:40px;}
+    .hero-portrait{width:180px; height:230px;}
+  }
+  .eyebrow{
+    font-family:'Space Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.25em;
+    color:var(--amber);
+    text-transform:uppercase;
+    margin-bottom:24px;
+  }
+  h1.thesis{
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    font-size:clamp(2.4rem, 7vw, 5.4rem);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+    margin-bottom:28px;
+    text-transform:uppercase;
+  }
+  h1.thesis .chaos{
+    position:relative;
+    color:var(--ink-dim);
+    display:inline-block;
+    transition:transform .2s ease;
+    cursor:default;
+  }
+  h1.thesis .chaos::after{
+    content:"";
+    position:absolute;
+    left:-2%; right:-2%; top:50%;
+    height:5px;
+    background:var(--ink-dim);
+    transform:scaleX(0);
+    transform-origin:left center;
+    animation:strikeIn .5s ease .4s forwards;
+  }
+  h1.thesis .chaos:hover{transform:rotate(-4deg) scale(1.05);}
+  @keyframes strikeIn{to{transform:scaleX(1);}}
+  h1.thesis .arrow{
+    color:var(--teal);
+    margin:0 0.15em;
+    display:inline-block;
+    opacity:0;
+    animation:arrowIn .4s ease .95s forwards;
+  }
+  @keyframes arrowIn{to{opacity:1;}}
+  h1.thesis .accent{
+    color:var(--amber);
+    display:inline-block;
+    opacity:0;
+    transform:translateX(-10px);
+    transition:transform .2s cubic-bezier(.34,1.56,.64,1);
+    animation:flowIn .55s cubic-bezier(.34,1.56,.64,1) 1.1s forwards;
+    cursor:default;
+  }
+  h1.thesis .accent:hover{transform:scale(1.06) rotate(1deg);}
+  @keyframes flowIn{to{opacity:1; transform:translateX(0);}}
+  @media (prefers-reduced-motion: reduce){
+    h1.thesis .chaos::after{animation:none; transform:scaleX(1);}
+    h1.thesis .arrow{animation:none; opacity:1;}
+    h1.thesis .accent{animation:none; opacity:1; transform:none;}
+  }
+  .hero-wink{
+    font-family:'Space Mono',monospace;
+    font-size:0.8rem;
+    color:var(--ink-dim);
+    margin-top:14px;
+    max-width:560px;
+  }
+  .hero-sub{
+    font-size:clamp(1rem, 1.6vw, 1.25rem);
+    color:var(--ink-dim);
+    max-width:560px;
+    line-height:1.6;
+  }
+  /* ---------- Intro ---------- */
+  .intro{
+    border-top:1px solid var(--line);
+    padding-top:56px;
+    padding-bottom:56px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+    align-items:start;
+  }
+  .timeline{padding-top:24px; padding-bottom:24px; border-top:1px solid var(--line);}
+  .intro-text{max-width:560px;}
+  .intro p{
+    font-size:clamp(1.1rem,2vw,1.5rem);
+    line-height:1.7;
+    color:var(--ink);
+    font-weight:500;
+  }
+  .intro p + p{margin-top:20px; color:var(--ink-dim); font-weight:400; font-size:1.05rem;}
+  @media (max-width:900px){
+    .intro{grid-template-columns:1fr; gap:48px;}
+  }
 
-* Recueil et analyse des besoins des équipes terrain.
-* Évolution fonctionnelle de Hiretrack NX sur le périmètre EMEA.
-* Traduction des besoins opérationnels en workflows et standards communs.
-* Coordination entre les utilisateurs français, les équipes européennes et les partenaires.
-* Formation des équipes et accompagnement dans l’adoption de l’outil.
+  /* ---------- Timeline ---------- */
+  .timeline-head{
+    font-family:'Space Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+    margin-bottom:56px;
+    border-top:1px solid var(--line);
+    padding-top:24px;
+  }
+  .chapter{
+    display:grid;
+    grid-template-columns:90px 1fr;
+    gap:32px;
+    padding:36px 0;
+    border-bottom:1px solid var(--line);
+    opacity:0;
+    transform:translateY(24px) rotate(var(--tilt,0deg));
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .chapter.has-built{grid-template-columns:90px 1fr 1fr; align-items:stretch;}
+  @media (max-width:1080px){
+    .chapter.has-built{grid-template-columns:90px 1fr 1fr; gap:24px;}
+  }
+  .chapter.visible{opacity:1; transform:translateY(0) rotate(0deg);}
+  .chapter .tc{
+    font-family:'Space Mono',monospace;
+    font-size:1.6rem;
+    font-weight:700;
+    line-height:1.1;
+    color:var(--amber);
+    padding-top:2px;
+  }
+  .chapter:nth-child(even) .tc{color:var(--teal);}
+  .chapter h3{
+    font-size:1.25rem;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .chapter .role{
+    font-family:'Space Mono',monospace;
+    font-size:0.8rem;
+    color:var(--ink-dim);
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .chapter .role img.co-logo{
+    height:36px;
+    width:auto;
+    max-width:130px;
+    object-fit:contain;
+    border-radius:4px;
+    background:#fff;
+    padding:4px 8px;
+  }
+  .chapter .built-label img.co-logo{
+    height:34px;
+    width:auto;
+    max-width:120px;
+    object-fit:contain;
+    border-radius:4px;
+    background:#fff;
+    padding:4px 8px;
+  }
+  .chapter ul{list-style:none;}
+  .chapter li{
+    position:relative;
+    padding-left:18px;
+    margin-bottom:8px;
+    color:var(--ink-dim);
+    font-size:0.95rem;
+    line-height:1.55;
+  }
+  .chapter li::before{
+    content:"▸";
+    position:absolute; left:0; color:var(--ink-dim);
+  }
+  .chapter.closing{border-bottom:none;}
+  .chapter.closing h3{color:var(--teal);}
 
-**Résultats**
+  .chapter .built{
+    margin-top:0;
+    padding:0;
+    transition:transform .25s cubic-bezier(.34,1.56,.64,1);
+    display:flex;
+    flex-direction:column;
+    height:100%;
+  }
+  .chapter .built:hover{transform:translateX(4px) rotate(-0.3deg);}
+  .chapter .built-text{margin-bottom:18px;}
+  .chapter .built-label{
+    font-family:'Space Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+    margin-bottom:8px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .chapter .built h4{font-size:1.1rem; font-weight:600; margin-bottom:8px; color:var(--ink);}
+  .chapter .built p{font-size:0.9rem; color:var(--ink-dim); line-height:1.6; margin:0;}
+  .chapter .built-links{margin-top:14px; display:flex; gap:18px; flex-wrap:wrap;}
+  .chapter .built-links a{
+    font-family:'Space Mono',monospace;
+    font-size:0.75rem;
+    color:var(--teal);
+    text-decoration:none;
+    border-bottom:1px solid var(--teal);
+    padding-bottom:2px;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  .chapter .built-links a:hover{color:var(--amber); border-color:var(--amber);}
 
-* Centralisation du cycle opérationnel, du premier devis à la dernière facture.
-* Digitalisation et harmonisation des pratiques sur le périmètre EMEA.
-* Des processus plus homogènes, plus fiables et plus faciles à piloter.
+  .chapter .built-shots{
+    position:relative;
+    width:100%;
+    flex:1;
+    min-height:200px;
+    border-radius:10px;
+    overflow:hidden;
+  }
+  .chapter .built-shots img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+    opacity:0;
+    transition:transform .4s ease;
+  }
+  .chapter .built-shots:hover img{transform:scale(1.02);}
+  .chapter .built-shots:hover img{animation-play-state:paused;}
 
----
+  .chapter .built-shots.count-2 img{animation:fadeCycle2 8s infinite;}
+  .chapter .built-shots.count-2 img:nth-child(1){animation-delay:0s;}
+  .chapter .built-shots.count-2 img:nth-child(2){animation-delay:4s;}
 
-# EASYJOB
+  .chapter .built-shots.count-5 img{animation:fadeCycle5 12.5s infinite;}
+  .chapter .built-shots.count-5 img:nth-child(1){animation-delay:0s;}
+  .chapter .built-shots.count-5 img:nth-child(2){animation-delay:2.5s;}
+  .chapter .built-shots.count-5 img:nth-child(3){animation-delay:5s;}
+  .chapter .built-shots.count-5 img:nth-child(4){animation-delay:7.5s;}
+  .chapter .built-shots.count-5 img:nth-child(5){animation-delay:10s;}
+  @keyframes fadeCycle5{
+    0%{opacity:0;}
+    1.5%{opacity:1;}
+    18.5%{opacity:1;}
+    20%{opacity:0;}
+    100%{opacity:0;}
+  }
+  @keyframes fadeCycle2{
+    0%{opacity:0;}
+    4%{opacity:1;}
+    46%{opacity:1;}
+    50%{opacity:0;}
+    100%{opacity:0;}
+  }
 
-### Transformer sans interrompre les opérations
+  .chapter .built-shots.count-3 img{animation:fadeCycle3 9s infinite;}
+  .chapter .built-shots.count-3 img:nth-child(1){animation-delay:0s;}
+  .chapter .built-shots.count-3 img:nth-child(2){animation-delay:3s;}
+  .chapter .built-shots.count-3 img:nth-child(3){animation-delay:6s;}
+  @keyframes fadeCycle3{
+    0%{opacity:0;}
+    3%{opacity:1;}
+    30%{opacity:1;}
+    33%{opacity:0;}
+    100%{opacity:0;}
+  }
 
-**Migration d’un ERP métier critique · 2020–2022 · Encore Global**
-**Area Manager**
+  .chapter .built-shots.count-4 img{animation:fadeCycle4 10s infinite;}
+  .chapter .built-shots.count-4 img:nth-child(1){animation-delay:0s;}
+  .chapter .built-shots.count-4 img:nth-child(2){animation-delay:2.5s;}
+  .chapter .built-shots.count-4 img:nth-child(3){animation-delay:5s;}
+  .chapter .built-shots.count-4 img:nth-child(4){animation-delay:7.5s;}
+  @keyframes fadeCycle4{
+    0%{opacity:0;}
+    2%{opacity:1;}
+    23%{opacity:1;}
+    25%{opacity:0;}
+    100%{opacity:0;}
+  }
 
-**Contexte**
+  @media (prefers-reduced-motion: reduce){
+    .chapter .built-shots img{animation:none !important; opacity:1 !important;}
+  }
 
-* Migration EMEA de Hiretrack NX vers Easyjob dans un environnement international fortement dépendant de son outil métier.
-* Un déploiement à réaliser sans interrompre les opérations quotidiennes des équipes.
+  @media (max-width:900px){
+    .chapter.has-built{grid-template-columns:90px 1fr;}
+    .chapter .built{grid-column:1/-1; margin-top:22px; height:auto;}
+    .chapter .built-shots,
+    .chapter .av-scene,
+    .chapter .chaos-scene{min-height:240px; max-width:none;}
+  }
+  @media (max-width:720px){
+    .chapter.has-built{grid-template-columns:1fr;}
+  }
 
-**Ce que j’ai piloté**
+  /* ---------- Punchy ident bumper (2001-2017): bold cycling type + viewfinder brackets ---------- */
+  .av-scene{
+    position:relative;
+    width:100%;
+    flex:1;
+    min-height:220px;
+    border-radius:10px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:#0a0b0d;
+    box-shadow:0 12px 28px rgba(0,0,0,0.4);
+  }
+  .av-scene .flash{
+    position:absolute;
+    inset:0;
+    animation:flashPulse 8s infinite;
+  }
+  @keyframes flashPulse{
+    0%,2%{background:radial-gradient(ellipse at 50% 50%, rgba(255,46,126,0.28), transparent 70%);}
+    23%,27%{background:radial-gradient(ellipse at 50% 50%, rgba(255,46,126,0.28), transparent 70%);}
+    27.01%,49%{background:radial-gradient(ellipse at 50% 50%, rgba(67,232,216,0.26), transparent 70%);}
+    52%,74%{background:radial-gradient(ellipse at 50% 50%, rgba(67,232,216,0.26), transparent 70%);}
+    74.01%,98%{background:radial-gradient(ellipse at 50% 50%, rgba(255,138,194,0.26), transparent 70%);}
+    100%{background:radial-gradient(ellipse at 50% 50%, rgba(255,46,126,0.28), transparent 70%);}
+  }
+  .av-scene .punch-word{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    text-transform:uppercase;
+    font-size:clamp(1.8rem, 11%, 3rem);
+    letter-spacing:0.02em;
+    opacity:0;
+    animation:wordPunch 8s infinite;
+  }
+  .av-scene .punch-word.w1{color:var(--amber); animation-delay:0s;}
+  .av-scene .punch-word.w2{color:var(--teal); animation-delay:-6s;}
+  .av-scene .punch-word.w3{color:var(--coral); animation-delay:-4s;}
+  .av-scene .punch-word.w4{color:var(--ink); animation-delay:-2s;}
+  @keyframes wordPunch{
+    0%{opacity:0; transform:scale(0.7);}
+    4%{opacity:1; transform:scale(1.08);}
+    8%,21%{opacity:1; transform:scale(1);}
+    25%{opacity:0; transform:scale(0.85);}
+    100%{opacity:0;}
+  }
+  .av-scene .vf-bracket{
+    position:absolute;
+    width:26px; height:26px;
+    border:0 solid var(--amber);
+    opacity:0.7;
+    animation:bracketPulse 2s ease-in-out infinite;
+  }
+  .av-scene .vf-bracket.tl{top:8%; left:6%; border-top-width:3px; border-left-width:3px;}
+  .av-scene .vf-bracket.tr{top:8%; right:6%; border-top-width:3px; border-right-width:3px; border-color:var(--teal); animation-delay:-0.5s;}
+  .av-scene .vf-bracket.bl{bottom:8%; left:6%; border-bottom-width:3px; border-left-width:3px; border-color:var(--teal); animation-delay:-1s;}
+  .av-scene .vf-bracket.br{bottom:8%; right:6%; border-bottom-width:3px; border-right-width:3px; border-color:var(--coral); animation-delay:-1.5s;}
+  @keyframes bracketPulse{
+    0%,100%{opacity:0.5; transform:scale(1);}
+    50%{opacity:1; transform:scale(1.15);}
+  }
+  .av-scene .scan{
+    position:absolute;
+    left:0; right:0;
+    height:2px;
+    background:linear-gradient(90deg, transparent, var(--ink) 50%, transparent);
+    opacity:0.5;
+    animation:scanMove 3.4s linear infinite;
+  }
+  @keyframes scanMove{
+    0%{top:0%;}
+    100%{top:100%;}
+  }
+  .av-scene .eq{
+    position:absolute;
+    left:12%; right:12%; bottom:6%;
+    height:12%;
+    display:flex;
+    align-items:flex-end;
+    gap:4%;
+    z-index:2;
+  }
+  .av-scene .eq span{
+    flex:1;
+    min-width:3px;
+    height:100%;
+    border-radius:2px 2px 0 0;
+    background:linear-gradient(180deg, var(--teal), var(--amber));
+    box-shadow:0 0 8px rgba(67,232,216,0.5);
+    animation:eqBar 1.3s ease-in-out infinite;
+    transform-origin:bottom center;
+  }
+  .av-scene .eq span:nth-child(1){animation-delay:0s;}
+  .av-scene .eq span:nth-child(2){animation-delay:.11s;}
+  .av-scene .eq span:nth-child(3){animation-delay:.22s;}
+  .av-scene .eq span:nth-child(4){animation-delay:.33s;}
+  .av-scene .eq span:nth-child(5){animation-delay:.44s;}
+  .av-scene .eq span:nth-child(6){animation-delay:.55s;}
+  .av-scene .eq span:nth-child(7){animation-delay:.66s;}
+  .av-scene .eq span:nth-child(8){animation-delay:.77s;}
+  .av-scene .eq span:nth-child(9){animation-delay:.88s;}
+  .av-scene .eq span:nth-child(10){animation-delay:.99s;}
+  .av-scene .eq span:nth-child(11){animation-delay:1.1s;}
+  @keyframes eqBar{
+    0%,100%{transform:scaleY(0.2);}
+    50%{transform:scaleY(1);}
+  }
 
-* Déploiement d’Easyjob pour la France et Monaco.
-* Export, reprise, consolidation et contrôle des données techniques et financières.
-* Analyse des écarts entre les outils et adaptation des workflows métier.
-* Traduction, recette fonctionnelle et résolution des problèmes de migration.
-* Formation des équipes, accompagnement au changement et suivi de l’adoption.
+  /* ---------- Hiretrack NX before/after scene (2017-2020) ---------- */
+  .hiretrack-scene{
+    position:relative;
+    width:100%;
+    flex:1;
+    min-height:220px;
+    display:flex;
+    align-items:stretch;
+    gap:16px;
+  }
+  .hs-before{
+    position:relative;
+    flex:1;
+    min-width:0;
+    border-radius:10px;
+    background:#0d0e11;
+    overflow:hidden;
+  }
+  .hs-before-art img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .hs-before-art .hs-tag{
+    background:rgba(13,14,17,0.75);
+    padding:3px 8px;
+    border-radius:4px;
+    backdrop-filter:blur(2px);
+  }
+  .hs-icon{
+    position:absolute;
+    width:34px; height:34px;
+    animation:hsFloat 4.5s ease-in-out infinite;
+    transform:rotate(var(--r,0deg));
+    filter:drop-shadow(0 3px 6px rgba(0,0,0,0.5));
+  }
+  @keyframes hsFloat{
+    0%,100%{transform:rotate(var(--r,0deg)) translateY(0);}
+    50%{transform:rotate(var(--r,0deg)) translateY(-7px);}
+  }
+  .hs-screen{
+    position:absolute;
+    top:50%; left:50%;
+    width:56px; height:56px;
+    transform:translate(-50%,-50%);
+    color:var(--ink-dim);
+    opacity:0.5;
+    animation:hsScreenPulse 3.4s ease-in-out infinite;
+  }
+  .hs-screen svg{width:100%; height:100%;}
+  @keyframes hsScreenPulse{
+    0%,100%{opacity:0.35;}
+    50%{opacity:0.6;}
+  }
+  .hs-tag{
+    position:absolute;
+    left:8%; bottom:6%;
+    font-family:'Space Mono',monospace;
+    font-size:0.65rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+  }
+  .hs-arrow{
+    display:flex;
+    align-items:center;
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    font-size:1.6rem;
+    color:var(--teal);
+    flex-shrink:0;
+  }
+  .hs-after{
+    position:relative;
+    flex:1.3;
+    min-width:0;
+    border-radius:10px;
+    overflow:hidden;
+  }
+  .hs-after img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    opacity:0;
+  }
+  .hs-after.count-2 img{animation:fadeCycle2 8s infinite;}
+  .hs-after.count-2 img:nth-child(1){animation-delay:0s;}
+  .hs-after.count-2 img:nth-child(2){animation-delay:4s;}
+  @media (max-width:640px){
+    .hiretrack-scene{flex-direction:column;}
+    .hs-arrow{transform:rotate(90deg); align-self:center;}
+  }
 
-**Résultats**
+  /* ---------- Transformation scene (proposal 2, plays once) ---------- */
+  .ts-scene{
+    position:relative;
+    width:100%;
+    min-height:220px;
+    aspect-ratio:16/9;
+    margin-top:16px;
+    border-radius:10px;
+    overflow:hidden;
+    background:#0d0e11;
+  }
+  .ts-figure{
+    position:absolute;
+    left:6%; bottom:8%;
+    width:34px; height:56px;
+    color:var(--ink-dim);
+    transform:rotate(-4deg) translateY(3px) scale(0.96);
+    transform-origin:bottom center;
+    transition:transform 1.5s cubic-bezier(.22,1,.36,1) .3s;
+  }
+  .ts-scene.play .ts-figure{transform:none;}
+  .ts-figure svg{width:100%; height:100%;}
 
-* Déploiement de nouveaux processus sur 12 sites en Île-de-France.
-* Migration sécurisée tout en préservant la continuité des opérations.
-* Adoption d’un système et de workflows communs par les équipes concernées.
+  .ts-clutter{
+    position:absolute;
+    width:30px; height:30px;
+    opacity:0.85;
+    transition:opacity 1s ease .2s, transform 1s ease .2s;
+  }
+  .ts-scene.play .ts-clutter{opacity:0; transform:scale(0.5);}
+  .ts-filename{
+    position:absolute;
+    top:100%; left:0;
+    white-space:nowrap;
+    font-family:'Space Mono',monospace;
+    font-size:0.55rem;
+    color:var(--ink-dim);
+    opacity:0.7;
+  }
+  .ts-line1, .ts-line2{
+    width:70px; height:2px;
+    background:var(--ink-dim);
+    opacity:0.3;
+  }
+  .ts-line1{transform:rotate(22deg);}
+  .ts-line2{transform:rotate(-16deg);}
 
----
+  .ts-item{
+    position:absolute;
+    width:30px; height:30px;
+    transform:var(--from);
+    transition:transform 1.6s cubic-bezier(.22,1,.36,1) .35s;
+    filter:drop-shadow(0 3px 6px rgba(0,0,0,0.5));
+  }
+  .ts-scene.play .ts-item{transform:var(--to);}
+  .ts-item svg{width:100%; height:100%;}
 
-# 1CRM
+  .ts-line{
+    position:absolute;
+    left:20%; right:16%; top:52%;
+    height:2px;
+    background:linear-gradient(90deg, var(--teal), var(--amber));
+    transform:scaleX(0);
+    transform-origin:left center;
+    transition:transform 1.2s cubic-bezier(.65,0,.35,1) .3s;
+  }
+  .ts-scene.play .ts-line{transform:scaleX(1);}
 
-### Accompagner le passage à l’échelle
+  .ts-label{
+    position:absolute;
+    top:58%;
+    transform:translate(-50%,4px);
+    font-family:'Space Mono',monospace;
+    font-size:0.62rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+    opacity:0;
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .ts-scene.play .ts-label{opacity:1; transform:translate(-50%,0);}
+  .ts-scene.play #i-ts-l1{transition-delay:1.5s;}
+  .ts-scene.play #i-ts-l2{transition-delay:1.65s;}
+  .ts-scene.play #i-ts-l3{transition-delay:1.8s;}
+  .ts-scene.play #i-ts-l4{transition-delay:1.95s;}
 
-**Plateforme web et mobile B2B2C · 2022–2024 · Elevate Global**
-**Regional Process & Product Lead**
+  @media (max-width:640px){
+    .ts-clutter:nth-of-type(4), .ts-clutter:nth-of-type(5){display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ts-figure{transform:none !important; transition:none !important;}
+    .ts-clutter{opacity:0 !important; transform:scale(0.5) !important; transition:none !important;}
+    .ts-item{transform:var(--to) !important; transition:none !important;}
+    .ts-line{transform:scaleX(1) !important; transition:none !important;}
+    .ts-label{opacity:1 !important; transform:translate(-50%,0) !important; transition:none !important;}
+  }
 
-**Contexte**
+  .chaos-scene{
+    position:relative;
+    width:100%;
+    flex:1;
+    min-height:200px;
+    border-radius:10px;
+    overflow:hidden;
+  }
+  .chaos-item{
+    position:absolute;
+    width:34px;
+    height:34px;
+    opacity:1;
+    animation:chaosFade 10s ease-in-out infinite;
+    filter:drop-shadow(0 3px 6px rgba(0,0,0,0.5));
+  }
+  .chaos-item svg{width:100%; height:100%;}
+  @keyframes chaosFade{
+    0%,35%{opacity:1; transform:translateY(0) rotate(var(--r,0deg));}
+    50%,92%{opacity:0; transform:translateY(-16px) rotate(var(--r,0deg));}
+    100%{opacity:1; transform:translateY(0) rotate(var(--r,0deg));}
+  }
+  .platform-mini{
+    position:absolute;
+    inset:14% 8%;
+    border:1px solid var(--teal);
+    border-radius:8px;
+    background:rgba(67,232,216,0.07);
+    opacity:0;
+    transform:scale(0.94);
+    animation:platformFade 10s ease-in-out infinite;
+    padding:10px 12px;
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+  }
+  @keyframes platformFade{
+    0%,38%{opacity:0; transform:scale(0.94);}
+    55%,90%{opacity:1; transform:scale(1);}
+    100%{opacity:0; transform:scale(0.94);}
+  }
+  .platform-mini .pm-label{
+    font-family:'Space Mono',monospace;
+    font-size:9px;
+    letter-spacing:0.1em;
+    color:var(--teal);
+    text-transform:uppercase;
+  }
+  .platform-mini .pm-row{height:7px; border-radius:3px; background:rgba(247,242,233,0.18);}
+  .platform-mini .pm-row.short{width:55%;}
+  @media (prefers-reduced-motion: reduce){
+    .av-scene .flash, .av-scene .punch-word, .av-scene .vf-bracket, .av-scene .scan, .av-scene .eq span, .chaos-item, .platform-mini, .hs-icon, .hs-screen, .hs-after img{animation:none !important; opacity:1 !important; transform:none !important;}
+    .hs-after img{opacity:1 !important;}
+    .hs-after img:not(:first-child){display:none;}
+    .av-scene .punch-word{display:none;}
+    .av-scene .punch-word.w1{display:flex;}
+  }
 
-* Une plateforme réunissant les parcours des équipes terrain, des opérations et des clients.
-* Une organisation française en forte croissance, passée de 7 à 70 collaborateurs en six mois.
-* Des usages et contraintes différents sur cinq marchés : France, Royaume-Uni, États-Unis, Allemagne et Autriche.
+  @media (max-width:720px){
+    .chapter{grid-template-columns:1fr; gap:8px;}
+  }
 
-**Ce que j’ai piloté**
+  /* ---------- Skills (the "structured" endpoint) ---------- */
+  .skills-head{
+    font-family:'Space Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+    margin-bottom:20px;
+  }
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:0;
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
+  }
+  .skill-cell{
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:16px 16px;
+    font-size:0.82rem;
+    color:var(--ink-dim);
+    transition:color .2s ease, background .2s ease, transform .25s cubic-bezier(.34,1.56,.64,1);
+  }
+  .skill-cell:hover{
+    color:var(--ink);
+    background:var(--bg-alt);
+    transform:rotate(-1deg) scale(1.03);
+    position:relative;
+    z-index:2;
+  }
+  .skill-cell:nth-child(even):hover{transform:rotate(1deg) scale(1.03);}
+  .skill-cell b{display:block; color:var(--ink); font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px;}
+  @media (max-width:520px){ .skills-grid{grid-template-columns:1fr;} }
 
-* Roadmap régionale et priorisation des évolutions produit.
-* Recueil et challenge des besoins utilisateurs, opérationnels et réglementaires.
-* Optimisation des parcours de candidature, onboarding, staffing, booking, paie, facturation, notes de frais et reporting.
-* Coordination des évolutions avec les équipes Product et Engineering.
-* Organisation des tests, suivi des anomalies, sécurisation des releases et accompagnement des utilisateurs.
+  .langs{
+    display:flex; gap:28px; flex-wrap:wrap; margin-top:48px;
+    font-family:'Space Mono',monospace; font-size:0.8rem; color:var(--ink-dim);
+  }
+  .langs span b{color:var(--teal); font-weight:700;}
 
-**Résultats**
+  /* ---------- Footer / contact ---------- */
+  .ask-box{
+    position:fixed;
+    left:24px; bottom:24px;
+    z-index:69;
+    width:360px;
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:rgba(14,15,18,0.92);
+    backdrop-filter:blur(4px);
+    box-shadow:0 12px 28px rgba(0,0,0,0.35);
+  }
+  .ask-label{
+    font-size:0.62rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+    margin-bottom:8px;
+    cursor:grab;
+    user-select:none;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .ask-label::before{content:"⠿"; opacity:0.5; font-size:0.9rem;}
+  .ask-label:active{cursor:grabbing;}
+  .ask-row{display:flex; gap:8px;}
+  .ask-input{
+    flex:1;
+    min-width:0;
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:9px 10px;
+    color:var(--ink);
+    font-family:'Karla',sans-serif;
+    font-size:0.85rem;
+  }
+  .ask-input:focus{outline:none; border-color:var(--teal);}
+  .ask-btn{
+    background:var(--amber);
+    color:var(--bg);
+    border:none;
+    border-radius:8px;
+    width:38px;
+    flex-shrink:0;
+    font-size:1.05rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .ask-btn:hover{background:var(--teal); transform:scale(1.05);}
+  .ask-answer{
+    margin-top:10px;
+    font-size:0.78rem;
+    color:var(--ink);
+    line-height:1.5;
+    opacity:0;
+    max-height:0;
+    overflow:hidden;
+    transition:opacity .35s ease, max-height .35s ease;
+  }
+  .ask-answer.show{opacity:1; max-height:160px;}
+  /* ---------- Alternative layout: by platform (trial) ---------- */
+  .platforms-alt{
+    border-top:2px dashed var(--line);
+    padding-top:56px;
+  }
+  .pa-head{margin-bottom:48px;}
+  .pa-eyebrow{
+    font-size:11px;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--coral);
+    margin-bottom:12px;
+  }
+  .platforms-alt h2{
+    font-family:'Space Mono',monospace;
+    font-size:clamp(1.4rem, 3vw, 2rem);
+    margin-bottom:10px;
+  }
+  .platforms-alt .pa-head p{
+    font-family:'Space Mono',monospace;
+    font-size:0.85rem;
+    color:var(--ink-dim);
+  }
+  .pblock{
+    padding:48px 0;
+    border-bottom:1px solid var(--line);
+    display:block;
+  }
+  .pblock:last-child{border-bottom:none;}
+  .pb-head{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:10px;
+  }
+  .pb-head img.co-logo{
+    height:44px;
+    width:auto;
+    max-width:160px;
+    object-fit:contain;
+    border-radius:5px;
+    background:#fff;
+    padding:4px 8px;
+  }
+  .pb-head h3{
+    font-family:'Space Mono',monospace;
+    font-size:clamp(1.8rem, 4vw, 2.6rem);
+    font-weight:700;
+  }
+  .pb-meta{
+    font-family:'Space Mono',monospace;
+    font-size:1rem;
+    color:var(--ink-dim);
+    letter-spacing:0.03em;
+    margin-bottom:4px;
+  }
+  .pb-role{
+    font-family:'Space Mono',monospace;
+    font-size:1rem;
+    font-weight:700;
+    color:var(--ink);
+    letter-spacing:0.03em;
+    margin-bottom:20px;
+  }
+  .pblock p{font-size:1.05rem; line-height:1.75; color:var(--ink-dim); max-width:none;}
+  .pb-sec{margin-bottom:22px;}
+  .pb-sec:last-of-type{margin-bottom:0;}
+  .pb-label{
+    display:block;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .pblock:nth-child(odd) .pb-label{color:var(--amber);}
+  .pblock:nth-child(even) .pb-label{color:var(--teal);}
+  .pb-sec ul{list-style:none;}
+  .pb-sec li{
+    position:relative;
+    padding-left:18px;
+    margin-bottom:8px;
+    color:var(--ink-dim);
+    font-size:1.02rem;
+    line-height:1.6;
+  }
+  .pb-sec li::before{
+    content:"▸";
+    position:absolute; left:0;
+  }
+  .pblock:nth-child(odd) .pb-sec li::before{color:var(--amber);}
+  .pblock:nth-child(even) .pb-sec li::before{color:var(--teal);}
+  .pb-sec p{margin:0;}
+  .pb-tagline{
+    font-size:1.25rem;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:10px;
+  }
+  .pblock:nth-child(odd) .pb-tagline{color:var(--amber);}
+  .pblock:nth-child(even) .pb-tagline{color:var(--teal);}
+  .pb-keywords{
+    margin-top:18px;
+    font-size:0.78rem;
+    letter-spacing:0.04em;
+    color:var(--ink-dim);
+    opacity:0.85;
+  }
+  .pb-visual{
+    margin-top:28px;
+    max-width:560px;
+  }
+  .pb-visual-wide{max-width:820px;}
+  .pb-visual .built-shots{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/10;
+    border-radius:10px;
+    overflow:hidden;
+  }
+  @media (max-width:720px){
+    .pb-head{flex-wrap:wrap;}
+    .pb-visual{max-width:none;}
+  }
 
-* Une plateforme web et mobile capable d’accompagner la croissance rapide de l’organisation française.
-* Des parcours staff, opérations et clients réunis dans un même produit.
-* Une plateforme déployée et adaptée aux besoins de cinq marchés.
+  footer{
+    border-top:1px solid var(--line);
+    padding:32px 8vw 80px;
+    text-align:left;
+  }
+  footer .eyebrow{margin-bottom:20px;}
+  footer h2{
+    font-family:'Space Mono',monospace;
+    font-size:clamp(1.2rem, 2.4vw, 1.8rem);
+    max-width:680px;
+    line-height:1.3;
+    margin-bottom:36px;
+  }
+  .contact-row{
+    display:flex; gap:36px; flex-wrap:wrap;
+    font-family:'Space Mono',monospace;
+    font-size:0.95rem;
+  }
+  .contact-row a{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--amber); padding-bottom:2px;}
+  .contact-row a:hover{color:var(--teal); border-color:var(--teal);}
+  .contact-row .label{color:var(--ink-dim); display:block; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:6px;}
+  .foot-note{
+    margin-top:64px;
+    display:flex;
+    gap:56px;
+    flex-wrap:wrap;
+    padding-top:32px;
+    border-top:1px solid var(--line);
+  }
+  .foot-note .fn-block{max-width:320px;}
+  .foot-note .fn-label{
+    font-family:'Space Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--teal);
+    display:block;
+    margin-bottom:8px;
+  }
+  .foot-note .fn-block:nth-child(2) .fn-label{color:var(--amber);}
+  .foot-note p{font-size:0.85rem; color:var(--ink-dim); line-height:1.55; margin:0;}
+  .foot-sign{
+    margin-top:40px;
+    font-size:0.75rem;
+    color:var(--ink-dim);
+    opacity:0.8;
+  }
 
----
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
 
-# IMPACT
+  /* ---------- Language switcher ---------- */
+  .lang-switch{
+    position:fixed;
+    top:20px; left:88px;
+    z-index:70;
+    display:flex;
+    gap:6px;
+    font-family:'Space Mono',monospace;
+    font-size:0.75rem;
+    font-weight:700;
+    background:rgba(14,15,18,0.85);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:4px;
+    backdrop-filter:blur(4px);
+  }
+  .lang-switch button{
+    all:unset;
+    cursor:pointer;
+    padding:6px 14px;
+    border-radius:999px;
+    color:var(--ink-dim);
+    letter-spacing:0.05em;
+    transition:background .2s ease, color .2s ease;
+  }
+  .lang-switch button.active{
+    background:var(--amber);
+    color:var(--bg);
+  }
+  @media (max-width:720px){
+    .lang-switch{top:12px; left:12px;}
+    .ask-box{left:12px; bottom:12px; width:min(320px, calc(100vw - 24px));}
+  }
+</style>
+</head>
+<body>
 
-### Transformer les données en décisions
+<div class="lang-switch mono" role="group" aria-label="Langue / Language">
+  <button type="button" id="btnFr" class="active" onclick="setLang('fr')">FR</button>
+  <button type="button" id="btnEn" onclick="setLang('en')">EN</button>
+</div>
 
-**Plateforme SaaS B2B de reporting et d’insights · 2024–2025 · Elevate Global**
-**Project Manager, Impact**
+<div class="ask-box">
+  <div class="ask-label mono" id="i-ask-label">Une question pour moi ? Réponse instantanée ci-dessous ↓</div>
+  <div class="ask-row">
+    <input type="text" id="askInput" class="ask-input" placeholder="Ex : quand es-tu disponible ?" autocomplete="off">
+    <button type="button" id="askBtn" class="ask-btn" aria-label="Envoyer">→</button>
+  </div>
+  <div class="ask-answer" id="askAnswer"></div>
+</div>
 
-**Contexte**
+<div class="ruler mono" id="ruler">
+  <div class="ruler-progress" id="rulerProgress"></div>
+</div>
 
-* Une plateforme permettant aux clients de suivre et comparer la performance de leurs campagnes sur cinq marchés.
-* Un catalogue de plus de 150 KPIs personnalisables à transformer en reporting clair et actionnable.
+<main>
 
-**Ce que j’ai piloté**
+  <section class="hero">
 
-* Roadmap produit, priorisation et gestion du périmètre des évolutions.
-* Recueil et challenge des besoins clients et business.
-* Traduction des priorités en spécifications fonctionnelles et plans de delivery.
-* Coordination des équipes Product, Reporting, Sales et Operations.
-* Pilotage du cadrage, des tests, de la documentation et des releases.
-* Structuration de l’onboarding et accompagnement des clients dans l’adoption.
-* Encadrement d’une Project Coordinator et organisation du suivi des livraisons.
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="eyebrow">Laurence Maestracci · Senior Product Manager</div>
+        <h1 class="thesis" id="i-thesis"><span class="chaos">Chaos</span><span class="arrow">→</span><span class="accent">Flow.</span></h1>
+        <p class="hero-sub" id="i-herosub">Product Strategy · SaaS B2B · Product Operations · Delivery &amp; Adoption. Une dizaine d'années à transformer des besoins complexes en produits concrets, adoptés et performants.</p>
+      </div>
+      <div class="hero-portrait">
+        <span class="bracket tl"></span>
+        <span class="bracket tr"></span>
+        <span class="bracket bl"></span>
+        <span class="bracket br"></span>
+        <img src="portrait.png" alt="Portrait de Laurence Maestracci" id="i-portrait">
+      </div>
+    </div>
+  </section>
 
-**Résultats**
+  <section class="intro">
+    <div class="intro-text">
+      <p id="i-intro1">Senior Product Manager à l'intersection du produit, de la tech et des opérations. Depuis une dizaine d'années, je transforme des besoins métiers complexes en produits SaaS et plateformes digitales, de la vision et de la roadmap jusqu'au delivery, à l'adoption et à la mesure d'impact. Je travaille au plus près des équipes Engineering, Data, Business et des utilisateurs pour arbitrer les priorités et construire des solutions utiles, capables de passer à l'échelle et performantes.</p>
+    </div>
+    <div class="intro-skills">
+      <div class="skills-head" id="i-skhead">🛠️ Compétences</div>
+      <div class="skills-grid">
+        <div class="skill-cell"><b id="i-sk1-b">Stratégie produit</b><span id="i-sk1-t">Vision, discovery et priorisation</span></div>
+        <div class="skill-cell"><b id="i-sk2-b">Roadmap &amp; delivery</b><span id="i-sk2-t">Cadrage, coordination, tests et releases</span></div>
+        <div class="skill-cell"><b id="i-sk3-b">Adoption</b><span id="i-sk3-t">Onboarding, formation et conduite du changement</span></div>
+        <div class="skill-cell"><b id="i-sk4-b">Plateformes</b><span id="i-sk4-t">SaaS B2B, produits web et mobile, workflows métiers</span></div>
+        <div class="skill-cell"><b id="i-sk5-b">Data &amp; impact</b><span id="i-sk5-t">KPIs, reporting et amélioration continue</span></div>
+        <div class="skill-cell"><b id="i-sk6-b">Leadership transverse</b><span id="i-sk6-t">Alignement Engineering, Data, Business et utilisateurs</span></div>
+        <div class="skill-cell"><b id="i-sk7-b">Product &amp; delivery</b><span id="i-sk7-t">Jira, Asana, Trello, Notion, Bugasura</span></div>
+        <div class="skill-cell"><b id="i-sk8-b">Data &amp; insights</b><span id="i-sk8-t">Power BI (notions), SQL (notions), Microsoft Clarity</span></div>
+        <div class="skill-cell"><b id="i-sk9-b">Design &amp; collaboration</b><span id="i-sk9-t">Figma, Slack, Microsoft 365</span></div>
+        <div class="skill-cell"><b id="i-sk10-b">Plateformes métiers</b><span id="i-sk10-t">1CRM, Easyjob, Hiretrack NX, Zendesk</span></div>
+        <div class="skill-cell"><b id="i-sk11-b">IA générative</b><span id="i-sk11-t">ChatGPT, Claude, Gemini, Canva AI, Voiceform AI</span></div>
+      </div>
+      <div class="langs">
+        <span>🇫🇷 <b>FR</b> · <span id="i-lang-fr">langue maternelle</span></span>
+        <span>🇬🇧 <b>EN</b> · <span id="i-lang-en">courant</span></span>
+        <span>🇵🇹 <b>PT</b> · <span id="i-lang-pt">bon niveau</span></span>
+        <span>🇪🇸 <b>ES</b> · <span id="i-lang-es">bases</span></span>
+      </div>
+    </div>
+  </section>
 
-* Un cycle de delivery structuré de bout en bout, du besoin client à l’adoption post-lancement.
-* Un reporting comparable et actionnable d’une campagne et d’un marché à l’autre.
-* Une plateforme opérant sur cinq marchés avec plus de 150 KPIs personnalisables.
+
+  <section class="platforms-alt">
+    <div class="pa-head">
+      <h2 id="i-pa-h2">Quatre plateformes, un même fil rouge</h2>
+      <p id="i-pa-sub">De la structuration des opérations au pilotage de produits SaaS internationaux, j'ai accompagné quatre plateformes à des moments clés de leur évolution : optimisation, migration, passage à l'échelle et développement d'une culture de la performance.</p>
+    </div>
+
+    <div class="pblock">
+      <div class="pb-head">
+        <img class="co-logo" src="hiretrack-logo.png" alt="Hiretrack NX" loading="lazy">
+        <h3>Hiretrack NX</h3>
+      </div>
+      <div class="pb-tagline" id="i-pb1-tagline">Structurer les opérations</div>
+      <div class="pb-meta mono" id="i-pb1-meta">ERP métier événementiel · 2017–2020 · Encore Global (PSAV)</div>
+      <div class="pb-role" id="i-pb1-role">Operations Development Manager</div>
+      <div class="pb-sec">
+        <span class="pb-label mono" id="i-pb1-ctx-l">Contexte</span>
+        <ul>
+          <li id="i-pb1-ctx1">Un cycle opérationnel complet réparti entre emails, fichiers Excel, devis papier et pratiques locales</li>
+          <li id="i-pb1-ctx2">Une plateforme couvrant planning, matériel, sous-traitance, achats, staffing, facturation et rentabilité</li>
+        </ul>
+      </div>
+      <div class="pb-sec">
+        <span class="pb-label mono" id="i-pb1-act-l">Ce que j'ai piloté</span>
+        <ul>
+          <li id="i-pb1-act1">Recueil et analyse des besoins des équipes terrain</li>
+          <li id="i-pb1-act2">Évolution fonctionnelle de Hiretrack NX sur le périmètre EMEA</li>
+          <li id="i-pb1-act3">Traduction des besoins opérationnels en workflows et standards communs</li>
+          <li id="i-pb1-act4">Coordination entre les utilisateurs français, les équipes européennes et les partenaires</li>
+          <li id="i-pb1-act5">Formation des équipes et accompagnement dans l'adoption de l'outil</li>
+        </ul>
+      </div>
+      <div class="pb-sec">
+        <span class="pb-label mono" id="i-pb1-res-l">Résultats</span>
+        <ul>
+          <li id="i-pb1-res1">Centralisation du cycle opérationnel, du premier devis à la dernière facture</li>
+          <li id="i-pb1-res2">Digitalisation et harmonisation des pratiques sur le périmètre EMEA</li>
+          <li id="i-pb1-res3">Des processus plus homogènes, plus fiables et plus faciles à piloter</li>
+        </ul>
+      </div>
+      <div class="pb-keywords mono" id="i-pb1-kw">Cycle end-to-end · Périmètre EMEA · Adoption utilisateur</div>
+      <div class="pb-visual pb-visual-wide">
+        <div class="hiretrack-scene" aria-hidden="true">
+          <div class="hs-before hs-before-art">
+            <img src="hiretrack-chaos-art.jpg" alt="Illustration du chaos administratif avant Hiretrack NX : mails, devis et Excel qui s'accumulent" loading="lazy">
+            <span class="hs-tag" id="i-hs-tag">Mails · devis · Excel · factures</span>
+          </div>
+          <div class="hs-arrow">→</div>
+          <div class="hs-after count-2">
+            <img src="https://www.navigator.uk/wp-content/uploads/2014/07/jobbook-1024x683.png" alt="Interface Hiretrack NX (Job book)" loading="lazy">
+            <img src="https://www.navigator.uk/wp-content/uploads/2014/07/eqlist-1024x683.png" alt="Interface Hiretrack NX (liste d'équipement)" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pblock">
+      <div class="pb-head">
+        <img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=protonic-software.com" alt="easyjob" loading="lazy">
+        <h3>Easyjob</h3>
+      </div>
+      <div class="pb-tagline" id="i-pb2-tagline">Transformer sans interrompre les opérations</div>
+      <div class="pb-meta mono" id="i-pb2-meta">Migration d'un ERP métier critique · 2020–2022 · Encore Global</div>
+      <div class="pb-role" id="i-pb2-role">Area Manager</div>
+      <div class="pb-sec">
+        <span class="pb-label mono" id="i-pb2-ctx-l">Contexte</span>
+        <ul>
+          <li id="i-pb2-ctx1">Migration EMEA de Hiretrack NX vers Easyjob dans un environnement international fortement dépendant de son outil métier</li>
+          <li id="i-pb2-ctx2">Un déploiement à réaliser sans interrompre les opérations quotidiennes des équipes</li>
+        </ul>
+      </div>
+      <div class="pb-sec">
+        <span class="pb-label mono" id="i-pb2-act-l">Ce que j'ai piloté</span>
+        <ul>
+          <li id="i-pb2-act1">Déploiement d'Easyjob pour la France et Monaco</li>
+          <li id="i-pb2-act2">Export, reprise, consolidation et contrôle des données techniques et financières</li>
+          <li id="i-pb2-act3">Analyse des écarts entre les outils et adaptation des workflows métier</li>
+          <li id="i-pb2-act4">Traduction, recette fonctionnelle et résolution des problèmes de migration</li>
+          <li id="i-pb2-act5">Formation des équipes, accompagnement au changement et suivi de l'adoption</li>
+        </ul>
+      </div>
+      <div class="pb-sec">
+        <span class="pb-label mono" id="i-pb2-res-l">Résultats</span>
+        <ul>
+          <li id="i-pb2-res1">Déploiement de nouveaux processus sur 12 sites en Île-de-France</li>
+          <li id="i-pb2-res2">Migration sécurisée tout en préservant la continuité des opérations</li>
+          <li id="i-pb2-res3">Adoption d'un système et de workflows communs par les équipes concernées</li>
+        </ul>
+      </div>
+      <div class="pb-keywords mono" id="i-pb2-kw">12 sites · France &amp; Monaco · Migration et conduite du changement</div>
+      <div class="pb-visual">
+        <div class="built-shots count-3">
+          <img id="i-shot3" src="easyjob-1.jpg" alt="Interface easyjob (Jobcenter)" loading="lazy">
+          <img id="i-shot4" src="easyjob-2.jpg" alt="Interface easyjob (vue ressources)" loading="lazy">
+          <img id="i-shot5" src="easyjob-3.jpg" alt="Interface easyjob (Kanban tâches)" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="pblock">
+      <div class="pb-head">
+        <img class="co-logo" src="https://play-lh.googleusercontent.com/ZFNlzILlWmhVt3IE5kJpronBolVG5fWpuDA4OUH8F8xRR55xVa2dh66f5X2LMfbg0JshLTboyZbL5fNRNiyvFw=w96-h96" alt="1CRM" loading="lazy">
+        <h3>1CRM</h3>
+      </div>
+      <div class="pb-tagline" id="i-pb3-tagline">Accompagner le passage à l'échelle</div>
+      <div class="pb-meta mono" id="i-pb3-meta">Plateforme web et mobile B2B2C · 2022–2024 · Elevate Global</div>
+      <div class="pb-role" id="i-pb3-role">Regional Process &amp; Product Lead</div>
+      <div class="pb-sec">
+        <span class="pb-label mono" id="i-pb3-ctx-l">Contexte</span>
+        <ul>
+          <li id="i-pb3-ctx1">Une plateforme réunissant les parcours des équipes terrain, des opérations et des clients</li>
+          <li id="i-pb3-ctx2">Une organisation française en forte croissance, passée de 7 à 70 collaborateurs en six mois</li>
+          <li id="i-pb3-ctx3">Des usages et contraintes différents sur cinq marchés : France, Royaume-Uni, États-Unis, Allemagne et Autriche</li>
+        </ul>
+      </div>
+      <div class="pb-sec">
+        <span class="pb-label mono" id="i-pb3-act-l">Ce que j'ai piloté</span>
+        <ul>
+          <li id="i-pb3-act1">Roadmap régionale et priorisation des évolutions produit</li>
+          <li id="i-pb3-act2">Recueil et challenge des besoins utilisateurs, opérationnels et réglementaires</li>
+          <li id="i-pb3-act3">Optimisation des parcours de candidature, onboarding, staffing, booking, paie, facturation, notes de frais et reporting</li>
+          <li id="i-pb3-act4">Coordination des évolutions avec les équipes Product et Engineering</li>
+          <li id="i-pb3-act5">Organisation des tests, suivi des anomalies, sécurisation des releases et accompagnement des utilisateurs</li>
+        </ul>
+      </div>
+      <div class="pb-sec">
+        <span class="pb-label mono" id="i-pb3-res-l">Résultats</span>
+        <ul>
+          <li id="i-pb3-res1">Une plateforme web et mobile capable d'accompagner la croissance rapide de l'organisation française</li>
+          <li id="i-pb3-res2">Des parcours staff, opérations et clients réunis dans un même produit</li>
+          <li id="i-pb3-res3">Une plateforme déployée et adaptée aux besoins de cinq marchés</li>
+        </ul>
+      </div>
+      <div class="pb-keywords mono" id="i-pb3-kw">5 marchés · Web + mobile · 7 → 70 collaborateurs</div>
+      <div class="pb-visual">
+        <div class="built-shots count-5">
+          <img id="i-shot6" src="1crm-1.jpg" alt="Capture d'écran de l'app 1CRM (dashboard)" loading="lazy">
+          <img id="i-shot7" src="1crm-2.jpg" alt="Capture d'écran de l'app 1CRM (accueil)" loading="lazy">
+          <img id="i-shot8" src="1crm-3.jpg" alt="Capture d'écran de l'app 1CRM (menu)" loading="lazy">
+          <img id="i-shot9" src="https://play-lh.googleusercontent.com/8jfBvlaZ96BSMPRpHI6PmVJH7AFaAKY7CJ1G9Q4FOZiiNc8CmfgeWhuOhms5nLDzZQNmdZxcpYEUlUncxkG2=w1200-h675" alt="Capture d'écran de l'app 1CRM" loading="lazy">
+          <img id="i-shot9b" src="https://play-lh.googleusercontent.com/if6ID0w1oj2nrV6F4AFjWXQ1hYWTDv8QcymFxWzZi1cyux6cKPEmqqNfooxqMm_gObRbjo9ocSwFHk5hbuJ7kw=w1200-h675" alt="Capture d'écran de l'app 1CRM" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="pblock">
+      <div class="pb-head">
+        <img class="co-logo" src="impact-logo.png" alt="Impact" loading="lazy">
+        <h3>Impact</h3>
+      </div>
+      <div class="pb-tagline" id="i-pb4-tagline">Transformer les données en décisions</div>
+      <div class="pb-meta mono" id="i-pb4-meta">Plateforme SaaS B2B de reporting et d'insights · 2024–2025 · Elevate Global</div>
+      <div class="pb-role" id="i-pb4-role">Project Manager, Impact</div>
+      <div class="pb-sec">
+        <span class="pb-label mono" id="i-pb4-ctx-l">Contexte</span>
+        <ul>
+          <li id="i-pb4-ctx1">Une plateforme permettant aux clients de suivre et comparer la performance de leurs campagnes sur cinq marchés</li>
+          <li id="i-pb4-ctx2">Un catalogue de plus de 150 KPIs personnalisables à transformer en reporting clair et actionnable</li>
+        </ul>
+      </div>
+      <div class="pb-sec">
+        <span class="pb-label mono" id="i-pb4-act-l">Ce que j'ai piloté</span>
+        <ul>
+          <li id="i-pb4-act1">Roadmap produit, priorisation et gestion du périmètre des évolutions</li>
+          <li id="i-pb4-act2">Recueil et challenge des besoins clients et business</li>
+          <li id="i-pb4-act3">Traduction des priorités en spécifications fonctionnelles et plans de delivery</li>
+          <li id="i-pb4-act4">Coordination des équipes Product, Reporting, Sales et Operations</li>
+          <li id="i-pb4-act5">Pilotage du cadrage, des tests, de la documentation et des releases</li>
+          <li id="i-pb4-act6">Structuration de l'onboarding et accompagnement des clients dans l'adoption</li>
+          <li id="i-pb4-act7">Encadrement d'une Project Coordinator et organisation du suivi des livraisons</li>
+        </ul>
+      </div>
+      <div class="pb-sec">
+        <span class="pb-label mono" id="i-pb4-res-l">Résultats</span>
+        <ul>
+          <li id="i-pb4-res1">Un cycle de delivery structuré de bout en bout, du besoin client à l'adoption post-lancement</li>
+          <li id="i-pb4-res2">Un reporting comparable et actionnable d'une campagne et d'un marché à l'autre</li>
+          <li id="i-pb4-res3">Une plateforme opérant sur cinq marchés avec plus de 150 KPIs personnalisables</li>
+        </ul>
+      </div>
+      <div class="pb-keywords mono" id="i-pb4-kw">150+ KPIs · 5 marchés · Roadmap, delivery et adoption</div>
+      <div class="pb-visual">
+        <div class="built-shots count-4">
+          <img id="i-shot10" src="impact-1.jpg" alt="Dashboard Impact" loading="lazy">
+          <img id="i-shot11" src="impact-2.jpg" alt="Dashboard Impact" loading="lazy">
+          <img id="i-shot12" src="impact-3.jpg" alt="Résultats de campagne Impact (anonymisé)" loading="lazy">
+          <img id="i-shot13" src="impact-4.jpg" alt="Résultats de campagne Impact (anonymisé)" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="eyebrow" id="i-foot-eyebrow">✨ Disponible maintenant</div>
+    <h2 id="i-foot-h2">Prête à structurer le prochain chaos, dans une équipe produit qui construit vite et sans détour.</h2>
+
+    <div class="contact-row">
+      <div>
+        <span class="label">Email</span>
+        <a href="mailto:lomaestracci@gmail.com">lomaestracci@gmail.com</a>
+      </div>
+      <div>
+        <span class="label" id="i-lbl-phone">Téléphone</span>
+        <a href="tel:+33664141556">+33 (0)6 64 14 15 56</a>
+      </div>
+      <div>
+        <span class="label">LinkedIn</span>
+        <a href="https://fr.linkedin.com/in/laurence-maestracci-3a09b4ab" target="_blank" rel="noopener">linkedin.com/in/laurence-maestracci</a>
+      </div>
+      <div>
+        <span class="label" id="i-lbl-loc">Localisation</span>
+        <span class="mono">Île-de-France, France</span>
+      </div>
+    </div>
+    <div class="foot-sign mono" id="i-foot-sign">Fait avec structure. Et un peu de chaos, forcément. 🩷</div>
+  </footer>
+
+</main>
+
+<script>
+  // ---- i18n: FR (default, in markup) / EN (translations below) ----
+  const translations = {
+    'i-thesis': '<span class="chaos">Chaos</span><span class="arrow">→</span><span class="accent">Flow.</span>',
+    'i-herosub': 'Product Strategy · B2B SaaS · Product Operations · Delivery &amp; Adoption. About ten years turning complex needs into useful, widely adopted and high-performing products.',
+    'i-intro1': 'Senior Product Manager working at the intersection of product, technology and operations. For about ten years, I have turned complex business needs into SaaS products and digital platforms, from product vision and roadmap to delivery, adoption and impact measurement. I work closely with Engineering, Data, Business and users to prioritize effectively and build useful, scalable and high-performing solutions.',
+    'i-c2-h3': 'Listen to the ground, build the right tools',
+    'i-c2-li1': 'Led the functional evolution of Hiretrack NX across the EMEA region',
+    'i-c2-li2': 'Gathered operational needs and translated them into workflow improvements',
+    'i-c2-li3': 'Managed investment budgets, P&amp;L analysis and operational standards',
+    'i-c2-li4': 'Supported users and drove continuous process improvement',
+    'i-bl1': 'Product scope · Hiretrack NX EMEA',
+    'i-hs-tag': 'Emails · quotes · Excel · invoices',
+    'i-ts-l1': 'Request',
+    'i-ts-l2': 'Quote',
+    'i-ts-l3': 'Planning',
+    'i-ts-l4': 'Invoicing',
+    'i-p1b-p': 'Functional evolution of a platform covering the full operational cycle, from the first quote to the final invoice: equipment, subcontracting, purchase orders and invoicing. The goal was to replace fragmented exchanges with a shared business workflow.',
+    'i-c3-li1': 'Led the France and Monaco rollout as part of the EMEA migration from Hiretrack NX to Easyjob',
+    'i-c3-li2': 'Managed data preparation and validation, workflow adaptation, translation and functional testing',
+    'i-c3-li3': 'Trained and supported teams to secure adoption without disrupting operations',
+    'i-c3-li4': 'Managed an annual CapEx budget of approximately $250,000 and coordinated rollout across 12 sites in the Paris region',
+    'i-bl2': 'Transformation led · Hiretrack NX → Easyjob',
+    'i-p1-h4': 'EMEA system migration',
+    'i-p1-p': 'System migration, data transition, workflow adaptation, functional testing and user training. A transformation delivered close to operational teams to maintain business continuity.',
+    'i-c4-role-suffix': 'Platform',
+    'i-c4-h3': 'A platform built for hypergrowth',
+    'i-c4-li1': 'Led the roadmap and priorities of a web and mobile CRM platform used across five markets',
+    'i-c4-li2': 'Gathered user needs, improved journeys and coordinated product changes with Product and Engineering',
+    'i-c4-li3': 'Managed testing, issue tracking, releases and adoption',
+    'i-c4-li4': 'Supported the growth of the French organization from 7 to 70 employees in six months',
+    'i-bl3': 'Product scope · 1CRM · Web + mobile · B2B2C',
+    'i-p2-h4t': 'From application to the last payslip',
+    'i-p2-p': 'Applications, onboarding, staffing, booking, expenses, payslips, contract signing and client access to staff profiles. A platform shaped with HR, Legal, Payroll, Operations and Product teams.',
+    'i-c5-h3': '150+ KPIs, a complete delivery cycle',
+    'i-c5-li1': 'Led the roadmap and priorities of a B2B SaaS reporting platform operating across five markets',
+    'i-c5-li2': 'Translated customer and business needs into functional changes and prioritized the roadmap',
+    'i-c5-li3': 'Coordinated Product, Reporting, Sales and Operations throughout the delivery cycle',
+    'i-c5-li4': 'Led scoping, testing, releases, onboarding and post-launch adoption',
+    'i-c5-li5': 'Managed a Project Coordinator and structured delivery tracking',
+    'i-bl4': 'Product scope · Impact · B2B SaaS',
+    'i-p3-h4': 'Real-time performance measurement',
+    'i-p3-p': 'A reporting and insights platform offering 150+ customizable KPIs, structured client briefs and actionable results across campaigns and markets.',
+    'i-link-impact-platform': 'Platform',
+    'i-link-impact-site': 'Impact site',
+    'i-c6-role': 'NEW CHAPTER',
+    'i-c6-h3': 'Elevate France has closed. What comes next starts now.',
+    'i-c6-li1': 'Available to build the next platform, structure the next chaos',
+    'i-skhead': '🛠️ Skills',
+    'i-sk1-b': 'Product strategy',
+    'i-sk1-t': 'Vision, discovery and prioritization',
+    'i-sk2-b': 'Roadmap &amp; delivery',
+    'i-sk2-t': 'Scoping, coordination, testing and releases',
+    'i-sk3-b': 'Adoption',
+    'i-sk3-t': 'Onboarding, training and change management',
+    'i-sk4-b': 'Platforms',
+    'i-sk4-t': 'B2B SaaS, web and mobile products, business workflows',
+    'i-sk5-b': 'Data &amp; impact',
+    'i-sk5-t': 'KPIs, reporting and continuous improvement',
+    'i-sk6-b': 'Cross-functional leadership',
+    'i-sk6-t': 'Aligning Engineering, Data, Business and users',
+    'i-sk7-b': 'Product &amp; delivery',
+    'i-sk7-t': 'Jira, Asana, Trello, Notion, Bugasura',
+    'i-sk8-b': 'Data &amp; insights',
+    'i-sk8-t': 'Power BI (basic), basic SQL, Microsoft Clarity',
+    'i-sk9-b': 'Design &amp; collaboration',
+    'i-sk9-t': 'Figma, Slack, Microsoft 365',
+    'i-sk10-b': 'Business platforms',
+    'i-sk10-t': '1CRM, Easyjob, Hiretrack NX, Zendesk',
+    'i-sk11-b': 'Generative AI',
+    'i-sk11-t': 'ChatGPT, Claude, Gemini, Canva AI, Voiceform AI',
+    'i-lang-fr': 'native',
+    'i-lang-en': 'fluent',
+    'i-lang-pt': 'good level',
+    'i-lang-es': 'basic',
+    'i-ask-label': 'Got a question? Instant answer below ↓',
+    'i-foot-eyebrow': '✨ Available now',
+    'i-foot-h2': 'Ready to structure the next chaos, in a product team that builds fast and builds straight.',
+    'i-lbl-phone': 'Phone',
+    'i-lbl-loc': 'Location',
+    'i-foot-sign': 'Made with structure. And a bit of chaos, obviously. 🩷',
+    'i-pa-h2': 'Four platforms, one common thread',
+    'i-pa-sub': 'From structuring operations to steering international SaaS products, I supported four platforms at key moments in their evolution: optimization, migration, scaling, and building a culture of performance.',
+    'i-pb1-tagline': 'Structuring operations',
+    'i-pb1-meta': 'Event-industry ERP · 2017–2020 · Encore Global (PSAV)',
+    'i-pb1-role': 'Operations Development Manager',
+    'i-pb1-ctx-l': 'Context',
+    'i-pb1-ctx1': 'A full operational cycle split across emails, spreadsheets, paper quotes and local practices',
+    'i-pb1-ctx2': 'A platform covering planning, equipment, subcontracting, purchasing, staffing, invoicing and profitability',
+    'i-pb1-act-l': 'What I led',
+    'i-pb1-act1': 'Gathered and analyzed the needs of field teams',
+    'i-pb1-act2': 'Functional evolution of Hiretrack NX across the EMEA region',
+    'i-pb1-act3': 'Translated operational needs into shared workflows and standards',
+    'i-pb1-act4': 'Coordinated between French users, European teams and partners',
+    'i-pb1-act5': 'Trained teams and supported them through adoption of the tool',
+    'i-pb1-res-l': 'Results',
+    'i-pb1-res1': 'Centralized operational cycle, from the first quote to the final invoice',
+    'i-pb1-res2': 'Digitized and harmonized practices across the EMEA region',
+    'i-pb1-res3': 'More consistent, reliable processes that are easier to manage',
+    'i-pb1-kw': 'End-to-end cycle · EMEA scope · User adoption',
+    'i-pb2-tagline': 'Transforming without disrupting operations',
+    'i-pb2-meta': 'Migration of a critical business ERP · 2020–2022 · Encore Global',
+    'i-pb2-role': 'Area Manager',
+    'i-pb2-ctx-l': 'Context',
+    'i-pb2-ctx1': 'EMEA migration from Hiretrack NX to Easyjob, in an international environment heavily dependent on its business tool',
+    'i-pb2-ctx2': 'A rollout that had to happen without interrupting teams\' daily operations',
+    'i-pb2-act-l': 'What I led',
+    'i-pb2-act1': 'Rollout of Easyjob for France and Monaco',
+    'i-pb2-act2': 'Export, recovery, consolidation and validation of technical and financial data',
+    'i-pb2-act3': 'Gap analysis between the tools and adaptation of business workflows',
+    'i-pb2-act4': 'Translation, functional testing and resolution of migration issues',
+    'i-pb2-act5': 'Team training, change management and adoption tracking',
+    'i-pb2-res-l': 'Results',
+    'i-pb2-res1': 'New processes rolled out across 12 sites in the Paris region',
+    'i-pb2-res2': 'Secure migration while preserving continuity of operations',
+    'i-pb2-res3': 'Adoption of a shared system and workflows by the teams involved',
+    'i-pb2-kw': '12 sites · France &amp; Monaco · Migration and change management',
+    'i-pb3-tagline': 'Supporting the shift to scale',
+    'i-pb3-meta': 'B2B2C web and mobile platform · 2022–2024 · Elevate Global',
+    'i-pb3-role': 'Regional Process &amp; Product Lead',
+    'i-pb3-ctx-l': 'Context',
+    'i-pb3-ctx1': 'A platform bringing together the journeys of field teams, operations and clients',
+    'i-pb3-ctx2': 'A French organization in rapid growth, from 7 to 70 people in six months',
+    'i-pb3-ctx3': 'Different uses and constraints across five markets: France, UK, US, Germany and Austria',
+    'i-pb3-act-l': 'What I led',
+    'i-pb3-act1': 'Regional roadmap and prioritization of product changes',
+    'i-pb3-act2': 'Gathered and challenged user, operational and regulatory needs',
+    'i-pb3-act3': 'Optimized journeys for applications, onboarding, staffing, booking, payroll, invoicing, expenses and reporting',
+    'i-pb3-act4': 'Coordinated changes with the Product and Engineering teams',
+    'i-pb3-act5': 'Organized testing, tracked issues, secured releases and supported users',
+    'i-pb3-res-l': 'Results',
+    'i-pb3-res1': 'A web and mobile platform able to support the French organization\'s rapid growth',
+    'i-pb3-res2': 'Staff, operations and client journeys brought together in a single product',
+    'i-pb3-res3': 'A platform rolled out and adapted to the needs of five markets',
+    'i-pb3-kw': '5 markets · Web + mobile · 7 → 70 people',
+    'i-pb4-tagline': 'Turning data into decisions',
+    'i-pb4-meta': 'B2B SaaS reporting and insights platform · 2024–2025 · Elevate Global',
+    'i-pb4-role': 'Project Manager, Impact',
+    'i-pb4-ctx-l': 'Context',
+    'i-pb4-ctx1': 'A platform letting clients track and compare their campaign performance across five markets',
+    'i-pb4-ctx2': 'A catalog of 150+ customizable KPIs to turn into clear, actionable reporting',
+    'i-pb4-act-l': 'What I led',
+    'i-pb4-act1': 'Product roadmap, prioritization and scope management for changes',
+    'i-pb4-act2': 'Gathered and challenged client and business needs',
+    'i-pb4-act3': 'Translated priorities into functional specs and delivery plans',
+    'i-pb4-act4': 'Coordinated the Product, Reporting, Sales and Operations teams',
+    'i-pb4-act5': 'Led scoping, testing, documentation and releases',
+    'i-pb4-act6': 'Structured onboarding and supported clients through adoption',
+    'i-pb4-act7': 'Managed a Project Coordinator and organized delivery tracking',
+    'i-pb4-res-l': 'Results',
+    'i-pb4-res1': 'An end-to-end delivery cycle, from client need to post-launch adoption',
+    'i-pb4-res2': 'Comparable, actionable reporting from one campaign and market to another',
+    'i-pb4-res3': 'A platform operating across five markets with 150+ customizable KPIs',
+    'i-pb4-kw': '150+ KPIs · 5 markets · Roadmap, delivery and adoption'
+  };
+  const altTranslations = {
+    'i-portrait': { fr:'Portrait de Laurence Maestracci', en:'Portrait of Laurence Maestracci' },
+    'i-shot1': { fr:"Interface Hiretrack NX (Job book)", en:'Hiretrack NX interface (Job book)' },
+    'i-shot2': { fr:"Interface Hiretrack NX (liste d'équipement)", en:'Hiretrack NX interface (equipment list)' },
+    'i-shot3': { fr:'Interface easyjob (Jobcenter)', en:'easyjob interface (Jobcenter)' },
+    'i-shot4': { fr:'Interface easyjob (vue ressources)', en:'easyjob interface (resource view)' },
+    'i-shot5': { fr:'Interface easyjob (Kanban tâches)', en:'easyjob interface (task Kanban)' },
+    'i-shot6': { fr:"Capture d'écran de l'app 1CRM (dashboard)", en:'1CRM app screenshot (dashboard)' },
+    'i-shot7': { fr:"Capture d'écran de l'app 1CRM (accueil)", en:'1CRM app screenshot (home)' },
+    'i-shot8': { fr:"Capture d'écran de l'app 1CRM (menu)", en:'1CRM app screenshot (menu)' },
+    'i-shot9': { fr:"Capture d'écran de l'app 1CRM", en:'1CRM app screenshot' },
+    'i-shot9b': { fr:"Capture d'écran de l'app 1CRM", en:'1CRM app screenshot' },
+    'i-shot10': { fr:'Dashboard Impact', en:'Impact dashboard' },
+    'i-shot11': { fr:'Dashboard Impact', en:'Impact dashboard' },
+    'i-shot12': { fr:'Résultats de campagne Impact (anonymisé)', en:'Impact campaign results (anonymized)' },
+    'i-shot13': { fr:'Résultats de campagne Impact (anonymisé)', en:'Impact campaign results (anonymized)' }
+  };
+  const metaTranslations = {
+    title: { fr:"Laurence Maestracci · Senior Product Manager", en:"Laurence Maestracci · Senior Product Manager" },
+    desc: { fr:"Senior Product Manager spécialisée dans les produits SaaS B2B, les plateformes métiers, le delivery et l'adoption produit.", en:"Senior Product Manager specializing in B2B SaaS products, business platforms, product delivery and adoption." }
+  };
+
+  const frCache = {};
+  Object.keys(translations).forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) frCache[id] = el.innerHTML;
+  });
+
+  let currentLang = 'fr';
+
+  function setLang(lang){
+    currentLang = lang;
+    Object.keys(translations).forEach(id=>{
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.innerHTML = lang === 'en' ? translations[id] : frCache[id];
+    });
+    Object.keys(altTranslations).forEach(id=>{
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.alt = lang === 'en' ? altTranslations[id].en : altTranslations[id].fr;
+    });
+    document.title = lang === 'en' ? metaTranslations.title.en : metaTranslations.title.fr;
+    const metaDesc = document.getElementById('meta-desc');
+    if(metaDesc) metaDesc.setAttribute('content', lang === 'en' ? metaTranslations.desc.en : metaTranslations.desc.fr);
+    document.documentElement.lang = lang;
+    const askInputEl = document.getElementById('askInput');
+    if(askInputEl) askInputEl.placeholder = lang === 'en' ? 'E.g. when are you available?' : 'Ex : quand es-tu disponible ?';
+    document.getElementById('btnFr').classList.toggle('active', lang==='fr');
+    document.getElementById('btnEn').classList.toggle('active', lang==='en');
+  }
+
+  // ---- Timecode ruler: ticks + scroll progress ----
+  const ruler = document.getElementById('ruler');
+  const rulerProgress = document.getElementById('rulerProgress');
+  const years = [2016,2018,2020,2022,2024,2026];
+  years.forEach(y=>{
+    const t = document.createElement('div');
+    t.className='ruler-tick';
+    t.textContent = y;
+    ruler.appendChild(t);
+  });
+  ruler.appendChild(rulerProgress);
+
+  function onScroll(){
+    const doc = document.documentElement;
+    const scrollFraction = window.scrollY / (doc.scrollHeight - window.innerHeight);
+    const clamped = Math.max(0, Math.min(1, scrollFraction));
+    doc.style.setProperty('--order', clamped.toFixed(3));
+    rulerProgress.style.height = (clamped*100)+'%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // ---- Reveal chapters & cards on scroll ----
+  const revealEls = document.querySelectorAll('.chapter');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('visible'); }
+    });
+  }, {threshold:0.2});
+  revealEls.forEach(el=>io.observe(el));
+
+  // ---- Ask a question: keyword-matched instant answers (no backend) ----
+  const faq = [
+    {
+      kw: ['disponib', 'quand', 'when', 'available', 'start', 'commencer', 'préavis', 'notice'],
+      fr: "Disponible immédiatement — Elevate France a fermé, je suis prête à démarrer dès que ça matche des deux côtés.",
+      en: "Available right away — Elevate France has closed, so I'm ready to start as soon as it's a good match on both sides."
+    },
+    {
+      kw: ['où', 'localisation', 'basé', 'based', 'location', 'ville', 'city', 'remote', 'télétravail', 'hybrid'],
+      fr: "Basée en Île-de-France. Pour le mode de travail (présentiel / hybride / remote), on peut en discuter directement.",
+      en: "Based in the Paris region (Île-de-France, France). Happy to discuss working arrangements directly."
+    },
+    {
+      kw: ['contact', 'joindre', 'email', 'mail', 'linkedin', 'téléphone', 'phone', 'appeler', 'call'],
+      fr: "Le plus simple : par email (lomaestracci@gmail.com) ou sur LinkedIn — les deux liens sont juste en dessous.",
+      en: "Easiest is by email (lomaestracci@gmail.com) or LinkedIn — both links are right below."
+    },
+    {
+      kw: ['expérience', 'parcours', 'background', 'experience', 'career', 'carrière'],
+      fr: "Senior Product Manager depuis une dizaine d'années, entre SaaS B2B, plateformes métiers et transformation digitale — le détail complet est dans la frise juste au-dessus.",
+      en: "Senior Product Manager for about ten years, across B2B SaaS, business platforms and digital transformation — the full story is in the timeline above."
+    },
+    {
+      kw: ['compétence', 'stack', 'outil', 'skill', 'tool', 'tech'],
+      fr: "Roadmap, delivery, adoption, data & impact, plus les plateformes SaaS B2B — le détail est dans le bloc Compétences un peu plus haut.",
+      en: "Roadmap, delivery, adoption, data & impact, and B2B SaaS platforms — the full breakdown is in the Skills block above."
+    },
+    {
+      kw: ['langue', 'language', 'anglais', 'english', 'espagnol', 'spanish', 'portugais', 'portuguese'],
+      fr: "Français natif, anglais courant, portugais bon niveau, espagnol débutant.",
+      en: "Native French, fluent English, good level of Portuguese, basic Spanish."
+    },
+    {
+      kw: ['salaire', 'salary', 'rémunération', 'compensation', 'tjm', 'rate'],
+      fr: "Sujet à discuter directement — écris-moi par email ou LinkedIn et on en parle.",
+      en: "Best discussed directly — send me an email or a LinkedIn message and let's talk."
+    },
+    {
+      kw: ['pourquoi', 'why', 'elevate', 'ferm'],
+      fr: "Elevate France a fermé (liquidation judiciaire) — d'où la disponibilité immédiate pour un nouveau chapitre.",
+      en: "Elevate France closed down — hence the immediate availability for a new chapter."
+    }
+  ];
+  const faqFallback = {
+    fr: "Bonne question ! Écris-moi directement par email ou LinkedIn, je te répondrai avec plaisir.",
+    en: "Good question! Send me an email or a LinkedIn message directly — happy to answer."
+  };
+  const askInput = document.getElementById('askInput');
+  const askBtn = document.getElementById('askBtn');
+  const askAnswer = document.getElementById('askAnswer');
+  function answerQuestion(){
+    if(!askInput || !askAnswer) return;
+    const q = askInput.value.trim().toLowerCase();
+    if(!q) return;
+    const hit = faq.find(entry => entry.kw.some(k => q.includes(k)));
+    const answer = hit ? hit[currentLang] : faqFallback[currentLang];
+    askAnswer.textContent = answer;
+    askAnswer.classList.remove('show');
+    void askAnswer.offsetWidth;
+    askAnswer.classList.add('show');
+  }
+  if(askBtn) askBtn.addEventListener('click', answerQuestion);
+  if(askInput) askInput.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') answerQuestion(); });
+
+  // ---- Ask box: drag to reposition ----
+  const askBox = document.querySelector('.ask-box');
+  const askHandle = document.getElementById('i-ask-label');
+  if(askBox && askHandle){
+    let dragging = false, offX = 0, offY = 0;
+    function startDrag(clientX, clientY){
+      const r = askBox.getBoundingClientRect();
+      askBox.style.left = r.left + 'px';
+      askBox.style.top = r.top + 'px';
+      askBox.style.right = 'auto';
+      askBox.style.bottom = 'auto';
+      offX = clientX - r.left;
+      offY = clientY - r.top;
+      dragging = true;
+    }
+    function moveDrag(clientX, clientY){
+      if(!dragging) return;
+      const maxX = window.innerWidth - askBox.offsetWidth - 8;
+      const maxY = window.innerHeight - askBox.offsetHeight - 8;
+      const nx = Math.min(Math.max(8, clientX - offX), maxX);
+      const ny = Math.min(Math.max(8, clientY - offY), maxY);
+      askBox.style.left = nx + 'px';
+      askBox.style.top = ny + 'px';
+    }
+    askHandle.addEventListener('mousedown', (e)=>{ startDrag(e.clientX, e.clientY); e.preventDefault(); });
+    window.addEventListener('mousemove', (e)=> moveDrag(e.clientX, e.clientY));
+    window.addEventListener('mouseup', ()=> dragging = false);
+    askHandle.addEventListener('touchstart', (e)=>{
+      const t = e.touches[0];
+      startDrag(t.clientX, t.clientY);
+    }, {passive:true});
+    window.addEventListener('touchmove', (e)=>{
+      if(!dragging) return;
+      const t = e.touches[0];
+      moveDrag(t.clientX, t.clientY);
+    }, {passive:true});
+    window.addEventListener('touchend', ()=> dragging = false);
+  }
+
+</script>
+
+</body>
+</html>
