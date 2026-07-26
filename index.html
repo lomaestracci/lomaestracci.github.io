@@ -834,6 +834,127 @@
   .langs span b{color:var(--teal); font-weight:700;}
 
   /* ---------- Footer / contact ---------- */
+  .ask-box{
+    position:fixed;
+    top:66px; right:24px;
+    z-index:69;
+    width:240px;
+    padding:14px 16px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:rgba(14,15,18,0.9);
+    backdrop-filter:blur(4px);
+    box-shadow:0 12px 28px rgba(0,0,0,0.35);
+  }
+  .ask-label{
+    font-size:0.65rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+    margin-bottom:10px;
+  }
+  .ask-row{display:flex; gap:8px;}
+  .ask-input{
+    flex:1;
+    min-width:0;
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:9px 10px;
+    color:var(--ink);
+    font-family:'Karla',sans-serif;
+    font-size:0.8rem;
+  }
+  .ask-input:focus{outline:none; border-color:var(--teal);}
+  .ask-btn{
+    background:var(--amber);
+    color:var(--bg);
+    border:none;
+    border-radius:8px;
+    width:38px;
+    flex-shrink:0;
+    font-size:1.05rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .ask-btn:hover{background:var(--teal); transform:scale(1.05);}
+  .ask-answer{
+    margin-top:12px;
+    font-size:0.78rem;
+    color:var(--ink);
+    line-height:1.5;
+    opacity:0;
+    transform:translateY(6px);
+    transition:opacity .35s ease, transform .35s ease;
+  }
+  .ask-answer.show{opacity:1; transform:translateY(0);}
+  /* ---------- Alternative layout: by platform (trial) ---------- */
+  .platforms-alt{
+    border-top:2px dashed var(--line);
+    padding-top:56px;
+  }
+  .pa-head{margin-bottom:48px;}
+  .pa-eyebrow{
+    font-size:11px;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--coral);
+    margin-bottom:12px;
+  }
+  .platforms-alt h2{
+    font-family:'Space Mono',monospace;
+    font-size:clamp(1.4rem, 3vw, 2rem);
+    margin-bottom:10px;
+  }
+  .platforms-alt .pa-head p{
+    font-family:'Space Mono',monospace;
+    font-size:0.85rem;
+    color:var(--ink-dim);
+  }
+  .pblock{
+    padding:40px 0;
+    border-bottom:1px solid var(--line);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:start;
+  }
+  .pblock:last-child{border-bottom:none;}
+  .pb-head{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:6px;
+  }
+  .pb-head img.co-logo{
+    height:30px;
+    width:auto;
+    max-width:110px;
+    object-fit:contain;
+    border-radius:4px;
+    background:#fff;
+    padding:3px 6px;
+  }
+  .pb-head h3{font-size:1.3rem;}
+  .pb-meta{
+    font-size:0.75rem;
+    color:var(--ink-dim);
+    letter-spacing:0.04em;
+    margin-bottom:14px;
+  }
+  .pblock p{font-size:0.92rem; line-height:1.65; color:var(--ink-dim); max-width:520px;}
+  .pb-visual .built-shots{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/10;
+    border-radius:10px;
+    overflow:hidden;
+  }
+  @media (max-width:900px){
+    .pblock{grid-template-columns:1fr;}
+  }
+
   footer{
     border-top:1px solid var(--line);
     padding:32px 8vw 80px;
@@ -917,6 +1038,7 @@
   }
   @media (max-width:720px){
     .lang-switch{top:12px; right:12px;}
+    .ask-box{top:56px; right:12px; width:min(230px, calc(100vw - 24px));}
   }
 </style>
 </head>
@@ -925,6 +1047,15 @@
 <div class="lang-switch mono" role="group" aria-label="Langue / Language">
   <button type="button" id="btnFr" class="active" onclick="setLang('fr')">FR</button>
   <button type="button" id="btnEn" onclick="setLang('en')">EN</button>
+</div>
+
+<div class="ask-box">
+  <div class="ask-label mono" id="i-ask-label">Une question pour moi ?</div>
+  <div class="ask-row">
+    <input type="text" id="askInput" class="ask-input" placeholder="Ex : quand es-tu disponible ?" autocomplete="off">
+    <button type="button" id="askBtn" class="ask-btn" aria-label="Envoyer">→</button>
+  </div>
+  <div class="ask-answer" id="askAnswer"></div>
 </div>
 
 <div class="ruler mono" id="ruler">
@@ -1117,9 +1248,84 @@
     </div>
   </section>
 
+  <section class="platforms-alt">
+    <div class="pa-head">
+      <div class="pa-eyebrow mono" id="i-pa-eyebrow">Format alternatif — à l'essai</div>
+      <h2 id="i-pa-h2">Quatre plateformes, un même fil conducteur</h2>
+      <p id="i-pa-sub">Hiretrack NX · Easyjob · 1CRM · Impact</p>
+    </div>
+
+    <div class="pblock">
+      <div class="pb-head">
+        <img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=hiretracknx.com" alt="Hiretrack NX" loading="lazy">
+        <h3>Hiretrack NX</h3>
+      </div>
+      <div class="pb-meta mono" id="i-pb1-meta">2017—2020 · Operations Development Manager · Encore Global (PSAV)</div>
+      <p id="i-pb1-text">Hiretrack NX était l'outil central de gestion opérationnelle sur le périmètre EMEA, mais ne suivait plus les besoins du terrain. J'ai piloté son évolution fonctionnelle : recueil des besoins opérationnels, traduction en améliorations de workflows, gestion des budgets d'investissement et des analyses P&amp;L, définition de standards. Résultat : une plateforme couvrant l'ensemble du cycle opérationnel, du premier devis à la dernière facture, remplaçant des échanges jusque-là dispersés.</p>
+      <div class="pb-visual">
+        <div class="built-shots count-2">
+          <img src="https://www.navigator.uk/wp-content/uploads/2014/07/jobbook-1024x683.png" alt="Interface Hiretrack NX (Job book)" loading="lazy">
+          <img src="https://www.navigator.uk/wp-content/uploads/2014/07/eqlist-1024x683.png" alt="Interface Hiretrack NX (liste d'équipement)" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="pblock">
+      <div class="pb-head">
+        <img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=protonic-software.com" alt="easyjob" loading="lazy">
+        <h3>Easyjob</h3>
+      </div>
+      <div class="pb-meta mono" id="i-pb2-meta">2020—2022 · Area Manager · Encore Global</div>
+      <p id="i-pb2-text">Face aux limites de Hiretrack NX, Encore Global a engagé sa migration vers Easyjob à l'échelle EMEA. J'ai piloté le déploiement pour la France et Monaco : préparation et contrôle des données, adaptation des workflows, traduction, recette fonctionnelle, formation des équipes. Résultat : une transformation menée au plus près du terrain, sans perturber les opérations, sur un budget CapEx annuel d'environ 250 000 $ et un déploiement coordonné sur 12 sites en Île-de-France.</p>
+      <div class="pb-visual">
+        <div class="built-shots count-3">
+          <img src="easyjob-1.jpg" alt="Interface easyjob (Jobcenter)" loading="lazy">
+          <img src="easyjob-2.jpg" alt="Interface easyjob (vue ressources)" loading="lazy">
+          <img src="easyjob-3.jpg" alt="Interface easyjob (Kanban tâches)" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="pblock">
+      <div class="pb-head">
+        <img class="co-logo" src="https://play-lh.googleusercontent.com/ZFNlzILlWmhVt3IE5kJpronBolVG5fWpuDA4OUH8F8xRR55xVa2dh66f5X2LMfbg0JshLTboyZbL5fNRNiyvFw=w96-h96" alt="1CRM" loading="lazy">
+        <h3>1CRM</h3>
+      </div>
+      <div class="pb-meta mono" id="i-pb3-meta">2022—2024 · Regional Process &amp; Product Lead · Elevate Global</div>
+      <p id="i-pb3-text">1CRM est la plateforme CRM web et mobile d'Elevate Global, utilisée sur cinq marchés, en pleine hypercroissance. J'ai piloté sa roadmap et ses priorités : recueil des besoins utilisateurs, optimisation des parcours, coordination avec les équipes Product et Engineering, pilotage des tests, du suivi des anomalies, des releases et de l'adoption. Résultat : une plateforme couvrant tout le cycle de gestion des équipes terrain, de la candidature à la dernière fiche de paie, qui a accompagné la croissance de l'équipe française de 7 à 70 collaborateurs en six mois.</p>
+      <div class="pb-visual">
+        <div class="built-shots count-5">
+          <img src="1crm-1.jpg" alt="Capture d'écran de l'app 1CRM (dashboard)" loading="lazy">
+          <img src="1crm-2.jpg" alt="Capture d'écran de l'app 1CRM (accueil)" loading="lazy">
+          <img src="1crm-3.jpg" alt="Capture d'écran de l'app 1CRM (menu)" loading="lazy">
+          <img src="https://play-lh.googleusercontent.com/8jfBvlaZ96BSMPRpHI6PmVJH7AFaAKY7CJ1G9Q4FOZiiNc8CmfgeWhuOhms5nLDzZQNmdZxcpYEUlUncxkG2=w1200-h675" alt="Capture d'écran de l'app 1CRM" loading="lazy">
+          <img src="https://play-lh.googleusercontent.com/if6ID0w1oj2nrV6F4AFjWXQ1hYWTDv8QcymFxWzZi1cyux6cKPEmqqNfooxqMm_gObRbjo9ocSwFHk5hbuJ7kw=w1200-h675" alt="Capture d'écran de l'app 1CRM" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="pblock">
+      <div class="pb-head">
+        <img class="co-logo" src="impact-logo.png" alt="Impact" loading="lazy">
+        <h3>Impact</h3>
+      </div>
+      <div class="pb-meta mono" id="i-pb4-meta">2024—2025 · Project Manager, Impact · Elevate Global</div>
+      <p id="i-pb4-text">Impact est la plateforme SaaS B2B de reporting et de mesure de performance d'Elevate Global, opérant sur cinq marchés. J'ai piloté sa roadmap et ses priorités : traduction des besoins clients et business en évolutions fonctionnelles, coordination transverse des équipes Product, Reporting, Sales et opérations, pilotage du cadrage, des tests, des releases, de l'onboarding et de l'adoption post-lancement, encadrement d'une Project Coordinator. Résultat : plus de 150 KPIs personnalisables, des briefs clients structurés et des résultats actionnables d'une campagne et d'un marché à l'autre.</p>
+      <div class="pb-visual">
+        <div class="built-shots count-4">
+          <img src="impact-1.jpg" alt="Dashboard Impact" loading="lazy">
+          <img src="impact-2.jpg" alt="Dashboard Impact" loading="lazy">
+          <img src="impact-3.jpg" alt="Résultats de campagne Impact (anonymisé)" loading="lazy">
+          <img src="impact-4.jpg" alt="Résultats de campagne Impact (anonymisé)" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="eyebrow" id="i-foot-eyebrow">✨ Disponible maintenant</div>
     <h2 id="i-foot-h2">Prête à structurer le prochain chaos, dans une équipe produit qui construit vite et sans détour.</h2>
+
     <div class="contact-row">
       <div>
         <span class="label">Email</span>
@@ -1218,6 +1424,7 @@
     'i-lang-en': 'fluent',
     'i-lang-pt': 'good level',
     'i-lang-es': 'basic',
+    'i-ask-label': 'Got a question for me?',
     'i-foot-eyebrow': '✨ Available now',
     'i-foot-h2': 'Ready to structure the next chaos, in a product team that builds fast and builds straight.',
     'i-lbl-phone': 'Phone',
@@ -1240,6 +1447,17 @@
     'i-shot11': { fr:'Dashboard Impact', en:'Impact dashboard' },
     'i-shot12': { fr:'Résultats de campagne Impact (anonymisé)', en:'Impact campaign results (anonymized)' },
     'i-shot13': { fr:'Résultats de campagne Impact (anonymisé)', en:'Impact campaign results (anonymized)' }
+    'i-pa-eyebrow': 'Alternative format — trial',
+    'i-pa-h2': 'Four platforms, one thread',
+    'i-pa-sub': 'Hiretrack NX · Easyjob · 1CRM · Impact',
+    'i-pb1-meta': '2017—2020 · Operations Development Manager · Encore Global (PSAV)',
+    'i-pb1-text': "Hiretrack NX was the core operational tool across the EMEA region, but it no longer matched real operational needs. I led its functional evolution: gathering operational needs, translating them into workflow improvements, managing investment budgets and P&amp;L analysis, and defining standards. Result: a platform covering the full operational cycle, from the first quote to the final invoice, replacing what had been fragmented exchanges.",
+    'i-pb2-meta': '2020—2022 · Area Manager · Encore Global',
+    'i-pb2-text': "Facing the limits of Hiretrack NX, Encore Global began migrating to Easyjob across EMEA. I led the rollout for France and Monaco: data preparation and validation, workflow adaptation, translation, functional testing, and team training. Result: a transformation delivered close to operational teams without disrupting the business, on an annual CapEx budget of approximately $250,000, coordinated across 12 sites in the Paris region.",
+    'i-pb3-meta': '2022—2024 · Regional Process &amp; Product Lead · Elevate Global',
+    'i-pb3-text': "1CRM is Elevate Global's web and mobile CRM platform, used across five markets during a period of rapid growth. I led its roadmap and priorities: gathering user needs, improving journeys, coordinating with Product and Engineering, and managing testing, issue tracking, releases and adoption. Result: a platform covering the full workforce cycle, from application to the last payslip, that supported the French team's growth from 7 to 70 people in six months.",
+    'i-pb4-meta': '2024—2025 · Project Manager, Impact · Elevate Global',
+    'i-pb4-text': "Impact is Elevate Global's B2B SaaS reporting and performance measurement platform, operating across five markets. I led its roadmap and priorities: translating customer and business needs into functional changes, coordinating Product, Reporting, Sales and Operations, leading scoping, testing, releases, onboarding and post-launch adoption, and managing a Project Coordinator. Result: 150+ customizable KPIs, structured client briefs and actionable results across campaigns and markets.",
   };
   const metaTranslations = {
     title: { fr:"Laurence Maestracci · Senior Product Manager", en:"Laurence Maestracci · Senior Product Manager" },
@@ -1252,7 +1470,10 @@
     if(el) frCache[id] = el.innerHTML;
   });
 
+  let currentLang = 'fr';
+
   function setLang(lang){
+    currentLang = lang;
     Object.keys(translations).forEach(id=>{
       const el = document.getElementById(id);
       if(!el) return;
@@ -1267,9 +1488,10 @@
     const metaDesc = document.getElementById('meta-desc');
     if(metaDesc) metaDesc.setAttribute('content', lang === 'en' ? metaTranslations.desc.en : metaTranslations.desc.fr);
     document.documentElement.lang = lang;
+    const askInputEl = document.getElementById('askInput');
+    if(askInputEl) askInputEl.placeholder = lang === 'en' ? 'E.g. when are you available?' : 'Ex : quand es-tu disponible ?';
     document.getElementById('btnFr').classList.toggle('active', lang==='fr');
     document.getElementById('btnEn').classList.toggle('active', lang==='en');
-    if(typeof replayTransformScene === 'function') replayTransformScene();
   }
 
   // ---- Timecode ruler: ticks + scroll progress ----
@@ -1303,25 +1525,69 @@
   }, {threshold:0.2});
   revealEls.forEach(el=>io.observe(el));
 
-  // ---- Transformation scene (proposal 2): plays once on scroll ----
-  const tsScene = document.querySelector('.ts-scene');
-  if(tsScene){
-    const tsIO = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          tsScene.classList.add('play');
-          tsIO.unobserve(tsScene);
-        }
-      });
-    }, {threshold:0.35});
-    tsIO.observe(tsScene);
+  // ---- Ask a question: keyword-matched instant answers (no backend) ----
+  const faq = [
+    {
+      kw: ['disponib', 'quand', 'when', 'available', 'start', 'commencer', 'préavis', 'notice'],
+      fr: "Disponible immédiatement — Elevate France a fermé, je suis prête à démarrer dès que ça matche des deux côtés.",
+      en: "Available right away — Elevate France has closed, so I'm ready to start as soon as it's a good match on both sides."
+    },
+    {
+      kw: ['où', 'localisation', 'basé', 'based', 'location', 'ville', 'city', 'remote', 'télétravail', 'hybrid'],
+      fr: "Basée en Île-de-France. Pour le mode de travail (présentiel / hybride / remote), on peut en discuter directement.",
+      en: "Based in the Paris region (Île-de-France, France). Happy to discuss working arrangements directly."
+    },
+    {
+      kw: ['contact', 'joindre', 'email', 'mail', 'linkedin', 'téléphone', 'phone', 'appeler', 'call'],
+      fr: "Le plus simple : par email (lomaestracci@gmail.com) ou sur LinkedIn — les deux liens sont juste en dessous.",
+      en: "Easiest is by email (lomaestracci@gmail.com) or LinkedIn — both links are right below."
+    },
+    {
+      kw: ['expérience', 'parcours', 'background', 'experience', 'career', 'carrière'],
+      fr: "Senior Product Manager depuis une dizaine d'années, entre SaaS B2B, plateformes métiers et transformation digitale — le détail complet est dans la frise juste au-dessus.",
+      en: "Senior Product Manager for about ten years, across B2B SaaS, business platforms and digital transformation — the full story is in the timeline above."
+    },
+    {
+      kw: ['compétence', 'stack', 'outil', 'skill', 'tool', 'tech'],
+      fr: "Roadmap, delivery, adoption, data & impact, plus les plateformes SaaS B2B — le détail est dans le bloc Compétences un peu plus haut.",
+      en: "Roadmap, delivery, adoption, data & impact, and B2B SaaS platforms — the full breakdown is in the Skills block above."
+    },
+    {
+      kw: ['langue', 'language', 'anglais', 'english', 'espagnol', 'spanish', 'portugais', 'portuguese'],
+      fr: "Français natif, anglais courant, portugais bon niveau, espagnol débutant.",
+      en: "Native French, fluent English, good level of Portuguese, basic Spanish."
+    },
+    {
+      kw: ['salaire', 'salary', 'rémunération', 'compensation', 'tjm', 'rate'],
+      fr: "Sujet à discuter directement — écris-moi par email ou LinkedIn et on en parle.",
+      en: "Best discussed directly — send me an email or a LinkedIn message and let's talk."
+    },
+    {
+      kw: ['pourquoi', 'why', 'elevate', 'ferm'],
+      fr: "Elevate France a fermé (liquidation judiciaire) — d'où la disponibilité immédiate pour un nouveau chapitre.",
+      en: "Elevate France closed down — hence the immediate availability for a new chapter."
+    }
+  ];
+  const faqFallback = {
+    fr: "Bonne question ! Écris-moi directement par email ou LinkedIn, je te répondrai avec plaisir.",
+    en: "Good question! Send me an email or a LinkedIn message directly — happy to answer."
+  };
+  const askInput = document.getElementById('askInput');
+  const askBtn = document.getElementById('askBtn');
+  const askAnswer = document.getElementById('askAnswer');
+  function answerQuestion(){
+    if(!askInput || !askAnswer) return;
+    const q = askInput.value.trim().toLowerCase();
+    if(!q) return;
+    const hit = faq.find(entry => entry.kw.some(k => q.includes(k)));
+    const answer = hit ? hit[currentLang] : faqFallback[currentLang];
+    askAnswer.textContent = answer;
+    askAnswer.classList.remove('show');
+    void askAnswer.offsetWidth;
+    askAnswer.classList.add('show');
   }
-  function replayTransformScene(){
-    if(!tsScene || !tsScene.classList.contains('play')) return;
-    tsScene.classList.remove('play');
-    void tsScene.offsetWidth;
-    requestAnimationFrame(()=> tsScene.classList.add('play'));
-  }
+  if(askBtn) askBtn.addEventListener('click', answerQuestion);
+  if(askInput) askInput.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') answerQuestion(); });
 
 </script>
 
