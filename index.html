@@ -985,7 +985,6 @@
   .ask-answer.show{opacity:1; max-height:160px;}
   /* ---------- Alternative layout: by platform (trial) ---------- */
   .platforms-alt{
-    border-top:2px dashed var(--line);
     padding-top:56px;
     padding-bottom:24px;
   }
@@ -1007,12 +1006,27 @@
     font-size:0.85rem;
     color:var(--ink-dim);
   }
+  .pa-preview{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:28px;
+  }
+  .pa-preview span{
+    padding:14px 16px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    font-size:0.88rem;
+    color:var(--ink-dim);
+    line-height:1.4;
+  }
+  @media (max-width:720px){
+    .pa-preview{grid-template-columns:1fr;}
+  }
   .pblock{
-    padding:48px 0;
-    border-bottom:1px solid var(--line);
+    padding:64px 0;
     display:block;
   }
-  .pblock:last-child{border-bottom:none;}
   .pb-head{
     display:flex;
     align-items:center;
@@ -1035,7 +1049,7 @@
     font-weight:700;
   }
   .pb-meta{
-    font-family:'Space Mono',monospace;
+    font-family:'Karla',sans-serif;
     font-size:1rem;
     color:var(--amber);
     letter-spacing:0.03em;
@@ -1044,7 +1058,7 @@
   .pb-meta a{color:inherit; text-decoration:underline; text-underline-offset:3px; transition:color .2s ease;}
   .pb-meta a:hover{color:var(--teal);}
   .pb-role{
-    font-family:'Space Mono',monospace;
+    font-family:'Karla',sans-serif;
     font-size:1rem;
     font-weight:700;
     color:var(--ink);
@@ -1128,8 +1142,7 @@
   }
   .cn-pink{color:var(--amber) !important; margin-bottom:14px;}
   footer{
-    border-top:1px solid var(--line);
-    padding:32px 8vw 80px;
+    padding:80px 8vw 80px;
     text-align:left;
   }
   footer .eyebrow{margin-bottom:20px;}
@@ -1295,7 +1308,13 @@
   <section class="platforms-alt">
     <div class="pa-head">
       <h2 id="i-pa-h2">Quatre plateformes, un même fil rouge</h2>
-      <p id="i-pa-sub">De la structuration des opérations au pilotage de produits SaaS internationaux, j'ai accompagné quatre plateformes à des moments clés de leur évolution : optimisation, migration, passage à l'échelle et développement d'une culture de la performance.</p>
+      <p id="i-pa-sub">Depuis dix ans, j'aide les entreprises à transformer des organisations complexes en produits simples, adoptés et performants. Voici quatre exemples de cette approche.</p>
+      <div class="pa-preview">
+        <span id="i-pa-p1">🧩 Transformer un outil de stock en plateforme métier</span>
+        <span id="i-pa-p2">🌍 Réussir une migration Big Bang internationale</span>
+        <span id="i-pa-p3">🤝 Construire un CRM commun pour plusieurs marchés</span>
+        <span id="i-pa-p4">📊 Déployer une plateforme SaaS de l'avant-vente à l'adoption</span>
+      </div>
     </div>
 
     <div class="pblock">
@@ -1303,33 +1322,26 @@
         <img class="co-logo" src="hiretrack-logo.png" alt="Hiretrack NX" loading="lazy">
         <h3>Hiretrack NX</h3>
       </div>
-      <div class="pb-tagline" id="i-pb1-tagline">Structurer les opérations</div>
+      <div class="pb-tagline" id="i-pb1-tagline">Transformer un outil de stock en plateforme métier</div>
       <div class="pb-meta mono" id="i-pb1-meta">ERP métier événementiel · 2017–2020 · <a href="https://www.encore-emea.com/fr/" target="_blank" rel="noopener">Encore Global</a> (PSAV)</div>
       <div class="pb-role" id="i-pb1-role">Operations Development Manager</div>
       <div class="pb-keywords mono" id="i-pb1-kw">Cycle end-to-end · Périmètre EMEA · Adoption utilisateur</div>
       <div class="pb-sec">
         <span class="pb-label mono" id="i-pb1-ctx-l">Contexte</span>
-        <ul>
-          <li id="i-pb1-ctx1">Un cycle opérationnel complet réparti entre emails, fichiers Excel, devis papier et pratiques locales</li>
-          <li id="i-pb1-ctx2">Une plateforme couvrant planning, matériel, sous-traitance, achats, staffing, facturation et rentabilité</li>
-        </ul>
+        <p id="i-pb1-ctx1">À mon arrivée chez Encore, Hiretrack NX était essentiellement un outil de gestion de stock. L'ambition était d'en faire la plateforme centrale des opérations en digitalisant progressivement l'ensemble des processus métier.</p>
       </div>
       <div class="pb-sec">
-        <span class="pb-label mono" id="i-pb1-act-l">Ce que j'ai piloté</span>
-        <ul>
-          <li id="i-pb1-act1">Recueil et analyse des besoins des équipes terrain</li>
-          <li id="i-pb1-act2">Évolution fonctionnelle de Hiretrack NX sur le périmètre EMEA</li>
-          <li id="i-pb1-act3">Traduction des besoins opérationnels en workflows et standards communs</li>
-          <li id="i-pb1-act4">Coordination entre les utilisateurs français, les équipes européennes et les partenaires</li>
-          <li id="i-pb1-act5">Formation des équipes et accompagnement dans l'adoption de l'outil</li>
-        </ul>
+        <span class="pb-label mono" id="i-pb1-act-l">La transformation</span>
+        <p id="i-pb1-act1">J'ai cartographié les processus existants, conçu les nouveaux workflows et piloté leur intégration dans la plateforme en cycles Agile. En parallèle, j'ai accompagné le changement en créant la documentation, les supports de formation et en formant les équipes. Chaque évolution était guidée par une logique d'amélioration continue et les retours des utilisateurs.</p>
       </div>
       <div class="pb-sec">
         <span class="pb-label mono" id="i-pb1-res-l">Résultats</span>
         <ul>
-          <li id="i-pb1-res1">Centralisation du cycle opérationnel, du premier devis à la dernière facture</li>
-          <li id="i-pb1-res2">Digitalisation et harmonisation des pratiques sur le périmètre EMEA</li>
-          <li id="i-pb1-res3">Des processus plus homogènes, plus fiables et plus faciles à piloter</li>
+          <li id="i-pb1-res1">Transformation d'un simple outil de stock en plateforme métier complète</li>
+          <li id="i-pb1-res2">Digitalisation des processus opérationnels de bout en bout</li>
+          <li id="i-pb1-res3">Accélération significative de l'exécution des opérations grâce à l'automatisation des workflows</li>
+          <li id="i-pb1-res4">Création d'un bon de commande unifié offrant une vision consolidée des CAPEX (250 000 $)</li>
+          <li id="i-pb1-res5">Forte adoption grâce à la documentation, aux formations et à l'amélioration continue</li>
         </ul>
       </div>
       <div class="pb-visual pb-visual-wide">
@@ -1353,33 +1365,26 @@
         <img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=protonic-software.com" alt="easyjob" loading="lazy">
         <h3>Easyjob</h3>
       </div>
-      <div class="pb-tagline" id="i-pb2-tagline">Transformer sans interrompre les opérations</div>
+      <div class="pb-tagline" id="i-pb2-tagline">Réussir une migration Big Bang à l'échelle européenne</div>
       <div class="pb-meta mono" id="i-pb2-meta">Migration d'un ERP métier critique · 2020–2022 · <a href="https://www.encore-emea.com/fr/" target="_blank" rel="noopener">Encore Global</a></div>
       <div class="pb-role" id="i-pb2-role">Area Manager</div>
       <div class="pb-keywords mono" id="i-pb2-kw">12 sites · France &amp; Monaco · Migration et conduite du changement</div>
       <div class="pb-sec">
         <span class="pb-label mono" id="i-pb2-ctx-l">Contexte</span>
-        <ul>
-          <li id="i-pb2-ctx1">Migration EMEA de Hiretrack NX vers Easyjob dans un environnement international fortement dépendant de son outil métier</li>
-          <li id="i-pb2-ctx2">Un déploiement à réaliser sans interrompre les opérations quotidiennes des équipes</li>
-        </ul>
+        <p id="i-pb2-ctx1">Dans le cadre d'une stratégie mondiale d'harmonisation des outils et des processus, Encore a lancé le déploiement d'Easyjob sur l'ensemble de ses filiales européennes via une migration Big Bang.</p>
       </div>
       <div class="pb-sec">
-        <span class="pb-label mono" id="i-pb2-act-l">Ce que j'ai piloté</span>
-        <ul>
-          <li id="i-pb2-act1">Déploiement d'Easyjob pour la France et Monaco</li>
-          <li id="i-pb2-act2">Export, reprise, consolidation et contrôle des données techniques et financières</li>
-          <li id="i-pb2-act3">Analyse des écarts entre les outils et adaptation des workflows métier</li>
-          <li id="i-pb2-act4">Traduction, recette fonctionnelle et résolution des problèmes de migration</li>
-          <li id="i-pb2-act5">Formation des équipes, accompagnement au changement et suivi de l'adoption</li>
-        </ul>
+        <span class="pb-label mono" id="i-pb2-act-l">La transformation</span>
+        <p id="i-pb2-act1">J'ai piloté le déploiement pour la France en coordonnant les tests, la migration, la gestion des risques, les parties prenantes et l'accompagnement des utilisateurs. Le projet, mené en méthodologie Waterfall, a nécessité une préparation extrêmement rigoureuse. J'ai également produit la documentation, créé les supports de formation et accompagné les équipes avant et après le déploiement dans une logique d'amélioration continue.</p>
       </div>
       <div class="pb-sec">
         <span class="pb-label mono" id="i-pb2-res-l">Résultats</span>
         <ul>
-          <li id="i-pb2-res1">Déploiement de nouveaux processus sur 12 sites en Île-de-France</li>
-          <li id="i-pb2-res2">Migration sécurisée tout en préservant la continuité des opérations</li>
-          <li id="i-pb2-res3">Adoption d'un système et de workflows communs par les équipes concernées</li>
+          <li id="i-pb2-res1">Déploiement réussi dans un contexte international</li>
+          <li id="i-pb2-res2">Harmonisation des outils et des processus à l'échelle européenne</li>
+          <li id="i-pb2-res3">Migration sécurisée grâce à une gestion proactive des risques</li>
+          <li id="i-pb2-res4">Formation et accompagnement des équipes</li>
+          <li id="i-pb2-res5">Amélioration continue de la plateforme après sa mise en production</li>
         </ul>
       </div>
       <div class="pb-visual">
@@ -1397,34 +1402,26 @@
         <img class="co-logo" src="https://play-lh.googleusercontent.com/ZFNlzILlWmhVt3IE5kJpronBolVG5fWpuDA4OUH8F8xRR55xVa2dh66f5X2LMfbg0JshLTboyZbL5fNRNiyvFw=w96-h96" alt="1CRM" loading="lazy">
         <h3>1CRM</h3>
       </div>
-      <div class="pb-tagline" id="i-pb3-tagline">Accompagner le passage à l'échelle</div>
+      <div class="pb-tagline" id="i-pb3-tagline">Concevoir un CRM unique pour plusieurs marchés internationaux</div>
       <div class="pb-meta mono" id="i-pb3-meta">Plateforme web et mobile B2B2C · 2022–2024 · <a href="https://weareelevate.global/fr/" target="_blank" rel="noopener">Elevate Global</a></div>
       <div class="pb-role" id="i-pb3-role">Regional Process &amp; Product Lead</div>
       <div class="pb-keywords mono" id="i-pb3-kw">5 marchés · Web + mobile · 7 → 70 collaborateurs</div>
       <div class="pb-sec">
         <span class="pb-label mono" id="i-pb3-ctx-l">Contexte</span>
-        <ul>
-          <li id="i-pb3-ctx1">Une plateforme réunissant les parcours des équipes terrain, des opérations et des clients</li>
-          <li id="i-pb3-ctx2">Une organisation française en forte croissance, passée de 7 à 70 collaborateurs en six mois</li>
-          <li id="i-pb3-ctx3">Des usages et contraintes différents sur cinq marchés : France, Royaume-Uni, États-Unis, Allemagne et Autriche</li>
-        </ul>
+        <p id="i-pb3-ctx1">Pour soutenir son développement international, Elevate souhaitait remplacer les différentes applications utilisées par chaque marché par une plateforme CRM unique, capable de s'adapter aux spécificités locales tout en harmonisant les pratiques du groupe.</p>
       </div>
       <div class="pb-sec">
-        <span class="pb-label mono" id="i-pb3-act-l">Ce que j'ai piloté</span>
-        <ul>
-          <li id="i-pb3-act1">Roadmap régionale et priorisation des évolutions produit</li>
-          <li id="i-pb3-act2">Recueil et challenge des besoins utilisateurs, opérationnels et réglementaires</li>
-          <li id="i-pb3-act3">Optimisation des parcours de candidature, onboarding, staffing, booking, paie, facturation, notes de frais et reporting</li>
-          <li id="i-pb3-act4">Coordination des évolutions avec les équipes Product et Engineering</li>
-          <li id="i-pb3-act5">Organisation des tests, suivi des anomalies, sécurisation des releases et accompagnement des utilisateurs</li>
-        </ul>
+        <span class="pb-label mono" id="i-pb3-act-l">La transformation</span>
+        <p id="i-pb3-act1">En tant que Regional Process &amp; Product Lead, j'ai travaillé avec un écosystème très transverse : équipes métier, développeurs, utilisateurs terrain, clients, RH, cabinets de paie, juristes et partenaires externes. J'ai animé la discovery, conçu les parcours utilisateurs, piloté les évolutions produit et accompagné le déploiement grâce à la documentation, aux supports de formation et à l'amélioration continue.</p>
       </div>
       <div class="pb-sec">
         <span class="pb-label mono" id="i-pb3-res-l">Résultats</span>
         <ul>
-          <li id="i-pb3-res1">Une plateforme web et mobile capable d'accompagner la croissance rapide de l'organisation française</li>
-          <li id="i-pb3-res2">Des parcours staff, opérations et clients réunis dans un même produit</li>
-          <li id="i-pb3-res3">Une plateforme déployée et adaptée aux besoins de cinq marchés</li>
+          <li id="i-pb3-res1">Conception d'une plateforme commune pour plusieurs marchés internationaux</li>
+          <li id="i-pb3-res2">Harmonisation des parcours métier tout en intégrant les contraintes locales</li>
+          <li id="i-pb3-res3">Coordination de nombreuses parties prenantes internes et externes</li>
+          <li id="i-pb3-res4">Formation et accompagnement des équipes internationales</li>
+          <li id="i-pb3-res5">Amélioration continue fondée sur les retours utilisateurs</li>
         </ul>
       </div>
       <div class="built-links">
@@ -1446,35 +1443,26 @@
         <img class="co-logo" src="impact-logo.png" alt="Impact" loading="lazy">
         <h3>Impact</h3>
       </div>
-      <div class="pb-tagline" id="i-pb4-tagline">Transformer les données en décisions</div>
+      <div class="pb-tagline" id="i-pb4-tagline">Déployer une plateforme SaaS B2B de l'avant-vente à l'adoption</div>
       <div class="pb-meta mono" id="i-pb4-meta">Plateforme SaaS B2B de reporting et d'insights · 2024–2025 · <a href="https://weareelevate.global/fr/" target="_blank" rel="noopener">Elevate Global</a></div>
       <div class="pb-role" id="i-pb4-role">Project Manager, Impact</div>
       <div class="pb-keywords mono" id="i-pb4-kw">150+ KPIs · 5 marchés · Roadmap, delivery et adoption</div>
       <div class="pb-sec">
         <span class="pb-label mono" id="i-pb4-ctx-l">Contexte</span>
-        <ul>
-          <li id="i-pb4-ctx1">Une plateforme permettant aux clients de suivre et comparer la performance de leurs campagnes sur cinq marchés</li>
-          <li id="i-pb4-ctx2">Un catalogue de plus de 150 KPIs personnalisables à transformer en reporting clair et actionnable</li>
-        </ul>
+        <p id="i-pb4-ctx1">Impact est la plateforme SaaS B2B d'Elevate permettant aux clients de piloter leurs opérations et leurs indicateurs de performance. Mon rôle couvrait l'ensemble du cycle de vie client, de l'avant-vente à l'adoption.</p>
       </div>
       <div class="pb-sec">
-        <span class="pb-label mono" id="i-pb4-act-l">Ce que j'ai piloté</span>
-        <ul>
-          <li id="i-pb4-act1">Roadmap produit, priorisation et gestion du périmètre des évolutions</li>
-          <li id="i-pb4-act2">Recueil et challenge des besoins clients et business</li>
-          <li id="i-pb4-act3">Traduction des priorités en spécifications fonctionnelles et plans de delivery</li>
-          <li id="i-pb4-act4">Coordination des équipes Product, Reporting, Sales et Operations</li>
-          <li id="i-pb4-act5">Pilotage du cadrage, des tests, de la documentation et des releases</li>
-          <li id="i-pb4-act6">Structuration de l'onboarding et accompagnement des clients dans l'adoption</li>
-          <li id="i-pb4-act7">Encadrement d'une Project Coordinator et organisation du suivi des livraisons</li>
-        </ul>
+        <span class="pb-label mono" id="i-pb4-act-l">La transformation</span>
+        <p id="i-pb4-act1">J'ai accompagné les équipes commerciales lors des phases de cadrage, piloté les intégrations API, la discovery, la delivery et les déploiements. J'ai ensuite suivi l'adoption, analysé les usages et fait évoluer la plateforme grâce aux retours clients, aux automatisations et à l'intégration de fonctionnalités d'IA. J'ai également créé les ressources documentaires et formé les utilisateurs.</p>
       </div>
       <div class="pb-sec">
         <span class="pb-label mono" id="i-pb4-res-l">Résultats</span>
         <ul>
-          <li id="i-pb4-res1">Un cycle de delivery structuré de bout en bout, du besoin client à l'adoption post-lancement</li>
-          <li id="i-pb4-res2">Un reporting comparable et actionnable d'une campagne et d'un marché à l'autre</li>
-          <li id="i-pb4-res3">Une plateforme opérant sur cinq marchés avec plus de 150 KPIs personnalisables</li>
+          <li id="i-pb4-res1">Accompagnement des clients de l'avant-vente jusqu'à l'adoption</li>
+          <li id="i-pb4-res2">Pilotage des intégrations API et des évolutions produit</li>
+          <li id="i-pb4-res3">Déploiement d'automatisations et de fonctionnalités d'IA</li>
+          <li id="i-pb4-res4">Amélioration continue basée sur les usages et les retours clients</li>
+          <li id="i-pb4-res5">Documentation, formation et adoption durable de la plateforme</li>
         </ul>
       </div>
       <div class="built-links">
@@ -1613,77 +1601,66 @@
     'i-lbl-loc': 'Location',
     'i-foot-sign': 'Made with structure. And a bit of chaos, obviously. 🩷',
     'i-pa-h2': 'Four platforms, one common thread',
-    'i-pa-sub': 'From structuring operations to steering international SaaS products, I supported four platforms at key moments in their evolution: optimization, migration, scaling, and building a culture of performance.',
-    'i-pb1-tagline': 'Structuring operations',
+    'i-pa-sub': "For about ten years, I've helped companies turn complex organizations into simple, adopted and high-performing products. Here are four examples of that approach.",
+    'i-pa-p1': '🧩 Turning a stock tool into a business platform',
+    'i-pa-p2': '🌍 Delivering an international Big Bang migration',
+    'i-pa-p3': '🤝 Building a shared CRM for multiple markets',
+    'i-pa-p4': "📊 Rolling out a SaaS platform from pre-sales to adoption",
+    'i-pb1-tagline': 'Turning a stock tool into a business platform',
     'i-pb1-meta': 'Event-industry ERP · 2017–2020 · <a href="https://www.encore-emea.com/fr/" target="_blank" rel="noopener">Encore Global</a> (PSAV)',
     'i-pb1-role': 'Operations Development Manager',
     'i-pb1-ctx-l': 'Context',
-    'i-pb1-ctx1': 'A full operational cycle split across emails, spreadsheets, paper quotes and local practices',
-    'i-pb1-ctx2': 'A platform covering planning, equipment, subcontracting, purchasing, staffing, invoicing and profitability',
-    'i-pb1-act-l': 'What I led',
-    'i-pb1-act1': 'Gathered and analyzed the needs of field teams',
-    'i-pb1-act2': 'Led the functional evolution of Hiretrack NX across EMEA',
-    'i-pb1-act3': 'Translated operational needs into shared workflows and standards',
-    'i-pb1-act4': 'Coordinated between French users, European teams and partners',
-    'i-pb1-act5': 'Trained teams and supported them through adoption of the tool',
+    'i-pb1-ctx1': 'When I joined Encore, Hiretrack NX was essentially a stock management tool. The ambition was to turn it into the central operations platform by progressively digitizing the full range of business processes.',
+    'i-pb1-act-l': 'The transformation',
+    'i-pb1-act1': 'I mapped the existing processes, designed the new workflows and led their integration into the platform in Agile cycles. Alongside this, I supported the change by creating documentation and training materials and training the teams. Every evolution was guided by a logic of continuous improvement and user feedback.',
     'i-pb1-res-l': 'Results',
-    'i-pb1-res1': 'Centralized operational cycle, from the first quote to the final invoice',
-    'i-pb1-res2': 'Digitized and harmonized practices across the EMEA region',
-    'i-pb1-res3': 'More consistent, reliable processes that are easier to manage',
+    'i-pb1-res1': 'Turned a simple stock tool into a complete business platform',
+    'i-pb1-res2': 'End-to-end digitization of operational processes',
+    'i-pb1-res3': 'Significantly faster execution of operations through workflow automation',
+    'i-pb1-res4': 'Created a unified purchase order giving a consolidated view of CapEx ($250,000)',
+    'i-pb1-res5': 'Strong adoption thanks to documentation, training and continuous improvement',
     'i-pb1-kw': 'End-to-end cycle · EMEA scope · User adoption',
-    'i-pb2-tagline': 'Transforming without disrupting operations',
+    'i-pb2-tagline': 'Delivering a Big Bang migration at European scale',
     'i-pb2-meta': 'Migration of a critical business ERP · 2020–2022 · <a href="https://www.encore-emea.com/fr/" target="_blank" rel="noopener">Encore Global</a>',
     'i-pb2-role': 'Area Manager',
     'i-pb2-ctx-l': 'Context',
-    'i-pb2-ctx1': 'EMEA migration from Hiretrack NX to Easyjob, in an international environment heavily dependent on its business tool',
-    'i-pb2-ctx2': 'A rollout that had to happen without interrupting teams\' daily operations',
-    'i-pb2-act-l': 'What I led',
-    'i-pb2-act1': 'Rollout of Easyjob for France and Monaco',
-    'i-pb2-act2': 'Export, recovery, consolidation and validation of technical and financial data',
-    'i-pb2-act3': 'Gap analysis between the tools and adaptation of business workflows',
-    'i-pb2-act4': 'Translation, functional testing and resolution of migration issues',
-    'i-pb2-act5': 'Team training, change management and adoption tracking',
+    'i-pb2-ctx1': 'As part of a global strategy to harmonize tools and processes, Encore launched the rollout of Easyjob across all its European subsidiaries via a Big Bang migration.',
+    'i-pb2-act-l': 'The transformation',
+    'i-pb2-act1': 'I led the rollout for France, coordinating testing, migration, risk management, stakeholders and user support. The project, run under a Waterfall methodology, required extremely rigorous preparation. I also produced the documentation, created training materials and supported the teams before and after go-live, in a logic of continuous improvement.',
     'i-pb2-res-l': 'Results',
-    'i-pb2-res1': 'New processes rolled out across 12 sites in the Paris region',
-    'i-pb2-res2': 'Migration completed without disrupting daily operations',
-    'i-pb2-res3': 'Adoption of a shared system and workflows by the teams involved',
+    'i-pb2-res1': 'Successful rollout in an international context',
+    'i-pb2-res2': 'Harmonized tools and processes at European scale',
+    'i-pb2-res3': 'Secure migration through proactive risk management',
+    'i-pb2-res4': 'Training and support for the teams',
+    'i-pb2-res5': 'Continuous improvement of the platform after go-live',
     'i-pb2-kw': '12 sites · France &amp; Monaco · Migration and change management',
-    'i-pb3-tagline': 'Scaling from 7 to 70',
+    'i-pb3-tagline': 'Designing a single CRM for multiple international markets',
     'i-pb3-meta': 'B2B2C web and mobile platform · 2022–2024 · <a href="https://weareelevate.global/fr/" target="_blank" rel="noopener">Elevate Global</a>',
     'i-pb3-role': 'Regional Process &amp; Product Lead',
     'i-pb3-ctx-l': 'Context',
-    'i-pb3-ctx1': 'A platform bringing together the journeys of field teams, operations and clients',
-    'i-pb3-ctx2': 'A French organization in rapid growth, from 7 to 70 people in six months',
-    'i-pb3-ctx3': 'Different uses and constraints across five markets: France, UK, US, Germany and Austria',
-    'i-pb3-act-l': 'What I led',
-    'i-pb3-act1': 'Regional roadmap and prioritization of product changes',
-    'i-pb3-act2': 'Gathered and challenged user, operational and regulatory needs',
-    'i-pb3-act3': 'Optimized journeys for applications, onboarding, staffing, booking, payroll, invoicing, expenses and reporting',
-    'i-pb3-act4': 'Coordinated changes with the Product and Engineering teams',
-    'i-pb3-act5': 'Organized testing, tracked issues, secured releases and supported users',
+    'i-pb3-ctx1': 'To support its international growth, Elevate wanted to replace the different applications used by each market with a single CRM platform, able to adapt to local specifics while harmonizing group practices.',
+    'i-pb3-act-l': 'The transformation',
+    'i-pb3-act1': 'As Regional Process &amp; Product Lead, I worked across a highly cross-functional ecosystem: business teams, developers, field users, clients, HR, payroll firms, legal counsel and external partners. I ran discovery, designed user journeys, led product changes and supported the rollout through documentation, training materials and continuous improvement.',
     'i-pb3-res-l': 'Results',
-    'i-pb3-res1': 'A web and mobile platform able to support the French organization\'s rapid growth',
-    'i-pb3-res2': 'Staff, operations and client journeys brought together in a single product',
-    'i-pb3-res3': 'A platform rolled out and adapted to the needs of five markets',
+    'i-pb3-res1': 'Designed a shared platform for several international markets',
+    'i-pb3-res2': 'Harmonized business journeys while accounting for local constraints',
+    'i-pb3-res3': 'Coordinated numerous internal and external stakeholders',
+    'i-pb3-res4': 'Trained and supported international teams',
+    'i-pb3-res5': 'Continuous improvement based on user feedback',
     'i-pb3-kw': '5 markets · Web + mobile · 7 → 70 people',
-    'i-pb4-tagline': 'Turning data into decisions',
+    'i-pb4-tagline': 'Rolling out a B2B SaaS platform from pre-sales to adoption',
     'i-pb4-meta': 'B2B SaaS reporting and insights platform · 2024–2025 · <a href="https://weareelevate.global/fr/" target="_blank" rel="noopener">Elevate Global</a>',
     'i-pb4-role': 'Project Manager, Impact',
     'i-pb4-ctx-l': 'Context',
-    'i-pb4-ctx1': 'A platform letting clients track and compare their campaign performance across five markets',
-    'i-pb4-ctx2': 'A catalog of 150+ customizable KPIs to turn into clear, actionable reporting',
-    'i-pb4-act-l': 'What I led',
-    'i-pb4-act1': 'Product roadmap, prioritization and scope management for changes',
-    'i-pb4-act2': 'Gathered and challenged client and business needs',
-    'i-pb4-act3': 'Translated priorities into functional specs and delivery plans',
-    'i-pb4-act4': 'Coordinated the Product, Reporting, Sales and Operations teams',
-    'i-pb4-act5': 'Led scoping, testing, documentation and releases',
-    'i-pb4-act6': 'Structured onboarding and supported clients through adoption',
-    'i-pb4-act7': 'Managed a Project Coordinator and organized delivery tracking',
+    'i-pb4-ctx1': "Impact is Elevate's B2B SaaS platform letting clients manage their operations and performance indicators. My role covered the full client lifecycle, from pre-sales to adoption.",
+    'i-pb4-act-l': 'The transformation',
+    'i-pb4-act1': 'I supported the sales teams during scoping phases, led API integrations, discovery, delivery and rollouts. I then tracked adoption, analyzed usage and evolved the platform based on client feedback, automations and the integration of AI features. I also created documentation resources and trained users.',
     'i-pb4-res-l': 'Results',
-    'i-pb4-res1': 'An end-to-end delivery cycle, from client need to post-launch adoption',
-    'i-pb4-res2': 'Comparable, actionable reporting from one campaign and market to another',
-    'i-pb4-res3': 'A platform operating across five markets with 150+ customizable KPIs',
+    'i-pb4-res1': 'Supported clients from pre-sales through to adoption',
+    'i-pb4-res2': 'Led API integrations and product changes',
+    'i-pb4-res3': 'Rolled out automations and AI features',
+    'i-pb4-res4': 'Continuous improvement based on usage and client feedback',
+    'i-pb4-res5': 'Documentation, training and lasting platform adoption',
     'i-pb4-kw': '150+ KPIs · 5 markets · Roadmap, delivery and adoption'
   };
   const altTranslations = {
@@ -1832,12 +1809,14 @@
   function buildPageIndex(){
     const chunks = [];
     document.querySelectorAll('.skill-cell').forEach(el=>{
-      const text = el.textContent.replace(/\s+/g,' ').trim();
+      const b = el.querySelector('b')?.textContent.trim() || '';
+      const span = el.querySelector('span')?.textContent.trim() || '';
+      const text = [b, span].filter(Boolean).join(' : ').replace(/\s+/g,' ').trim();
       if(text) chunks.push({text, source: currentLang==='en' ? 'Skills' : 'Compétences'});
     });
     document.querySelectorAll('.pblock').forEach(el=>{
       const name = el.querySelector('h3')?.textContent.trim() || '';
-      el.querySelectorAll('.pb-tagline, .pb-meta, .pb-role, .pb-sec li, .pb-keywords').forEach(li=>{
+      el.querySelectorAll('.pb-tagline, .pb-meta, .pb-role, .pb-sec li, .pb-sec p, .pb-keywords').forEach(li=>{
         const text = li.textContent.replace(/\s+/g,' ').trim();
         if(text) chunks.push({text, source: name});
       });
