@@ -879,28 +879,73 @@
     position:fixed;
     right:24px; bottom:24px;
     z-index:69;
-    width:360px;
+    opacity:0;
+    transform:translateY(10px);
+    pointer-events:none;
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .ask-box.visible{opacity:1; transform:translateY(0); pointer-events:auto;}
+  .ask-fab{
+    all:unset;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:44px; height:44px;
+    border-radius:50%;
+    background:var(--bg-alt);
+    border:1px solid var(--line);
+    box-shadow:0 8px 20px rgba(0,0,0,0.35);
+    cursor:pointer;
+    transition:transform .2s ease, border-color .2s ease;
+  }
+  .ask-fab:hover{transform:scale(1.08); border-color:var(--teal);}
+  .ask-fab-icon{
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    font-size:1.1rem;
+    color:var(--ink-dim);
+  }
+  .ask-box.open .ask-fab{display:none;}
+  .ask-panel{
+    display:none;
+    width:340px;
     padding:12px 14px;
     border:1px solid var(--line);
     border-radius:12px;
-    background:rgba(14,15,18,0.92);
+    background:rgba(14,15,18,0.95);
     backdrop-filter:blur(4px);
-    box-shadow:0 12px 28px rgba(0,0,0,0.35);
+    box-shadow:0 12px 28px rgba(0,0,0,0.4);
   }
+  .ask-box.open .ask-panel{display:block;}
+  .ask-panel-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:8px;
+    margin-bottom:8px;
+    cursor:grab;
+    user-select:none;
+  }
+  .ask-panel-top:active{cursor:grabbing;}
   .ask-label{
     font-size:0.62rem;
     letter-spacing:0.06em;
     text-transform:uppercase;
     color:var(--ink-dim);
-    margin-bottom:8px;
-    cursor:grab;
-    user-select:none;
     display:flex;
     align-items:center;
     gap:6px;
   }
   .ask-label::before{content:"⠿"; opacity:0.5; font-size:0.9rem;}
-  .ask-label:active{cursor:grabbing;}
+  .ask-close{
+    all:unset;
+    cursor:pointer;
+    color:var(--ink-dim);
+    font-size:1.1rem;
+    line-height:1;
+    padding:0 2px;
+  }
+  .ask-close:hover{color:var(--teal);}
   .ask-row{display:flex; gap:8px;}
   .ask-input{
     flex:1;
@@ -1013,9 +1058,8 @@
     letter-spacing:0.1em;
     text-transform:uppercase;
     margin-bottom:8px;
+    color:var(--teal);
   }
-  .pblock:nth-child(odd) .pb-label{color:var(--amber);}
-  .pblock:nth-child(even) .pb-label{color:var(--teal);}
   .pb-sec ul{list-style:none;}
   .pb-sec li{
     position:relative;
@@ -1028,18 +1072,15 @@
   .pb-sec li::before{
     content:"▸";
     position:absolute; left:0;
+    color:var(--teal);
   }
-  .pblock:nth-child(odd) .pb-sec li::before{color:var(--amber);}
-  .pblock:nth-child(even) .pb-sec li::before{color:var(--teal);}
   .pb-sec p{margin:0;}
   .pb-tagline{
     font-size:1.25rem;
     font-weight:600;
-    color:var(--ink);
+    color:var(--teal);
     margin-bottom:10px;
   }
-  .pblock:nth-child(odd) .pb-tagline{color:var(--amber);}
-  .pblock:nth-child(even) .pb-tagline{color:var(--teal);}
   .pb-keywords{
     margin-top:0;
     margin-bottom:24px;
@@ -1069,24 +1110,19 @@
   }
 
   .chapter-note{
-    max-width:640px;
-    padding:32px 8vw 0;
-    opacity:0.8;
+    padding-top:48px;
+    border-bottom:none;
   }
-  .cn-label{
-    font-size:11px;
-    letter-spacing:0.15em;
-    text-transform:uppercase;
-    color:var(--teal);
-    display:block;
-    margin-bottom:8px;
+  .cn-logo{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    height:36px;
+    width:36px;
+    border-radius:4px;
+    background:var(--teal) !important;
   }
-  .chapter-note p{
-    font-size:0.95rem;
-    color:var(--ink-dim);
-    line-height:1.6;
-    margin:0;
-  }
+  .cn-logo svg{width:60%; height:60%;}
   footer{
     border-top:1px solid var(--line);
     padding:32px 8vw 80px;
@@ -1170,7 +1206,8 @@
   }
   @media (max-width:720px){
     .lang-switch{top:12px; left:12px;}
-    .ask-box{right:12px; bottom:12px; width:min(320px, calc(100vw - 24px));}
+    .ask-box{right:12px; bottom:12px;}
+    .ask-panel{width:min(320px, calc(100vw - 24px));}
   }
 </style>
 </head>
@@ -1181,13 +1218,21 @@
   <button type="button" id="btnEn" onclick="setLang('en')">EN</button>
 </div>
 
-<div class="ask-box">
-  <div class="ask-label mono" id="i-ask-label">Une question pour moi ?<br>Réponse instantanée ci-dessous ↓</div>
-  <div class="ask-row">
-    <input type="text" id="askInput" class="ask-input" placeholder="Ex : quand es-tu disponible ?" autocomplete="off">
-    <button type="button" id="askBtn" class="ask-btn" aria-label="Envoyer">→</button>
+<div class="ask-box" id="askBox">
+  <button type="button" class="ask-fab" id="askFab" aria-label="Poser une question" aria-expanded="false">
+    <span class="ask-fab-icon">?</span>
+  </button>
+  <div class="ask-panel">
+    <div class="ask-panel-top">
+      <div class="ask-label mono" id="i-ask-label">Une question pour moi ?<br>Réponse instantanée ci-dessous ↓</div>
+      <button type="button" class="ask-close" id="askClose" aria-label="Fermer">×</button>
+    </div>
+    <div class="ask-row">
+      <input type="text" id="askInput" class="ask-input" placeholder="Ex : quand es-tu disponible ?" autocomplete="off">
+      <button type="button" id="askBtn" class="ask-btn" aria-label="Envoyer">→</button>
+    </div>
+    <div class="ask-answer" id="askAnswer"></div>
   </div>
-  <div class="ask-answer" id="askAnswer"></div>
 </div>
 
 <div class="ruler mono" id="ruler">
@@ -1444,9 +1489,15 @@
     </div>
   </section>
 
-  <div class="chapter-note">
-    <span class="cn-label mono" id="i-cn-label">Nouveau chapitre</span>
-    <p id="i-cn-text">Elevate France a fermé. La prochaine aventure commence maintenant.</p>
+  <div class="pblock chapter-note">
+    <div class="pb-head">
+      <span class="co-logo cn-logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#131417" stroke-width="1.6"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg>
+      </span>
+      <h3 id="i-cn-label">Nouveau chapitre</h3>
+    </div>
+    <div class="pb-tagline" id="i-cn-tagline">Elevate France a fermé</div>
+    <p id="i-cn-text">La prochaine aventure commence maintenant.</p>
   </div>
 
   <footer>
@@ -1553,9 +1604,10 @@
     'i-lang-es': 'basic',
     'i-ask-label': 'Got a question?<br>Instant answer below ↓',
     'i-cn-label': 'New chapter',
-    'i-cn-text': 'Elevate France has closed. The next adventure starts now.',
+    'i-cn-tagline': 'Elevate France has closed',
+    'i-cn-text': 'The next adventure starts now.',
     'i-foot-eyebrow': '✨ Available now',
-    'i-foot-h2': 'Ready to structure the next chaos, in a product team that builds fast and builds straight.',
+    'i-foot-h2': 'Ready to structure the next chaos with a product team that builds fast and gets straight to the point.',
     'i-lbl-phone': 'Phone',
     'i-lbl-loc': 'Location',
     'i-foot-sign': 'Made with structure. And a bit of chaos, obviously. 🩷',
@@ -1569,7 +1621,7 @@
     'i-pb1-ctx2': 'A platform covering planning, equipment, subcontracting, purchasing, staffing, invoicing and profitability',
     'i-pb1-act-l': 'What I led',
     'i-pb1-act1': 'Gathered and analyzed the needs of field teams',
-    'i-pb1-act2': 'Functional evolution of Hiretrack NX across the EMEA region',
+    'i-pb1-act2': 'Led the functional evolution of Hiretrack NX across EMEA',
     'i-pb1-act3': 'Translated operational needs into shared workflows and standards',
     'i-pb1-act4': 'Coordinated between French users, European teams and partners',
     'i-pb1-act5': 'Trained teams and supported them through adoption of the tool',
@@ -1592,10 +1644,10 @@
     'i-pb2-act5': 'Team training, change management and adoption tracking',
     'i-pb2-res-l': 'Results',
     'i-pb2-res1': 'New processes rolled out across 12 sites in the Paris region',
-    'i-pb2-res2': 'Secure migration while preserving continuity of operations',
+    'i-pb2-res2': 'Migration completed without disrupting daily operations',
     'i-pb2-res3': 'Adoption of a shared system and workflows by the teams involved',
     'i-pb2-kw': '12 sites · France &amp; Monaco · Migration and change management',
-    'i-pb3-tagline': 'Supporting the shift to scale',
+    'i-pb3-tagline': 'Scaling from 7 to 70',
     'i-pb3-meta': 'B2B2C web and mobile platform · 2022–2024 · <a href="https://weareelevate.global/fr/" target="_blank" rel="noopener">Elevate Global</a>',
     'i-pb3-role': 'Regional Process &amp; Product Lead',
     'i-pb3-ctx-l': 'Context',
@@ -1681,6 +1733,12 @@
     document.documentElement.lang = lang;
     const askInputEl = document.getElementById('askInput');
     if(askInputEl) askInputEl.placeholder = lang === 'en' ? 'E.g. when are you available?' : 'Ex : quand es-tu disponible ?';
+    const askBtnEl = document.getElementById('askBtn');
+    if(askBtnEl) askBtnEl.setAttribute('aria-label', lang === 'en' ? 'Send' : 'Envoyer');
+    const askFabEl = document.getElementById('askFab');
+    if(askFabEl) askFabEl.setAttribute('aria-label', lang === 'en' ? 'Ask a question' : 'Poser une question');
+    const askCloseEl = document.getElementById('askClose');
+    if(askCloseEl) askCloseEl.setAttribute('aria-label', lang === 'en' ? 'Close' : 'Fermer');
     document.getElementById('btnFr').classList.toggle('active', lang==='fr');
     document.getElementById('btnEn').classList.toggle('active', lang==='en');
   }
@@ -1835,11 +1893,27 @@
   if(askBtn) askBtn.addEventListener('click', answerQuestion);
   if(askInput) askInput.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') answerQuestion(); });
 
-  // ---- Ask box: drag to reposition ----
+  // ---- Ask box: delayed reveal, open/close, drag to reposition ----
   const askBox = document.querySelector('.ask-box');
-  const askHandle = document.getElementById('i-ask-label');
-  if(askBox && askHandle){
-    let dragging = false, offX = 0, offY = 0;
+  const askFab = document.getElementById('askFab');
+  const askClose = document.getElementById('askClose');
+  const askHandle = document.querySelector('.ask-panel-top');
+
+  if(askBox){
+    let revealed = false;
+    function revealAskBox(){
+      if(revealed) return;
+      revealed = true;
+      askBox.classList.add('visible');
+    }
+    setTimeout(revealAskBox, 6000);
+    window.addEventListener('scroll', ()=>{
+      if(window.scrollY > 500) revealAskBox();
+    }, {passive:true});
+  }
+
+  if(askBox && askFab){
+    let dragging = false, moved = false, offX = 0, offY = 0;
     function startDrag(clientX, clientY){
       const r = askBox.getBoundingClientRect();
       askBox.style.left = r.left + 'px';
@@ -1849,29 +1923,43 @@
       offX = clientX - r.left;
       offY = clientY - r.top;
       dragging = true;
+      moved = false;
     }
     function moveDrag(clientX, clientY){
       if(!dragging) return;
-      const maxX = window.innerWidth - askBox.offsetWidth - 8;
-      const maxY = window.innerHeight - askBox.offsetHeight - 8;
+      const dx = Math.abs(clientX - (offX + askBox.getBoundingClientRect().left));
+      const boxW = askBox.offsetWidth || 44;
+      const boxH = askBox.offsetHeight || 44;
+      const maxX = window.innerWidth - boxW - 8;
+      const maxY = window.innerHeight - boxH - 8;
       const nx = Math.min(Math.max(8, clientX - offX), maxX);
       const ny = Math.min(Math.max(8, clientY - offY), maxY);
+      if(Math.abs(nx - askBox.getBoundingClientRect().left) > 3) moved = true;
       askBox.style.left = nx + 'px';
       askBox.style.top = ny + 'px';
     }
-    askHandle.addEventListener('mousedown', (e)=>{ startDrag(e.clientX, e.clientY); e.preventDefault(); });
+    askFab.addEventListener('mousedown', (e)=>{ startDrag(e.clientX, e.clientY); });
+    if(askHandle) askHandle.addEventListener('mousedown', (e)=>{ startDrag(e.clientX, e.clientY); e.preventDefault(); });
     window.addEventListener('mousemove', (e)=> moveDrag(e.clientX, e.clientY));
-    window.addEventListener('mouseup', ()=> dragging = false);
-    askHandle.addEventListener('touchstart', (e)=>{
-      const t = e.touches[0];
-      startDrag(t.clientX, t.clientY);
-    }, {passive:true});
-    window.addEventListener('touchmove', (e)=>{
-      if(!dragging) return;
-      const t = e.touches[0];
-      moveDrag(t.clientX, t.clientY);
-    }, {passive:true});
-    window.addEventListener('touchend', ()=> dragging = false);
+    window.addEventListener('mouseup', ()=>{ dragging = false; });
+    askFab.addEventListener('touchstart', (e)=>{ const t=e.touches[0]; startDrag(t.clientX, t.clientY); }, {passive:true});
+    if(askHandle) askHandle.addEventListener('touchstart', (e)=>{ const t=e.touches[0]; startDrag(t.clientX, t.clientY); }, {passive:true});
+    window.addEventListener('touchmove', (e)=>{ if(!dragging) return; const t=e.touches[0]; moveDrag(t.clientX, t.clientY); }, {passive:true});
+    window.addEventListener('touchend', ()=>{ dragging = false; });
+
+    askFab.addEventListener('click', ()=>{
+      if(moved) return;
+      askBox.classList.add('open');
+      askFab.setAttribute('aria-expanded', 'true');
+      const input = document.getElementById('askInput');
+      if(input) setTimeout(()=> input.focus(), 50);
+    });
+  }
+  if(askClose && askBox && askFab){
+    askClose.addEventListener('click', ()=>{
+      askBox.classList.remove('open');
+      askFab.setAttribute('aria-expanded', 'false');
+    });
   }
 
 </script>
