@@ -981,6 +981,8 @@
     transition:opacity .35s ease, max-height .35s ease;
   }
   .ask-answer.show{opacity:1; max-height:160px;}
+  .ask-answer a{color:var(--teal); text-decoration:underline; text-underline-offset:2px;}
+  .ask-answer a:hover{color:var(--amber);}
   /* ---------- Alternative layout: by platform (trial) ---------- */
   .platforms-alt{
     padding-top:56px;
@@ -1037,7 +1039,7 @@
     max-width:160px;
     object-fit:contain;
     border-radius:6px;
-    background:var(--ink);
+    background:#c7c7c7;
     padding:5px 10px;
     box-shadow:0 4px 14px rgba(0,0,0,0.25);
   }
@@ -1108,6 +1110,27 @@
     max-width:560px;
   }
   .pb-visual-wide{max-width:820px;}
+  .pblock-split{
+    display:grid;
+    grid-template-columns:1fr minmax(280px, 380px);
+    gap:48px;
+    align-items:start;
+  }
+  .pblock-split .pb-visual, .pblock-split .pb-visual-portrait{margin-top:0; max-width:none;}
+  .pblock-split-wide{grid-template-columns:1fr minmax(320px, 460px);}
+  .pblock-split .hiretrack-scene{flex-direction:column;}
+  .pblock-split .hs-before-art{min-height:200px;}
+  .pblock-split .hs-arrow{transform:rotate(90deg); align-self:center; padding:4px 0;}
+  .pblock-split .hs-after{min-height:200px;}
+  @media (max-width:900px){
+    .pblock-split{grid-template-columns:1fr;}
+    .pblock-split .hiretrack-scene{flex-direction:row;}
+    .pblock-split .hs-arrow{transform:none;}
+  }
+  @media (max-width:640px){
+    .pblock-split .hiretrack-scene{flex-direction:column;}
+    .pblock-split .hs-arrow{transform:rotate(90deg);}
+  }
   .pb-visual-portrait{max-width:280px;}
   .pb-visual-portrait .built-shots{aspect-ratio:9/16;}
   .pb-visual-portrait .built-shots img{object-fit:cover;}
@@ -1135,7 +1158,7 @@
     width:36px;
     border-radius:6px;
     font-size:1.2rem;
-    background:var(--ink) !important;
+    background:#c7c7c7 !important;
     box-shadow:0 4px 14px rgba(0,0,0,0.25);
   }
   .cn-pink{color:var(--amber) !important; margin-bottom:14px;}
@@ -1302,16 +1325,8 @@
 
 
   <section class="platforms-alt">
-    <div class="pa-head">
-      <div class="pa-preview">
-        <span id="i-pa-p1">🧩 Transformer un outil de stock en plateforme métier</span>
-        <span id="i-pa-p2">🌍 Réussir une migration Big Bang internationale</span>
-        <span id="i-pa-p3">🤝 Construire un CRM commun pour plusieurs marchés</span>
-        <span id="i-pa-p4">📊 Déployer une plateforme SaaS de l'avant-vente à l'adoption</span>
-      </div>
-    </div>
-
-    <div class="pblock">
+    <div class="pblock pblock-split pblock-split-wide">
+      <div class="pb-text-col">
       <div class="pb-head">
         <img class="co-logo" src="hiretrack-logo.png" alt="Hiretrack NX" loading="lazy">
         <h3>Hiretrack NX</h3>
@@ -1338,6 +1353,7 @@
           <li id="i-pb1-res5">Forte adoption grâce à la documentation, aux formations et à l'amélioration continue</li>
         </ul>
       </div>
+      </div>
       <div class="pb-visual pb-visual-wide">
         <div class="hiretrack-scene" aria-hidden="true">
           <div class="hs-before hs-before-art">
@@ -1354,7 +1370,8 @@
       </div>
     </div>
 
-    <div class="pblock">
+    <div class="pblock pblock-split">
+      <div class="pb-text-col">
       <div class="pb-head">
         <img class="co-logo" src="https://www.google.com/s2/favicons?sz=128&domain=protonic-software.com" alt="easyjob" loading="lazy">
         <h3>Easyjob</h3>
@@ -1381,6 +1398,7 @@
           <li id="i-pb2-res5">Amélioration continue de la plateforme après sa mise en production</li>
         </ul>
       </div>
+      </div>
       <div class="pb-visual">
         <div class="built-shots count-3">
           <img id="i-shot3" src="easyjob-1.jpg" alt="Interface easyjob (Jobcenter)" loading="lazy">
@@ -1391,7 +1409,8 @@
       </div>
     </div>
 
-    <div class="pblock">
+    <div class="pblock pblock-split">
+      <div class="pb-text-col">
       <div class="pb-head">
         <img class="co-logo" src="https://play-lh.googleusercontent.com/ZFNlzILlWmhVt3IE5kJpronBolVG5fWpuDA4OUH8F8xRR55xVa2dh66f5X2LMfbg0JshLTboyZbL5fNRNiyvFw=w96-h96" alt="1CRM" loading="lazy">
         <h3>1CRM</h3>
@@ -1422,6 +1441,7 @@
         <a href="https://apps.apple.com/fr/app/elevate-global-1crm-fr/id6476973106" target="_blank" rel="noopener">App Store ↗</a>
         <a href="https://play.google.com/store/apps/details?id=com.elevate.crmfr&pcampaignid=web_share" target="_blank" rel="noopener">Google Play ↗</a>
       </div>
+      </div>
       <div class="pb-visual pb-visual-portrait">
         <div class="built-shots count-3">
           <img id="i-shot6" src="1crm-1.jpg" alt="Capture d'écran de l'app 1CRM (dashboard)" loading="lazy">
@@ -1432,7 +1452,8 @@
       </div>
     </div>
 
-    <div class="pblock">
+    <div class="pblock pblock-split">
+      <div class="pb-text-col">
       <div class="pb-head">
         <img class="co-logo" src="impact-logo.png" alt="Impact" loading="lazy">
         <h3>Impact</h3>
@@ -1462,6 +1483,7 @@
       <div class="built-links">
         <a href="https://impactv4.weareelevate.global/" target="_blank" rel="noopener"><span id="i-link-impact-platform">Plateforme</span> ↗</a>
         <a href="https://weareelevate.global/fr/impact/" target="_blank" rel="noopener"><span id="i-link-impact-site">Site Impact</span> ↗</a>
+      </div>
       </div>
       <div class="pb-visual">
         <div class="built-shots count-4">
@@ -1501,7 +1523,7 @@
       </div>
       <div>
         <span class="label" id="i-lbl-loc">Localisation</span>
-        <span class="mono">Île-de-France, France</span>
+        <a class="mono" href="https://www.google.com/maps/place/%C3%8Ele-de-France" target="_blank" rel="noopener">Île-de-France, France</a>
       </div>
     </div>
     <div class="foot-sign mono" id="i-foot-sign">Fait avec structure. Et un peu de chaos, forcément. 🩷</div>
@@ -1594,10 +1616,6 @@
     'i-lbl-phone': 'Phone',
     'i-lbl-loc': 'Location',
     'i-foot-sign': 'Made with structure. And a bit of chaos, obviously. 🩷',
-    'i-pa-p1': '🧩 Turning a stock tool into a business platform',
-    'i-pa-p2': '🌍 Delivering an international Big Bang migration',
-    'i-pa-p3': '🤝 Building a shared CRM for multiple markets',
-    'i-pa-p4': "📊 Rolling out a SaaS platform from pre-sales to adoption",
     'i-pb1-tagline': 'Turning a stock tool into a business platform',
     'i-pb1-meta': 'Event-industry ERP · 2017–2020 · <a href="https://www.encore-emea.com/fr/" target="_blank" rel="noopener">Encore Global</a> (PSAV)',
     'i-pb1-role': 'Operations Development Manager',
@@ -1757,9 +1775,9 @@
       en: "Based in the Paris region (Île-de-France, France). Happy to discuss working arrangements directly."
     },
     {
-      kw: ['contact', 'joindre', 'email', 'mail', 'linkedin', 'téléphone', 'phone', 'appeler', 'call'],
-      fr: "Le plus simple : par email (lomaestracci@gmail.com) ou sur LinkedIn — les deux liens sont juste en dessous.",
-      en: "Easiest is by email (lomaestracci@gmail.com) or LinkedIn — both links are right below."
+      kw: ['contact', 'joindre', 'email', 'mail', 'linkedin', 'téléphone', 'phone', 'appeler', 'call', 'num de tel', 'numéro', 'portable', 'mobile'],
+      fr: "Par email (lomaestracci@gmail.com), LinkedIn ou téléphone (+33 (0)6 64 14 15 56) — tout est juste en dessous.",
+      en: "By email (lomaestracci@gmail.com), LinkedIn or phone (+33 (0)6 64 14 15 56) — it's all right below."
     },
     {
       kw: ['expérience', 'parcours', 'background', 'experience', 'career', 'carrière'],
@@ -1782,7 +1800,27 @@
       en: "Best discussed directly — send me an email or a LinkedIn message and let's talk."
     },
     {
-      kw: ['pourquoi', 'why', 'elevate', 'ferm'],
+      kw: ['encore', 'psav'],
+      fr: 'Encore Global (PSAV) est l\'entreprise événementielle où j\'ai travaillé de 2017 à 2022. Plus d\'infos : <a href="https://www.encore-emea.com/fr/" target="_blank" rel="noopener">encore-emea.com</a>',
+      en: 'Encore Global (PSAV) is the event-industry company I worked for from 2017 to 2022. More info: <a href="https://www.encore-emea.com/fr/" target="_blank" rel="noopener">encore-emea.com</a>'
+    },
+    {
+      kw: ['elevate'],
+      fr: 'Elevate Global est l\'entreprise où j\'ai travaillé de 2022 à 2025 (1CRM puis Impact). Plus d\'infos : <a href="https://weareelevate.global/fr/" target="_blank" rel="noopener">weareelevate.global</a>',
+      en: 'Elevate Global is the company I worked for from 2022 to 2025 (1CRM then Impact). More info: <a href="https://weareelevate.global/fr/" target="_blank" rel="noopener">weareelevate.global</a>'
+    },
+    {
+      kw: ['1crm'],
+      fr: 'CRM web et mobile d\'Elevate Global (2022–2024), pilotage régional. Disponible sur <a href="https://apps.apple.com/fr/app/elevate-global-1crm-fr/id6476973106" target="_blank" rel="noopener">App Store</a> et <a href="https://play.google.com/store/apps/details?id=com.elevate.crmfr" target="_blank" rel="noopener">Google Play</a>',
+      en: 'Elevate Global\'s web and mobile CRM (2022–2024), regional lead. Available on <a href="https://apps.apple.com/fr/app/elevate-global-1crm-fr/id6476973106" target="_blank" rel="noopener">App Store</a> and <a href="https://play.google.com/store/apps/details?id=com.elevate.crmfr" target="_blank" rel="noopener">Google Play</a>'
+    },
+    {
+      kw: ['impact'],
+      fr: 'Impact est la plateforme SaaS B2B de reporting d\'Elevate Global (2024–2025), 150+ KPIs. Voir la <a href="https://impactv4.weareelevate.global/" target="_blank" rel="noopener">plateforme</a> ou le <a href="https://weareelevate.global/fr/impact/" target="_blank" rel="noopener">site Impact</a>',
+      en: 'Impact is Elevate Global\'s B2B SaaS reporting platform (2024–2025), 150+ KPIs. See the <a href="https://impactv4.weareelevate.global/" target="_blank" rel="noopener">platform</a> or the <a href="https://weareelevate.global/fr/impact/" target="_blank" rel="noopener">Impact site</a>'
+    },
+    {
+      kw: ['pourquoi', 'why', 'ferm', 'clos'],
       fr: "Elevate France a fermé (liquidation judiciaire) — d'où la disponibilité immédiate pour un nouveau chapitre.",
       en: "Elevate France closed down — hence the immediate availability for a new chapter."
     }
@@ -1839,25 +1877,68 @@
   const askInput = document.getElementById('askInput');
   const askBtn = document.getElementById('askBtn');
   const askAnswer = document.getElementById('askAnswer');
+  function buildSkillSet(){
+    const skills = [];
+    document.querySelectorAll('.skill-cell span').forEach(span=>{
+      span.textContent.split(/[,·]/).forEach(part=>{
+        const clean = part.replace(/\([^)]*\)/g, '').trim();
+        const t = normalize(clean).trim();
+        if(t && t.length >= 2) skills.push(t);
+      });
+    });
+    return skills;
+  }
+  const skillTriggerRe = /(?:tu\s+(?:utilises?|connais|sais\s+(?:utiliser|faire)|ma[iî]trises?)|do\s+you\s+(?:use|know)|can\s+you\s+use|know\s+how\s+to\s+use)\s+(.+?)\s*\??$/i;
+  const skillDodge = {
+    fr: [
+      "Alors... pas officiellement listé, mais entre nous, j'apprends vite et je saurais m'en sortir 😉",
+      "Pas dans la liste officielle — mais chut, je suis du genre à me débrouiller vite sur un nouvel outil 😏",
+      "Officiellement non... officieusement, donnez-moi une semaine et ce sera réglé 😉"
+    ],
+    en: [
+      "Not officially on the list... but between us, I learn fast and I'd figure it out 😉",
+      "Not in the official list — but let's just say I'm quick to pick up new tools 😏",
+      "Officially, no... unofficially, give me a week and it's handled 😉"
+    ]
+  };
+  function answerSkillQuery(raw){
+    const m = raw.match(skillTriggerRe);
+    if(!m) return null;
+    const term = normalize(m[1]).trim();
+    if(!term) return null;
+    const skills = buildSkillSet();
+    const known = skills.find(s => s === term || s.includes(term) || term.includes(s));
+    if(known){
+      const label = known.charAt(0).toUpperCase() + known.slice(1);
+      return currentLang==='en' ? `Yes — ${label} is one of the tools I use.` : `Oui — ${label} fait partie des outils que j'utilise.`;
+    }
+    const pool = skillDodge[currentLang];
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
   function answerQuestion(){
     if(!askInput || !askAnswer) return;
     const raw = askInput.value.trim();
     if(!raw) return;
     const q = raw.toLowerCase();
     let answer;
-    const hit = faq.find(entry => entry.kw.some(k => q.includes(k)));
-    if(hit){
-      answer = hit[currentLang];
+    const skillAnswer = answerSkillQuery(raw);
+    if(skillAnswer){
+      answer = skillAnswer;
     } else {
-      const found = searchPage(raw);
-      if(found){
-        const prefix = currentLang==='en' ? `Found in "${found.source}": ` : `Trouvé dans « ${found.source} » : `;
-        answer = prefix + found.text;
+      const hit = faq.find(entry => entry.kw.some(k => q.includes(k)));
+      if(hit){
+        answer = hit[currentLang];
       } else {
-        answer = faqFallback[currentLang];
+        const found = searchPage(raw);
+        if(found){
+          const prefix = currentLang==='en' ? `Found in "${found.source}": ` : `Trouvé dans « ${found.source} » : `;
+          answer = prefix + found.text;
+        } else {
+          answer = faqFallback[currentLang];
+        }
       }
     }
-    askAnswer.textContent = answer;
+    askAnswer.innerHTML = answer;
     askAnswer.classList.remove('show');
     void askAnswer.offsetWidth;
     askAnswer.classList.add('show');
