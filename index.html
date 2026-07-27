@@ -1110,7 +1110,7 @@
   }
 
   .chapter-note{
-    padding-top:48px;
+    padding:48px 8vw 0;
     border-bottom:none;
   }
   .cn-logo{
@@ -1120,9 +1120,10 @@
     height:36px;
     width:36px;
     border-radius:4px;
-    background:var(--teal) !important;
+    font-size:1.2rem;
+    background:#fff !important;
   }
-  .cn-logo svg{width:60%; height:60%;}
+  .cn-pink{color:var(--amber) !important; margin-bottom:14px;}
   footer{
     border-top:1px solid var(--line);
     padding:32px 8vw 80px;
@@ -1491,13 +1492,12 @@
 
   <div class="pblock chapter-note">
     <div class="pb-head">
-      <span class="co-logo cn-logo" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#131417" stroke-width="1.6"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg>
-      </span>
+      <span class="co-logo cn-logo" aria-hidden="true">✨</span>
       <h3 id="i-cn-label">Nouveau chapitre</h3>
     </div>
     <div class="pb-tagline" id="i-cn-tagline">Elevate France a fermé</div>
-    <p id="i-cn-text">La prochaine aventure commence maintenant.</p>
+    <p class="cn-pink" id="i-cn-text">La prochaine aventure commence maintenant.</p>
+    <p id="i-cn-body">Prête à structurer le prochain chaos, dans une équipe produit qui construit vite et sans détour.</p>
   </div>
 
   <footer>
@@ -1606,6 +1606,7 @@
     'i-cn-label': 'New chapter',
     'i-cn-tagline': 'Elevate France has closed',
     'i-cn-text': 'The next adventure starts now.',
+    'i-cn-body': 'Ready to structure the next chaos, in a product team that builds fast and gets straight to the point.',
     'i-foot-eyebrow': '✨ Available now',
     'i-foot-h2': 'Ready to structure the next chaos with a product team that builds fast and gets straight to the point.',
     'i-lbl-phone': 'Phone',
@@ -1913,8 +1914,17 @@
   }
 
   if(askBox && askFab){
-    let dragging = false, moved = false, offX = 0, offY = 0;
-    function startDrag(clientX, clientY){
+    let pending = false, dragging = false, moved = false;
+    let startX = 0, startY = 0, offX = 0, offY = 0;
+
+    function beginPointer(clientX, clientY){
+      pending = true;
+      dragging = false;
+      moved = false;
+      startX = clientX;
+      startY = clientY;
+    }
+    function engageDrag(clientX, clientY){
       const r = askBox.getBoundingClientRect();
       askBox.style.left = r.left + 'px';
       askBox.style.top = r.top + 'px';
@@ -1923,34 +1933,54 @@
       offX = clientX - r.left;
       offY = clientY - r.top;
       dragging = true;
-      moved = false;
     }
-    function moveDrag(clientX, clientY){
-      if(!dragging) return;
-      const dx = Math.abs(clientX - (offX + askBox.getBoundingClientRect().left));
-      const boxW = askBox.offsetWidth || 44;
-      const boxH = askBox.offsetHeight || 44;
+    function movePointer(clientX, clientY){
+      if(!pending) return;
+      if(!dragging){
+        if(Math.abs(clientX - startX) > 5 || Math.abs(clientY - startY) > 5){
+          engageDrag(startX, startY);
+        } else {
+          return;
+        }
+      }
+      moved = true;
+      const boxW = askBox.offsetWidth;
+      const boxH = askBox.offsetHeight;
       const maxX = window.innerWidth - boxW - 8;
       const maxY = window.innerHeight - boxH - 8;
       const nx = Math.min(Math.max(8, clientX - offX), maxX);
       const ny = Math.min(Math.max(8, clientY - offY), maxY);
-      if(Math.abs(nx - askBox.getBoundingClientRect().left) > 3) moved = true;
       askBox.style.left = nx + 'px';
       askBox.style.top = ny + 'px';
     }
-    askFab.addEventListener('mousedown', (e)=>{ startDrag(e.clientX, e.clientY); });
-    if(askHandle) askHandle.addEventListener('mousedown', (e)=>{ startDrag(e.clientX, e.clientY); e.preventDefault(); });
-    window.addEventListener('mousemove', (e)=> moveDrag(e.clientX, e.clientY));
-    window.addEventListener('mouseup', ()=>{ dragging = false; });
-    askFab.addEventListener('touchstart', (e)=>{ const t=e.touches[0]; startDrag(t.clientX, t.clientY); }, {passive:true});
-    if(askHandle) askHandle.addEventListener('touchstart', (e)=>{ const t=e.touches[0]; startDrag(t.clientX, t.clientY); }, {passive:true});
-    window.addEventListener('touchmove', (e)=>{ if(!dragging) return; const t=e.touches[0]; moveDrag(t.clientX, t.clientY); }, {passive:true});
-    window.addEventListener('touchend', ()=>{ dragging = false; });
+    function endPointer(){
+      pending = false;
+      dragging = false;
+    }
+
+    askFab.addEventListener('mousedown', (e)=> beginPointer(e.clientX, e.clientY));
+    if(askHandle) askHandle.addEventListener('mousedown', (e)=>{ beginPointer(e.clientX, e.clientY); e.preventDefault(); });
+    window.addEventListener('mousemove', (e)=> movePointer(e.clientX, e.clientY));
+    window.addEventListener('mouseup', endPointer);
+
+    askFab.addEventListener('touchstart', (e)=>{ const t=e.touches[0]; beginPointer(t.clientX, t.clientY); }, {passive:true});
+    if(askHandle) askHandle.addEventListener('touchstart', (e)=>{ const t=e.touches[0]; beginPointer(t.clientX, t.clientY); }, {passive:true});
+    window.addEventListener('touchmove', (e)=>{ if(!pending) return; const t=e.touches[0]; movePointer(t.clientX, t.clientY); }, {passive:true});
+    window.addEventListener('touchend', endPointer);
 
     askFab.addEventListener('click', ()=>{
       if(moved) return;
       askBox.classList.add('open');
       askFab.setAttribute('aria-expanded', 'true');
+      requestAnimationFrame(()=>{
+        const r = askBox.getBoundingClientRect();
+        if(r.right > window.innerWidth - 8 || r.left < 8 || r.top < 8){
+          askBox.style.left = Math.min(Math.max(8, r.left), window.innerWidth - askBox.offsetWidth - 8) + 'px';
+          askBox.style.top = Math.max(8, r.top) + 'px';
+          askBox.style.right = 'auto';
+          askBox.style.bottom = 'auto';
+        }
+      });
       const input = document.getElementById('askInput');
       if(input) setTimeout(()=> input.focus(), 50);
     });
