@@ -198,15 +198,13 @@
     max-width:560px;
     line-height:1.6;
   }
+  .hero-sub2{margin-top:14px;}
   /* ---------- Intro ---------- */
   .intro{
     border-top:1px solid var(--line);
     padding-top:56px;
     padding-bottom:56px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:64px;
-    align-items:start;
+    display:block;
   }
   .timeline{padding-top:24px; padding-bottom:24px; border-top:1px solid var(--line);}
   .intro-text{max-width:560px;}
@@ -844,7 +842,7 @@
   }
   .skills-grid{
     display:grid;
-    grid-template-columns:repeat(2, 1fr);
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
     gap:0;
     border-top:1px solid var(--line);
     border-left:1px solid var(--line);
@@ -1010,7 +1008,7 @@
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:12px;
-    margin-top:28px;
+    margin-top:0;
   }
   .pa-preview span{
     padding:14px 16px;
@@ -1264,7 +1262,8 @@
       <div class="hero-text">
         <div class="eyebrow">Laurence Maestracci · Senior Product Manager</div>
         <h1 class="thesis" id="i-thesis"><span class="chaos">Chaos</span><span class="arrow">→</span><span class="accent">Flow.</span></h1>
-        <p class="hero-sub" id="i-herosub">Product Strategy · SaaS B2B · Product Operations · Delivery &amp; Adoption.<br>Une dizaine d'années à transformer des besoins complexes en produits concrets, adoptés et performants.</p>
+        <p class="hero-sub" id="i-herosub">Produit • SaaS B2B • Product Operations • Delivery &amp; Adoption</p>
+        <p class="hero-sub hero-sub2" id="i-herosub2">Depuis une dizaine d'années, je transforme des besoins métiers complexes en produits utiles, adoptés et performants.</p>
       </div>
       <div class="hero-portrait">
         <span class="bracket tl"></span>
@@ -1277,9 +1276,6 @@
   </section>
 
   <section class="intro">
-    <div class="intro-text">
-      <p id="i-intro1">Senior Product Manager à l'intersection du produit, de la tech et des opérations. Depuis une dizaine d'années, je transforme des besoins métiers complexes en produits SaaS et plateformes digitales, de la vision et de la roadmap jusqu'au delivery, à l'adoption et à la mesure d'impact. Je travaille au plus près des équipes Engineering, Data, Business et des utilisateurs pour arbitrer les priorités et construire des solutions utiles, capables de passer à l'échelle et performantes.</p>
-    </div>
     <div class="intro-skills">
       <div class="skills-head" id="i-skhead">🛠️ Compétences</div>
       <div class="skills-grid">
@@ -1307,8 +1303,6 @@
 
   <section class="platforms-alt">
     <div class="pa-head">
-      <h2 id="i-pa-h2">Quatre plateformes, un même fil rouge</h2>
-      <p id="i-pa-sub">Depuis dix ans, j'aide les entreprises à transformer des organisations complexes en produits simples, adoptés et performants. Voici quatre exemples de cette approche.</p>
       <div class="pa-preview">
         <span id="i-pa-p1">🧩 Transformer un outil de stock en plateforme métier</span>
         <span id="i-pa-p2">🌍 Réussir une migration Big Bang internationale</span>
@@ -1519,8 +1513,8 @@
   // ---- i18n: FR (default, in markup) / EN (translations below) ----
   const translations = {
     'i-thesis': '<span class="chaos">Chaos</span><span class="arrow">→</span><span class="accent">Flow.</span>',
-    'i-herosub': 'Product Strategy · B2B SaaS · Product Operations · Delivery &amp; Adoption.<br>About ten years turning complex needs into useful, widely adopted and high-performing products.',
-    'i-intro1': 'Senior Product Manager working at the intersection of product, technology and operations. For about ten years, I have turned complex business needs into SaaS products and digital platforms, from product vision and roadmap to delivery, adoption and impact measurement. I work closely with Engineering, Data, Business and users to prioritize effectively and build useful, scalable and high-performing solutions.',
+    'i-herosub': 'Product • B2B SaaS • Product Operations • Delivery &amp; Adoption',
+    'i-herosub2': 'For about ten years, I have turned complex business needs into useful, adopted and high-performing products.',
     'i-c2-h3': 'Listen to the ground, build the right tools',
     'i-c2-li1': 'Led the functional evolution of Hiretrack NX across the EMEA region',
     'i-c2-li2': 'Gathered operational needs and translated them into workflow improvements',
@@ -1600,8 +1594,6 @@
     'i-lbl-phone': 'Phone',
     'i-lbl-loc': 'Location',
     'i-foot-sign': 'Made with structure. And a bit of chaos, obviously. 🩷',
-    'i-pa-h2': 'Four platforms, one common thread',
-    'i-pa-sub': "For about ten years, I've helped companies turn complex organizations into simple, adopted and high-performing products. Here are four examples of that approach.",
     'i-pa-p1': '🧩 Turning a stock tool into a business platform',
     'i-pa-p2': '🌍 Delivering an international Big Bang migration',
     'i-pa-p3': '🤝 Building a shared CRM for multiple markets',
@@ -1827,8 +1819,8 @@
     });
     const heroSub = document.getElementById('i-herosub');
     if(heroSub) chunks.push({text: heroSub.textContent.trim(), source: 'Profil'});
-    const intro = document.getElementById('i-intro1');
-    if(intro) chunks.push({text: intro.textContent.trim(), source: 'Profil'});
+    const heroSub2 = document.getElementById('i-herosub2');
+    if(heroSub2) chunks.push({text: heroSub2.textContent.trim(), source: 'Profil'});
     return chunks;
   }
   function searchPage(question){
