@@ -1118,20 +1118,31 @@
     align-items:start;
   }
   .pblock-split .pb-visual, .pblock-split .pb-visual-portrait{margin-top:0; max-width:none;}
-  .pblock-split-wide{grid-template-columns:1fr minmax(320px, 460px);}
-  .pblock-split .hiretrack-scene{flex-direction:column !important;}
-  .pblock-split .hs-before-art{flex:none !important; width:100% !important; height:220px !important; min-height:0 !important; max-width:none !important;}
-  .pblock-split .hs-arrow{transform:rotate(90deg); align-self:center; padding:4px 0;}
-  .pblock-split .hs-after{flex:none !important; width:100% !important; height:220px !important; min-height:0 !important; max-width:none !important;}
+  .pblock-split-wide{grid-template-columns:1fr minmax(320px, 420px) !important;}
+  .pblock-split .pb-visual-wide{max-width:420px !important;}
+  .pblock-split .hiretrack-scene{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    grid-template-rows:220px 32px 220px !important;
+    gap:0 !important;
+  }
+  .pblock-split .hs-before-art{width:100% !important; height:100% !important; margin:0 !important;}
+  .pblock-split .hs-arrow{
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+    transform:rotate(90deg);
+    padding:0 !important;
+  }
+  .pblock-split .hs-after{width:100% !important; height:100% !important; margin:0 !important;}
   @media (max-width:900px){
     .pblock-split{grid-template-columns:1fr;}
-    .pblock-split .hiretrack-scene{flex-direction:row !important;}
-    .pblock-split .hs-before-art, .pblock-split .hs-after{height:auto !important; aspect-ratio:4/3 !important;}
+    .pblock-split .pb-visual-wide{max-width:none !important;}
+    .pblock-split .hiretrack-scene{grid-template-columns:1fr 60px 1fr !important; grid-template-rows:260px !important;}
     .pblock-split .hs-arrow{transform:none;}
   }
   @media (max-width:640px){
-    .pblock-split .hiretrack-scene{flex-direction:column !important;}
-    .pblock-split .hs-before-art, .pblock-split .hs-after{aspect-ratio:auto !important; height:220px !important;}
+    .pblock-split .hiretrack-scene{grid-template-columns:1fr !important; grid-template-rows:220px 32px 220px !important;}
     .pblock-split .hs-arrow{transform:rotate(90deg);}
   }
   .pb-visual.pb-visual-portrait{max-width:280px;}
