@@ -127,8 +127,8 @@
   }
   .eyebrow{
     font-family:'Space Mono',monospace;
-    font-size:12px;
-    letter-spacing:0.25em;
+    font-size:16px;
+    letter-spacing:0.2em;
     color:var(--amber);
     text-transform:uppercase;
     margin-bottom:24px;
@@ -201,7 +201,6 @@
   .hero-sub2{margin-top:14px;}
   /* ---------- Intro ---------- */
   .intro{
-    border-top:1px solid var(--line);
     padding-top:56px;
     padding-bottom:56px;
     display:block;
@@ -864,7 +863,7 @@
   }
   .skill-cell:nth-child(even):hover{transform:rotate(1deg) scale(1.03);}
   .skill-cell b{display:block; color:var(--ink); font-family:'Space Mono',monospace; font-size:0.8rem; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px;}
-  @media (max-width:520px){ .skills-grid{grid-template-columns:1fr;} }
+  @media (max-width:520px){ .skills-grid{grid-template-columns:1fr;} .pb-head h3{font-size:1.7rem;} }
 
   .langs{
     display:flex; gap:28px; flex-wrap:wrap; margin-top:48px;
@@ -1045,7 +1044,8 @@
   }
   .pb-head h3{
     font-family:'Space Mono',monospace;
-    font-size:clamp(1.8rem, 4vw, 2.6rem);
+    font-size:2.2rem;
+    line-height:1.15;
     font-weight:700;
   }
   .pb-meta{
@@ -1093,6 +1093,7 @@
   .pb-sec p{margin:0;}
   .pb-tagline{
     font-size:1.25rem;
+    line-height:1.35;
     font-weight:600;
     color:var(--teal);
     margin-bottom:10px;
@@ -1118,19 +1119,19 @@
   }
   .pblock-split .pb-visual, .pblock-split .pb-visual-portrait{margin-top:0; max-width:none;}
   .pblock-split-wide{grid-template-columns:1fr minmax(320px, 460px);}
-  .pblock-split .hiretrack-scene{flex-direction:column;}
-  .pblock-split .hs-before-art{flex:none; width:100%; height:220px; min-height:0;}
+  .pblock-split .hiretrack-scene{flex-direction:column !important;}
+  .pblock-split .hs-before-art{flex:none !important; width:100% !important; height:220px !important; min-height:0 !important; max-width:none !important;}
   .pblock-split .hs-arrow{transform:rotate(90deg); align-self:center; padding:4px 0;}
-  .pblock-split .hs-after{flex:none; width:100%; height:220px; min-height:0;}
+  .pblock-split .hs-after{flex:none !important; width:100% !important; height:220px !important; min-height:0 !important; max-width:none !important;}
   @media (max-width:900px){
     .pblock-split{grid-template-columns:1fr;}
-    .pblock-split .hiretrack-scene{flex-direction:row;}
-    .pblock-split .hs-before-art, .pblock-split .hs-after{height:auto; aspect-ratio:4/3;}
+    .pblock-split .hiretrack-scene{flex-direction:row !important;}
+    .pblock-split .hs-before-art, .pblock-split .hs-after{height:auto !important; aspect-ratio:4/3 !important;}
     .pblock-split .hs-arrow{transform:none;}
   }
   @media (max-width:640px){
-    .pblock-split .hiretrack-scene{flex-direction:column;}
-    .pblock-split .hs-before-art, .pblock-split .hs-after{aspect-ratio:auto; height:220px;}
+    .pblock-split .hiretrack-scene{flex-direction:column !important;}
+    .pblock-split .hs-before-art, .pblock-split .hs-after{aspect-ratio:auto !important; height:220px !important;}
     .pblock-split .hs-arrow{transform:rotate(90deg);}
   }
   .pb-visual.pb-visual-portrait{max-width:280px;}
@@ -1370,7 +1371,7 @@
           <li id="i-pb1-res1">Transformation d'un simple outil de stock en plateforme métier complète</li>
           <li id="i-pb1-res2">Digitalisation des processus opérationnels de bout en bout</li>
           <li id="i-pb1-res3">Accélération significative de l'exécution des opérations grâce à l'automatisation des workflows</li>
-          <li id="i-pb1-res4">Création d'un bon de commande unifié offrant une vision consolidée des CAPEX (250 000 $)</li>
+          <li id="i-pb1-res4">Création d'un bon de commande unifié offrant une vision consolidée des CAPEX (250 000 $/an)</li>
           <li id="i-pb1-res5">Forte adoption grâce à la documentation, aux formations et à l'amélioration continue</li>
         </ul>
       </div>
@@ -1439,14 +1440,14 @@
       <div class="pb-tagline" id="i-pb3-tagline">Concevoir un CRM unique pour plusieurs marchés internationaux</div>
       <div class="pb-meta mono" id="i-pb3-meta">Plateforme web et mobile B2B2C · 2022–2024 · <a href="https://weareelevate.global/fr/" target="_blank" rel="noopener">Elevate Global</a></div>
       <div class="pb-role" id="i-pb3-role">Regional Process &amp; Product Lead</div>
-      <div class="pb-keywords mono" id="i-pb3-kw">5 marchés · Web + mobile · 7 → 70 collaborateurs</div>
+      <div class="pb-keywords mono" id="i-pb3-kw">5 marchés · Web + mobile · Une organisation passée de 7 à 70 collaborateurs</div>
       <div class="pb-sec">
         <span class="pb-label mono" id="i-pb3-ctx-l">Contexte</span>
         <p id="i-pb3-ctx1">Pour soutenir son développement international, Elevate souhaitait remplacer les différentes applications utilisées par chaque marché par une plateforme CRM unique, capable de s'adapter aux spécificités locales tout en harmonisant les pratiques du groupe.</p>
       </div>
       <div class="pb-sec">
         <span class="pb-label mono" id="i-pb3-act-l">Mission</span>
-        <p id="i-pb3-act1">En tant que Regional Process &amp; Product Lead, j'ai travaillé avec un écosystème très transverse : équipes métier, développeurs, utilisateurs terrain, clients, RH, cabinets de paie, juristes et partenaires externes. J'ai rédigé l'ensemble des workflows en lien avec toutes ces parties prenantes — équipes internes, staff sur le terrain et partenaires externes (avocats, cabinets de paie...). J'ai animé la discovery, conçu les parcours utilisateurs, piloté les évolutions produit et accompagné le déploiement grâce à la documentation, aux supports de formation et à l'amélioration continue.</p>
+        <p id="i-pb3-act1">En tant que Regional Process &amp; Product Lead, j'ai rédigé l'ensemble des workflows en lien avec un écosystème très transverse : équipes métier, développeurs, utilisateurs terrain, clients, RH, cabinets de paie, juristes et partenaires externes. J'ai animé la discovery, conçu les parcours utilisateurs, piloté les évolutions produit et accompagné le déploiement grâce à la documentation, aux supports de formation et à l'amélioration continue.</p>
       </div>
       <div class="pb-sec">
         <span class="pb-label mono" id="i-pb3-res-l">Résultats</span>
@@ -1502,7 +1503,6 @@
         </ul>
       </div>
       <div class="built-links">
-        <a href="https://impactv4.weareelevate.global/" target="_blank" rel="noopener"><span id="i-link-impact-platform">Plateforme</span> ↗</a>
         <a href="https://weareelevate.global/fr/impact/" target="_blank" rel="noopener"><span id="i-link-impact-site">Site Impact</span> ↗</a>
       </div>
       </div>
@@ -1648,7 +1648,7 @@
     'i-pb1-res1': 'Turned a simple stock tool into a complete business platform',
     'i-pb1-res2': 'End-to-end digitization of operational processes',
     'i-pb1-res3': 'Significantly faster execution of operations through workflow automation',
-    'i-pb1-res4': 'Created a unified purchase order giving a consolidated view of CapEx ($250,000)',
+    'i-pb1-res4': 'Created a unified purchase order giving a consolidated view of CapEx ($250,000/year)',
     'i-pb1-res5': 'Strong adoption thanks to documentation, training and continuous improvement',
     'i-pb1-kw': 'End-to-end cycle · EMEA scope · User adoption',
     'i-pb2-tagline': 'Delivering a Big Bang migration at European scale',
@@ -1671,14 +1671,14 @@
     'i-pb3-ctx-l': 'Context',
     'i-pb3-ctx1': 'To support its international growth, Elevate wanted to replace the different applications used by each market with a single CRM platform, able to adapt to local specifics while harmonizing group practices.',
     'i-pb3-act-l': 'Mission',
-    'i-pb3-act1': 'As Regional Process &amp; Product Lead, I worked across a highly cross-functional ecosystem: business teams, developers, field users, clients, HR, payroll firms, legal counsel and external partners. I wrote all the workflows in coordination with all these stakeholders — internal teams, field staff and external partners (lawyers, payroll firms...). I ran discovery, designed user journeys, led product changes and supported the rollout through documentation, training materials and continuous improvement.',
+    'i-pb3-act1': 'As Regional Process &amp; Product Lead, I wrote all the workflows in coordination with a highly cross-functional ecosystem: business teams, developers, field users, clients, HR, payroll firms, legal counsel and external partners. I ran discovery, designed user journeys, led product changes and supported the rollout through documentation, training materials and continuous improvement.',
     'i-pb3-res-l': 'Results',
     'i-pb3-res1': 'Designed a shared platform for several international markets',
     'i-pb3-res2': 'Harmonized business journeys while accounting for local constraints',
     'i-pb3-res3': 'Coordinated numerous internal and external stakeholders',
     'i-pb3-res4': 'Trained and supported international teams',
     'i-pb3-res5': 'Continuous improvement based on user feedback',
-    'i-pb3-kw': '5 markets · Web + mobile · 7 → 70 people',
+    'i-pb3-kw': '5 markets · Web + mobile · An organization that grew from 7 to 70 people',
     'i-pb4-tagline': 'Rolling out a B2B SaaS platform from pre-sales to adoption',
     'i-pb4-meta': 'B2B SaaS reporting and insights platform · 2024–2025 · <a href="https://weareelevate.global/fr/" target="_blank" rel="noopener">Elevate Global</a>',
     'i-pb4-role': 'Project Manager, Impact',
@@ -1837,8 +1837,8 @@
     },
     {
       kw: ['impact'],
-      fr: 'Impact est la plateforme SaaS B2B de reporting d\'Elevate Global (2024–2025), 150+ KPIs. Voir la <a href="https://impactv4.weareelevate.global/" target="_blank" rel="noopener">plateforme</a> ou le <a href="https://weareelevate.global/fr/impact/" target="_blank" rel="noopener">site Impact</a>',
-      en: 'Impact is Elevate Global\'s B2B SaaS reporting platform (2024–2025), 150+ KPIs. See the <a href="https://impactv4.weareelevate.global/" target="_blank" rel="noopener">platform</a> or the <a href="https://weareelevate.global/fr/impact/" target="_blank" rel="noopener">Impact site</a>'
+      fr: 'Impact est la plateforme SaaS B2B de reporting d\'Elevate Global (2024–2025), 150+ KPIs. Voir le <a href="https://weareelevate.global/fr/impact/" target="_blank" rel="noopener">site Impact</a>',
+      en: 'Impact is Elevate Global\'s B2B SaaS reporting platform (2024–2025), 150+ KPIs. See the <a href="https://weareelevate.global/fr/impact/" target="_blank" rel="noopener">Impact site</a>'
     },
     {
       kw: ['pourquoi', 'why', 'ferm', 'clos'],
