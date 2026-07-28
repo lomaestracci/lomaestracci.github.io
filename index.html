@@ -1119,21 +1119,41 @@
   .pblock-split .pb-visual, .pblock-split .pb-visual-portrait{margin-top:0; max-width:none;}
   .pblock-split-wide{grid-template-columns:1fr minmax(320px, 460px);}
   .pblock-split .hiretrack-scene{flex-direction:column;}
-  .pblock-split .hs-before-art{min-height:200px;}
+  .pblock-split .hs-before-art{flex:none; width:100%; height:220px; min-height:0;}
   .pblock-split .hs-arrow{transform:rotate(90deg); align-self:center; padding:4px 0;}
-  .pblock-split .hs-after{min-height:200px;}
+  .pblock-split .hs-after{flex:none; width:100%; height:220px; min-height:0;}
   @media (max-width:900px){
     .pblock-split{grid-template-columns:1fr;}
     .pblock-split .hiretrack-scene{flex-direction:row;}
+    .pblock-split .hs-before-art, .pblock-split .hs-after{height:auto; aspect-ratio:4/3;}
     .pblock-split .hs-arrow{transform:none;}
   }
   @media (max-width:640px){
     .pblock-split .hiretrack-scene{flex-direction:column;}
+    .pblock-split .hs-before-art, .pblock-split .hs-after{aspect-ratio:auto; height:220px;}
     .pblock-split .hs-arrow{transform:rotate(90deg);}
   }
-  .pb-visual-portrait{max-width:280px;}
-  .pb-visual-portrait .built-shots{aspect-ratio:9/16;}
-  .pb-visual-portrait .built-shots img{object-fit:cover;}
+  .pb-visual.pb-visual-portrait{max-width:280px;}
+  .pb-visual.pb-visual-portrait .built-shots{
+    aspect-ratio:9/19.5 !important;
+    border-radius:32px !important;
+    border:8px solid #0a0a0c;
+    box-shadow:0 0 0 1.5px rgba(247,242,233,0.15), 0 16px 34px rgba(0,0,0,0.5);
+    background:#0a0a0c;
+  }
+  .pb-visual.pb-visual-portrait .built-shots img{object-fit:cover; border-radius:24px;}
+  .pb-visual.pb-visual-portrait .built-shots::before{
+    content:"";
+    position:absolute;
+    top:0; left:50%;
+    transform:translateX(-50%);
+    width:38%;
+    height:20px;
+    background:#0a0a0c;
+    border-radius:0 0 14px 14px;
+    z-index:4;
+  }
+  .pb-visual.pb-visual-portrait .slide-dots{bottom:16px;}
   .pb-visual .built-shots{
     position:relative;
     width:100%;
@@ -1158,7 +1178,8 @@
     width:36px;
     border-radius:6px;
     font-size:1.2rem;
-    background:#c7c7c7 !important;
+    background:#0a0a0c !important;
+    border:1px solid var(--line);
     box-shadow:0 4px 14px rgba(0,0,0,0.25);
   }
   .cn-pink{color:var(--amber) !important; margin-bottom:14px;}
