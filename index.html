@@ -667,6 +667,10 @@
   .hs-after.count-2 img{animation:fadeCycle2 8s infinite;}
   .hs-after.count-2 img:nth-child(1){animation-delay:0s;}
   .hs-after.count-2 img:nth-child(2){animation-delay:4s;}
+  .hs-after.count-3 img{animation:fadeCycle3 9s infinite;}
+  .hs-after.count-3 img:nth-child(1){animation-delay:0s;}
+  .hs-after.count-3 img:nth-child(2){animation-delay:3s;}
+  .hs-after.count-3 img:nth-child(3){animation-delay:6s;}
   @media (max-width:640px){
     .hiretrack-scene{flex-direction:column;}
     .hs-arrow{transform:rotate(90deg); align-self:center;}
@@ -1119,8 +1123,6 @@
     align-items:start;
   }
   .pblock-split .pb-visual, .pblock-split .pb-visual-portrait{margin-top:0; max-width:none;}
-  .pblock-split-wide{grid-template-columns:1fr minmax(320px, 420px) !important;}
-  .pblock-split .pb-visual-wide{max-width:420px !important;}
   .pblock-split .hiretrack-scene{
     display:grid !important;
     grid-template-columns:1fr !important;
@@ -1137,14 +1139,7 @@
   }
   .pblock-split .hs-after{width:100% !important; height:100% !important; margin:0 !important;}
   @media (max-width:900px){
-    .pblock-split, .pblock-split-wide{grid-template-columns:1fr !important;}
-    .pblock-split .pb-visual-wide{max-width:none !important;}
-    .pblock-split .hiretrack-scene{grid-template-columns:1fr 60px 1fr !important; grid-template-rows:260px !important;}
-    .pblock-split .hs-arrow{transform:none;}
-  }
-  @media (max-width:640px){
-    .pblock-split .hiretrack-scene{grid-template-columns:1fr !important; grid-template-rows:220px 32px 220px !important;}
-    .pblock-split .hs-arrow{transform:rotate(90deg);}
+    .pblock-split{grid-template-columns:1fr !important;}
   }
   .pb-visual.pb-visual-portrait{max-width:280px;}
   .pb-visual.pb-visual-portrait .built-shots{
@@ -1364,7 +1359,7 @@
 
 
   <section class="platforms-alt">
-    <div class="pblock pblock-split pblock-split-wide">
+    <div class="pblock pblock-split">
       <div class="pb-text-col">
       <div class="pb-head">
         <img class="co-logo" src="hiretrack-logo.png" alt="Hiretrack NX" loading="lazy">
@@ -1393,17 +1388,18 @@
         </ul>
       </div>
       </div>
-      <div class="pb-visual pb-visual-wide">
+      <div class="pb-visual">
         <div class="hiretrack-scene" aria-hidden="true">
           <div class="hs-before hs-before-art">
             <img src="hiretrack-chaos-art.jpg" alt="Illustration du chaos administratif avant Hiretrack NX : mails, devis et Excel qui s'accumulent" loading="lazy">
             <span class="hs-tag" id="i-hs-tag">Mails · devis · Excel · factures</span>
           </div>
           <div class="hs-arrow">→</div>
-          <div class="hs-after count-2">
-            <img src="https://www.navigator.uk/wp-content/uploads/2014/07/jobbook-1024x683.png" alt="Interface Hiretrack NX (Job book)" loading="lazy">
-            <img src="https://www.navigator.uk/wp-content/uploads/2014/07/eqlist-1024x683.png" alt="Interface Hiretrack NX (liste d'équipement)" loading="lazy">
-            <span class="slide-dots count-2"><i></i><i></i></span>
+          <div class="hs-after count-3">
+            <img src="hiretrack-shot1.jpg" alt="Interface Hiretrack NX (fiche type d'équipement)" loading="lazy">
+            <img src="hiretrack-shot2.jpg" alt="Interface Hiretrack NX (liste d'équipement d'un job)" loading="lazy">
+            <img src="hiretrack-shot3.jpg" alt="Interface Hiretrack NX (liste des jobs)" loading="lazy">
+            <span class="slide-dots count-3"><i></i><i></i><i></i></span>
           </div>
         </div>
       </div>
