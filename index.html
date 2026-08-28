@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Laurence Maestracci · Senior Product Manager</title>
+<link rel="icon" type="image/png" href="jobception-favicon.png">
+<link rel="apple-touch-icon" href="jobception-favicon.png">
 <meta name="description" content="Senior Product Manager spécialisée dans les produits SaaS B2B, les plateformes métiers, le delivery et l'adoption produit." id="meta-desc">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -200,6 +202,18 @@
     line-height:1.6;
   }
   .hero-sub2{margin-top:14px;}
+  .hero-jc{
+    font-size:0.88rem;
+    color:var(--ink-dim);
+    opacity:0.75;
+    margin-top:18px;
+    max-width:560px;
+    line-height:1.5;
+  }
+  .hero-jc b{
+    color:var(--amber);
+    font-weight:700;
+  }
   .cv-buttons{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
   .cv-btn{
     font-family:'Space Mono',monospace;
@@ -1279,10 +1293,15 @@
   }
   .jc-slogan{
     font-family:'Space Mono',monospace;
-    font-size:0.92rem;
-    color:var(--jc-offwhite);
-    opacity:0.75;
-    margin-top:10px;
+    font-weight:700;
+    font-size:clamp(1.05rem, 2.2vw, 1.4rem);
+    line-height:1.3;
+    letter-spacing:0.01em;
+    margin-top:14px;
+    background:linear-gradient(90deg, var(--jc-fuchsia), var(--jc-violet));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
   }
   .jc-hook{
     font-size:clamp(1.3rem, 2.6vw, 1.7rem);
@@ -1386,6 +1405,15 @@
   .jobception-block .built-links a{color:var(--jc-offwhite); border-color:rgba(233,230,242,0.25);}
   .jobception-block .built-links a:hover{color:var(--jc-fuchsia); border-color:var(--jc-fuchsia);}
   .jobception-block .built-links{margin-top:0;}
+  .jc-wink{
+    font-size:0.88rem;
+    line-height:1.5;
+    color:var(--jc-offwhite);
+    opacity:0.65;
+    font-style:italic;
+    max-width:520px;
+    margin-top:26px;
+  }
   @media (max-width:600px){
     .jobception-block{padding:40px 6vw;}
   }
@@ -1519,6 +1547,7 @@
         <h1 class="thesis" id="i-thesis"><span class="chaos">Chaos</span><span class="arrow">→</span><span class="accent">Flow.</span></h1>
         <p class="hero-sub" id="i-herosub">Produit • SaaS B2B • Product Operations • Delivery &amp; Adoption</p>
         <p class="hero-sub hero-sub2" id="i-herosub2">Depuis une dizaine d'années, je transforme des besoins métiers complexes en produits utiles, adoptés et performants.</p>
+        <p class="hero-jc" id="i-hero-jc">Créatrice de <b>Jobception</b>, un projet personnel mêlant produit, IA, automatisation et no-code.</p>
         <div class="cv-buttons">
           <a href="Laurence-Maestracci-CV-FR.pdf" download class="cv-btn" id="i-cv-fr">📄 CV (FR)</a>
           <a href="Laurence-Maestracci-CV-EN.pdf" download class="cv-btn" id="i-cv-en">📄 CV (EN)</a>
@@ -1794,6 +1823,8 @@
       <div class="built-links">
         <a href="https://jobception.lovable.app/demo" target="_blank" rel="noopener"><span id="i-sp-cta">Voir la démo</span> ↗</a>
       </div>
+
+      <p class="jc-wink" id="i-jc-wink">Oui, j'ai fini par faire un produit pour organiser ma recherche de Product Manager. L'ironie ne m'échappe pas.</p>
     </div>
   </div>
 
@@ -1827,6 +1858,7 @@
     'i-thesis': '<span class="chaos">Chaos</span><span class="arrow">→</span><span class="accent">Flow.</span>',
     'i-herosub': 'Product • B2B SaaS • Product Operations • Delivery &amp; Adoption',
     'i-herosub2': 'For about ten years, I have turned complex business needs into useful, adopted and high-performing products.',
+    'i-hero-jc': 'Creator of <b>Jobception</b>, a personal project combining product, AI, automation and no-code.',
     'i-c2-h3': 'Listen to the ground, build the right tools',
     'i-c2-li1': 'Led the functional evolution of Hiretrack NX across the EMEA region',
     'i-c2-li2': 'Gathered operational needs and translated them into workflow improvements',
@@ -1916,6 +1948,7 @@
     'i-jc-loop-note': "The matching score was too strict at first, so I reworked the criteria and weighting. Tracking recruiter conversations, initially done by hand, became its own feature, with replies drafted in my own tone.",
     'i-jc-stack': 'Product design · Generative AI · Automation · No-code (Lovable, Supabase)',
     'i-jc-stack-note': 'Imagined, designed and built end to end as a hands-on playground for product, AI and no-code work.',
+    'i-jc-wink': "Yes, I ended up building a product to manage my search for a Product Manager role. The irony isn't lost on me.",
     'i-sp-cta': 'See the demo',
     'i-foot-eyebrow': '✨ Available now',
     'i-foot-h2': 'Ready to structure the next chaos with a product team that builds fast and gets straight to the point.',
