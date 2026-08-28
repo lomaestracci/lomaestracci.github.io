@@ -200,6 +200,19 @@
     line-height:1.6;
   }
   .hero-sub2{margin-top:14px;}
+  .cv-buttons{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .cv-btn{
+    font-family:'Space Mono',monospace;
+    font-size:0.85rem;
+    color:var(--ink);
+    background:transparent;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:12px 20px;
+    text-decoration:none;
+    transition:border-color .2s ease, color .2s ease, transform .2s ease;
+  }
+  .cv-btn:hover{border-color:var(--teal); color:var(--teal); transform:translateY(-2px);}
   /* ---------- Intro ---------- */
   .intro{
     padding-top:56px;
@@ -1191,6 +1204,32 @@
     box-shadow:0 4px 14px rgba(0,0,0,0.25);
   }
   .cn-pink{color:var(--amber) !important; margin-bottom:14px;}
+  .side-project{
+    padding:36px 8vw 0;
+    border-bottom:none;
+  }
+  .side-project .pb-head{align-items:flex-start;}
+  .sp-logo{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    height:44px;
+    width:44px;
+    border-radius:8px;
+    font-size:1.4rem;
+    background:linear-gradient(135deg, rgba(255,46,126,0.15), rgba(67,232,216,0.15)) !important;
+    border:1px solid var(--line);
+    box-shadow:0 4px 14px rgba(0,0,0,0.25);
+  }
+  .sp-badge{
+    display:block;
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--coral);
+    margin-bottom:4px;
+  }
+  .side-project p{max-width:680px;}
   footer{
     padding:80px 8vw 80px;
     text-align:left;
@@ -1321,6 +1360,10 @@
         <h1 class="thesis" id="i-thesis"><span class="chaos">Chaos</span><span class="arrow">→</span><span class="accent">Flow.</span></h1>
         <p class="hero-sub" id="i-herosub">Produit • SaaS B2B • Product Operations • Delivery &amp; Adoption</p>
         <p class="hero-sub hero-sub2" id="i-herosub2">Depuis une dizaine d'années, je transforme des besoins métiers complexes en produits utiles, adoptés et performants.</p>
+        <div class="cv-buttons">
+          <a href="Laurence-Maestracci-CV-FR.pdf" download class="cv-btn" id="i-cv-fr">📄 CV (FR)</a>
+          <a href="Laurence-Maestracci-CV-EN.pdf" download class="cv-btn" id="i-cv-en">📄 CV (EN)</a>
+        </div>
       </div>
       <div class="hero-portrait">
         <span class="bracket tl"></span>
@@ -1541,6 +1584,21 @@
     <p id="i-cn-body">Prête à structurer le prochain chaos, dans une équipe produit qui construit vite et sans détour.</p>
   </div>
 
+  <div class="pblock side-project">
+    <div class="pb-head">
+      <span class="co-logo sp-logo" aria-hidden="true">🚀</span>
+      <div>
+        <span class="sp-badge mono" id="i-sp-badge">Projet perso</span>
+        <h3>Jobception</h3>
+      </div>
+    </div>
+    <div class="pb-tagline" id="i-sp-tagline">Un cockpit personnel pour piloter sa recherche d'emploi</div>
+    <p id="i-sp-body">Conçue et développée seule avec Lovable, Jobception centralise toute ma recherche : suivi des candidatures, score de matching IA sur chaque annonce, aide à la décision, préparation aux entretiens et centralisation des échanges avec les recruteurs — pensée comme un vrai outil produit, pas comme un simple tableau Excel.</p>
+    <div class="built-links">
+      <a href="https://jobception.lovable.app/demo" target="_blank" rel="noopener"><span id="i-sp-cta">Voir la démo</span> ↗</a>
+    </div>
+  </div>
+
   <footer>
     <div class="contact-row">
       <div>
@@ -1645,6 +1703,10 @@
     'i-cn-tagline': 'Elevate France has closed',
     'i-cn-text': 'The next adventure starts now.',
     'i-cn-body': 'Ready to structure the next chaos, in a product team that builds fast and gets straight to the point.',
+    'i-sp-badge': 'Side project',
+    'i-sp-tagline': 'A personal cockpit to run a job search',
+    'i-sp-body': "Designed and built solo with Lovable, Jobception centralizes my entire job search: application tracking, an AI matching score for each listing, decision support, interview prep and a single place for all recruiter communications — built like a real product, not a spreadsheet.",
+    'i-sp-cta': 'See the demo',
     'i-foot-eyebrow': '✨ Available now',
     'i-foot-h2': 'Ready to structure the next chaos with a product team that builds fast and gets straight to the point.',
     'i-lbl-phone': 'Phone',
@@ -1852,6 +1914,11 @@
       kw: ['impact'],
       fr: 'Impact est la plateforme SaaS B2B de reporting d\'Elevate Global (2024–2025), 150+ KPIs. Voir le <a href="https://weareelevate.global/fr/impact/" target="_blank" rel="noopener">site Impact</a>',
       en: 'Impact is Elevate Global\'s B2B SaaS reporting platform (2024–2025), 150+ KPIs. See the <a href="https://weareelevate.global/fr/impact/" target="_blank" rel="noopener">Impact site</a>'
+    },
+    {
+      kw: ['jobception'],
+      fr: 'Jobception est mon projet perso : un cockpit pour piloter ma recherche d\'emploi, conçu et développé seule avec Lovable. Voir la <a href="https://jobception.lovable.app/demo" target="_blank" rel="noopener">démo</a>',
+      en: 'Jobception is my side project: a personal cockpit to run my job search, designed and built solo with Lovable. See the <a href="https://jobception.lovable.app/demo" target="_blank" rel="noopener">demo</a>'
     },
     {
       kw: ['pourquoi', 'why', 'ferm', 'clos'],
